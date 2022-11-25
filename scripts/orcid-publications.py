@@ -88,6 +88,7 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
             break
 
     meta = fetchmeta(doi, fmt="dict")
+    print(meta)
     doi_url = meta["URL"]
     title = meta["title"]
     references_count = meta["references-count"]
