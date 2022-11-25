@@ -14,11 +14,8 @@
 # ---
 
 # +
-import pandas as pd
 import requests
-from IPython.display import Markdown, JSON
 from pathlib import Path
-from rich import progress
 
 # My ORCID
 ORCID_ID="0000-0003-4606-087X"
