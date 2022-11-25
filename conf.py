@@ -19,7 +19,6 @@ exclude_patterns = [
     "_build",
     "Thumbs.db",
     ".DS_Store",
-    "*import_posts*",
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
     "README.md",
