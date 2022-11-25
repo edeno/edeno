@@ -1,19 +1,19 @@
 ## 2022
-[Gillespie, Anna K..](http://orcid.org/0000-0003-0980-2408), Astudillo Maya, Daniela A.., [**Denovellis, Eric L..**](http://orcid.org/0000-0003-4606-087X), Desse, Sachi., [Frank, Loren M..](http://orcid.org/0000-0002-1752-5677) (2022). **Neurofeedback training can modulate task-relevant memory replay in rats**. Cold Spring Harbor Laboratory. [dx.doi.org/10.1101/2022.10.13.512183](http://dx.doi.org/10.1101/2022.10.13.512183)
+[Gillespie, Anna K.](http://orcid.org/0000-0003-0980-2408), Astudillo Maya, Daniela A., [**Denovellis, Eric L.**](http://orcid.org/0000-0003-4606-087X), Desse, Sachi, [Frank, Loren M.](http://orcid.org/0000-0002-1752-5677) (2022). **Neurofeedback training can modulate task-relevant memory replay in rats**. Cold Spring Harbor Laboratory. [dx.doi.org/10.1101/2022.10.13.512183](http://dx.doi.org/10.1101/2022.10.13.512183)
 
-[Joshi, Abhilasha.](http://orcid.org/0000-0002-0511-3747), [**Denovellis, Eric.**](http://orcid.org/0000-0003-4606-087X), Mankili, Abhijith., Meneksedag, Yagiz., Davidson, Thomas., [Gillespie, Anna K..](http://orcid.org/0000-0003-0980-2408), Guidera, Jennifer Ann., Roumis, Demetris., Frank, Loren M.. (2022). **Dynamic Synchronization between Hippocampal Spatial Representations and the Stepping Rhythm**. Cold Spring Harbor Laboratory. [dx.doi.org/10.1101/2022.02.23.481357](http://dx.doi.org/10.1101/2022.02.23.481357)
+[Joshi, Abhilasha](http://orcid.org/0000-0002-0511-3747), [**Denovellis, Eric**](http://orcid.org/0000-0003-4606-087X), Mankili, Abhijith, Meneksedag, Yagiz, Davidson, Thomas, [Gillespie, Anna K.](http://orcid.org/0000-0003-0980-2408), Guidera, Jennifer Ann, Roumis, Demetris, Frank, Loren M. (2022). **Dynamic Synchronization between Hippocampal Spatial Representations and the Stepping Rhythm**. Cold Spring Harbor Laboratory. [dx.doi.org/10.1101/2022.02.23.481357](http://dx.doi.org/10.1101/2022.02.23.481357)
 
 
 ## 2021
-[**Denovellis, Eric L.**](http://orcid.org/0000-0003-4606-087X), [Gillespie, Anna K.](http://orcid.org/0000-0003-0980-2408), Coulter, Michael E., [Sosa, Marielena.](http://orcid.org/0000-0003-0762-1128), Chung, Jason E., Eden, Uri T., [Frank, Loren M.](http://orcid.org/0000-0002-1752-5677) (2021). **Hippocampal replay of experience at real-world speeds**. eLife Sciences Publications, Ltd. [dx.doi.org/10.7554/eLife.64505](http://dx.doi.org/10.7554/eLife.64505)
+[**Denovellis, Eric L**](http://orcid.org/0000-0003-4606-087X), [Gillespie, Anna K](http://orcid.org/0000-0003-0980-2408), Coulter, Michael E, [Sosa, Marielena](http://orcid.org/0000-0003-0762-1128), Chung, Jason E, Eden, Uri T, [Frank, Loren M](http://orcid.org/0000-0002-1752-5677) (2021). **Hippocampal replay of experience at real-world speeds**. eLife Sciences Publications, Ltd. [dx.doi.org/10.7554/eLife.64505](http://dx.doi.org/10.7554/eLife.64505)
 
-Gillespie, Anna K.., Astudillo Maya, Daniela A.., [**Denovellis, Eric L..**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Liu, Daniel F.., Kastner, David B.., Coulter, Michael E.., Roumis, Demetris K.., Eden, Uri T.., Frank, Loren M.. (2021). **Hippocampal replay reflects specific past experiences rather than a plan for subsequent choice**. Elsevier BV. [dx.doi.org/10.1016/j.neuron.2021.07.029](http://dx.doi.org/10.1016/j.neuron.2021.07.029)
+Gillespie, Anna K., Astudillo Maya, Daniela A., [**Denovellis, Eric L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Liu, Daniel F., Kastner, David B., Coulter, Michael E., Roumis, Demetris K., Eden, Uri T., Frank, Loren M. (2021). **Hippocampal replay reflects specific past experiences rather than a plan for subsequent choice**. Elsevier BV. [dx.doi.org/10.1016/j.neuron.2021.07.029](http://dx.doi.org/10.1016/j.neuron.2021.07.029)
 
 
 ## 2019
-[**Denovellis, Eric L..**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Frank, Loren M.., Eden, Uri T.. (2019). **Characterizing hippocampal replay using hybrid point process state space models**. IEEE. [dx.doi.org/10.1109/ieeeconf44664.2019.9048688](http://dx.doi.org/10.1109/ieeeconf44664.2019.9048688)
+[**Denovellis, Eric L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Frank, Loren M., Eden, Uri T. (2019). **Characterizing hippocampal replay using hybrid point process state space models**. IEEE. [dx.doi.org/10.1109/ieeeconf44664.2019.9048688](http://dx.doi.org/10.1109/ieeeconf44664.2019.9048688)
 
 
 ## 2012
-Buschman, Timothy J.., [**Denovellis, Eric L..**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Diogo, Cinira., Bullock, Daniel., Miller, Earl K.. (2012). **Synchronous Oscillatory Neural Ensembles for Rules in the Prefrontal Cortex**. Elsevier BV. [dx.doi.org/10.1016/j.neuron.2012.09.029](http://dx.doi.org/10.1016/j.neuron.2012.09.029)
+Buschman, Timothy J., [**Denovellis, Eric L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Diogo, Cinira, Bullock, Daniel, Miller, Earl K. (2012). **Synchronous Oscillatory Neural Ensembles for Rules in the Prefrontal Cortex**. Elsevier BV. [dx.doi.org/10.1016/j.neuron.2012.09.029](http://dx.doi.org/10.1016/j.neuron.2012.09.029)
 
