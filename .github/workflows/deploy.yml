@@ -22,11 +22,11 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+        python scripts/orcid-publications.py
     # Build the book
     - name: Build the site
       run: |
         make dirhtml
-        python scripts/orcid-publications.py
     # If we've pushed to main, push the book's HTML to github-pages
     - if: ${{ github.ref == 'refs/heads/main' }}
       name: GitHub Pages action
