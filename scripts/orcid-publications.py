@@ -99,7 +99,9 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
     authors = meta["author"]
     autht = []
     for author in authors:
-        name = f"{author['family']}, {author['given'][0]}."
+        first_name = ' '.join([name for name in author['given']])
+        name = f"{author['family']}, {first_name}."
+
         if "denovellis" in author["family"].lower():
             name = f"**{name}**"
         if "ORCID" in author:
@@ -107,8 +109,10 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
         else:
             autht.append(name)
     autht = ", ".join(autht)
-
-    journal = meta["journal"]
+    try:
+        journal = meta["journal"]
+    except KeyError:
+        journal = meta["publisher"]
 
     url_doi = url.split("//", 1)[-1]
     reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
