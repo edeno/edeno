@@ -9,8 +9,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.edenovellis.com/projects/" />
 <meta property="og:site_name" content="Eric L. Denovellis" />
+<meta property="og:description" content="Code for most of my projects can be found on my Github page. Here are some select projects I’ve worked on: Replay Trajectory Classification: replay_trajectory_classification is a python package for..." />
 <meta property="og:image" content="https://www.edenovellis.com/_static/profile-bw.png" />
 <meta property="og:image:alt" content="Eric L. Denovellis" />
+<meta name="description" content="Code for most of my projects can be found on my Github page. Here are some select projects I’ve worked on: Replay Trajectory Classification: replay_trajectory_classification is a python package for..." />
 
     <title>Projects &#8212; Eric L. Denovellis</title>
   
@@ -445,6 +447,71 @@
             <article class="bd-article" role="main">
                <section id="projects">
 <h1>Projects<a class="headerlink" href="#projects" title="Permalink to this heading">#</a></h1>
+<p>Code for most of my projects can be found on my <a class="reference external" href="https://github.com/edeno">Github page</a>. Here are some select projects I’ve worked on:</p>
+<section id="replay-trajectory-classification">
+<h2>Replay Trajectory Classification<a class="headerlink" href="#replay-trajectory-classification" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">replay_trajectory_classification</span></code> is a python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.</p>
+<p align="center">
+  <img src="https://github.com/Eden-Kramer-Lab/replay_trajectory_classification/blob/master/fra_11_04_0001.gif" height="400"></img>
+</p>
+<section id="advantages-over-other-algorithms">
+<h3>Advantages over other algorithms<a class="headerlink" href="#advantages-over-other-algorithms" title="Permalink to this heading">#</a></h3>
+<p>It has several advantages over decoders typically used to characterize hippocampal data:</p>
+<ol class="arabic simple">
+<li><p>It allows for moment-by-moment estimation of position using small temporal time bins which allow for rapid movement of neural position and makes fewer assumptions about what downstream cells can integrate.</p></li>
+<li><p>The decoded trajectories can change direction and are not restricted to constant velocity trajectories.</p></li>
+<li><p>The decoder can use spikes from spike-sorted cells or use clusterless spikes and their associated waveform features to decode .</p></li>
+<li><p>The decoder can categorize the type of neural trajectory and give an estimate of the confidence of the model in the type of trajectory.</p></li>
+<li><p>Proper handling of complex 1D linearized environments</p></li>
+<li><p>Ability to extract and decode 2D environments</p></li>
+<li><p>Easily installable, documented code with tutorials on how to use the code (see below)</p></li>
+<li><p>Fast computation using GPUs. (Note: must install <code class="docutils literal notranslate"><span class="pre">cupy</span></code> to use)</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/Eden-Kramer-Lab/replay_trajectory_classification">Repo</a></p>
+</section>
+</section>
+<section id="spectral-connectivity">
+<h2>Spectral Connectivity<a class="headerlink" href="#spectral-connectivity" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">spectral_connectivity</span></code> is a Python software package that computes multitaper spectral estimates and frequency-domain brain connectivity measures such as coherence, spectral granger causality, and the phase lag index using the multitaper Fourier transform. Although there are other Python packages that do this (see <a class="reference external" href="https://github.com/nipy/nitime">nitime</a> and <a class="reference external" href="https://github.com/mne-tools/mne-python">MNE-Python</a>), <code class="docutils literal notranslate"><span class="pre">spectral_connectivity</span></code> has several differences:</p>
+<ul class="simple">
+<li><p>it is designed to handle multiple time series at once</p></li>
+<li><p>it caches frequently computed quantities such as the cross-spectral matrix and minimum-phase-decomposition, so that connectivity measures that use the same processing steps can be more quickly computed.</p></li>
+<li><p>it decouples the time-frequency transform and the connectivity measures so that if you already have a preferred way of computing Fourier coefficients (i.e. from a wavelet transform), you can use that instead.</p></li>
+<li><p>it implements the non-parametric version of the spectral granger causality in Python.</p></li>
+<li><p>it implements the canonical coherence, which can
+efficiently summarize brain-area level coherences from multielectrode recordings.</p></li>
+<li><p>easier user interface for the multitaper fourier transform</p></li>
+<li><p>all function are GPU-enabled if <code class="docutils literal notranslate"><span class="pre">cupy</span></code> is installed and the environmental variable <code class="docutils literal notranslate"><span class="pre">SPECTRAL_CONNECTIVITY_ENABLE_GPU</span></code> is set to ‘true’.</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/Eden-Kramer-Lab/spectral_connectivity">Repo</a>.</p>
+</section>
+<section id="spectravis">
+<h2>SpectraVis<a class="headerlink" href="#spectravis" title="Permalink to this heading">#</a></h2>
+<p>SpectraVis is a javascript-based interactive web-based neuroscience tool for analyzing task-related functional networks over time and frequency. It allows users to:</p>
+<ul class="simple">
+<li><p>examine how network dynamics change over time and frequency</p></li>
+<li><p>compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics.</p></li>
+<li><p>compare different types of functional connectivity measures (correlation, coherence).</p></li>
+<li><p>compare between different subjects.</p></li>
+<li><p>examine only within- or between-brain area connections</p></li>
+<li><p>switch between multiple network views for better understanding of the network structure</p></li>
+</ul>
+<p><a class="reference external" href="https://neurophysvis.github.io/SpectraVis/">Demo</a>. <a class="reference external" href="https://github.com/NeurophysVis/SpectraVis">Repo</a>.
+<img alt="demo" src="https://github.com/NeurophysVis/SpectraVis/blob/master/SpectraVis-Demo.gif" /></p>
+</section>
+<section id="rastervis">
+<h2>RasterVis<a class="headerlink" href="#rastervis" title="Permalink to this heading">#</a></h2>
+<p>RasterVis is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons.</p>
+<p>This tool allows you to:</p>
+<ul class="simple">
+<li><p>Generate and change between rasters for many neurons</p></li>
+<li><p>Quickly view rasters aligned to experimental trial events.</p></li>
+<li><p>Add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing.</p></li>
+<li><p>Group spikes based on experimental factors.</p></li>
+</ul>
+<p><a class="reference external" href="https://neurophysvis.github.io/RasterVis/public/">Demo</a>. <a class="reference external" href="https://github.com/NeurophysVis/RasterVis">Repo</a>.
+<img alt="demo" src="https://github.com/NeurophysVis/RasterVis/blob/master/img/RasterVis-ChangeNeurons.gif" /></p>
+</section>
 </section>
 
 <div class="section">
@@ -488,6 +555,45 @@
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#replay-trajectory-classification">
+   Replay Trajectory Classification
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advantages-over-other-algorithms">
+     Advantages over other algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectral-connectivity">
+   Spectral Connectivity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectravis">
+   SpectraVis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rastervis">
+   RasterVis
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 <div id="searchbox"></div>
