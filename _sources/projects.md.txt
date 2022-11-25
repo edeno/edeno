@@ -72,10 +72,10 @@ This tool allows you to:
 
 `spyglass` is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the NWB format and integrates open-source tools into a coherent framework.s
 
-[spyglass](https://github.com/LorenFrankLab/spyglass)
+[Repo](https://github.com/LorenFrankLab/spyglass)
 
 ## Track Linearization
 
 Tools to flexible linearize 2D position to 1D position. Works for any type of spatial environment.
 
-[track_linearization](https://github.com/LorenFrankLab/track_linearization)
+[Repo](https://github.com/LorenFrankLab/track_linearization)
