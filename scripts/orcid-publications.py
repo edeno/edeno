@@ -102,12 +102,12 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
         name = f"{author['family']}, {author['given']}"
 
         if "denovellis" in author["family"].lower():
-            name = f"**{name}**"
+            name = f"**Denovellis, Eric L.**"
 
         if "ORCID" in author:
             autht.append(f"[{name}]({author['ORCID']})")
         elif "ORCID" not in author and "denovellis" in author["family"].lower():
-            autht.append(f"[{name}]({ORCID_RECORD_API + ORCID_ID})")
+            autht.append(f"[**Denovellis, Eric L.**]({ORCID_RECORD_API + ORCID_ID})")
         else:
             autht.append(name)
     autht = ", ".join(autht)
