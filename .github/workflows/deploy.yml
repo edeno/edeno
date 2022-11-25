@@ -22,7 +22,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        python scripts/orcid-publications.py
     # Build the book
     - name: Build the site
       run: |
