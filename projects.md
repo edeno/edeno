@@ -10,8 +10,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
   <img src="https://github.com/Eden-Kramer-Lab/replay_trajectory_classification/blob/master/fra_11_04_0001.gif" height="400"></img>
 </p>
 
-### Advantages over other algorithms
-
 It has several advantages over decoders typically used to characterize hippocampal data:
 
 1. It allows for moment-by-moment estimation of position using small temporal time bins which allow for rapid movement of neural position and makes fewer assumptions about what downstream cells can integrate.
