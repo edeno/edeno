@@ -99,7 +99,7 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
     autht = []
     for author in authors:
         name = f"{author['family']}, {author['given'][0]}."
-        if "holdgraf" in author["family"].lower():
+        if "denovellis" in author["family"].lower():
             name = f"**{name}**"
         if "ORCID" in author:
             autht.append(f"[{name}]({author['ORCID']})")
@@ -123,11 +123,6 @@ for year, items in df.groupby("year", sort=False):
         md.append("")
     md.append("")
 mds = "\n".join(md)
-
-# +
-# Uncomment to preview in a notebook
-# Markdown(mds)
-# -
 
 # This will only work if this is run as a script
 path_out = Path(__file__).parent.parent / "_static/publications.txt"
