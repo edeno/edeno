@@ -108,7 +108,7 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
             autht.append(name)
     autht = ", ".join(autht)
 
-    journal = meta["publisher"]
+    journal = meta["journal"]
 
     url_doi = url.split("//", 1)[-1]
     reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
