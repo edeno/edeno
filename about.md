@@ -6,10 +6,10 @@ My postdoctoral research with [Uri T. Eden](https://math.bu.edu/people/tzvi/) fo
 
 I am now a research scientist in the lab of Loren M. Frank.
 
-# Education
+## Education
 
 + B.S. in Mathematics, University of California, Santa Barbara, Santa Barbara, CA
 + B.A. in Philosophy, University of California, Santa Barbara, Santa Barbara, CA
 + Ph.D. in Computational Neuroscience, Boston University, Boston, MA
 
-This is my [CV](/_static/eric_denovellis_CV.pdf)
+This is my `CV </_static/eric_denovellis_CV.pdf>`.
