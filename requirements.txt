@@ -12,3 +12,6 @@ sphinx-examples
 sphinxcontrib-bibtex
 sphinxext-opengraph
 sphinxext-rediraffe
+requests
+ipython
+pandas

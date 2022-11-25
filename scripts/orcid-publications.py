@@ -1,21 +1,9 @@
-# ---
-# jupyter:
-#   jupytext:
-#     formats: py:light
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.1
-#   kernelspec:
-#     display_name: Python 3 (ipykernel)
-#     language: python
-#     name: python3
-# ---
-
-# +
-import requests
+import json
 from pathlib import Path
+
+import pandas as pd
+import requests
+from rich import progress
 
 # My ORCID
 ORCID_ID="0000-0003-4606-087X"
@@ -28,18 +16,11 @@ response = requests.get(url=requests.utils.requote_uri(ORCID_RECORD_API + ORCID_
 response.raise_for_status()
 orcid_record = response.json()
 
-# +
-# Just to visualize in a notebook if need be
-# JSON(orcid_record)
-
-# +
-
 ###
 # Resolve my DOIs from ORCID as references
 # Shamelessly copied from:
 # https://gist.github.com/brews/8d3b3ede15d120a86a6bd6fc43859c5e
-import requests
-import json
+
 
 def fetchmeta(doi, fmt='reference', **kwargs):
     """Fetch metadata for a given DOI.
@@ -94,9 +75,6 @@ def fetchmeta(doi, fmt='reference', **kwargs):
             out = r.text
     return out
 
-
-
-# -
 
 # Extract metadata for each entry
 df = []
