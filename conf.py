@@ -50,6 +50,12 @@ html_theme_options = {
             "url": "https://www.instagram.com/edenovellis/",
             "icon": "fa-brands fa-instagram",
         },
+        {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com/in/eric-denovellis-70908238/",
+            "icon": "fa-brands fa-linkedin",
+        },
+
     ],
 }
 
