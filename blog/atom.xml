@@ -2,9 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.edenovellis.com</id>
   <title>Eric L. Denovellis</title>
-  <updated>2022-11-25T00:24:29.786753+00:00</updated>
+  <updated>2022-11-25T00:40:53.045975+00:00</updated>
   <link href="https://www.edenovellis.com"/>
   <link href="https://www.edenovellis.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <subtitle>Open communities, open science, communication, and data.</subtitle>
 </feed>
