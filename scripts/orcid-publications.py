@@ -103,15 +103,15 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
 
         if "denovellis" in author["family"].lower():
             name = f"**{name}**"
+
         if "ORCID" in author:
             autht.append(f"[{name}]({author['ORCID']})")
+        elif "ORCID" not in author and "denovellis" in author["family"].lower():
+            autht.append(f"[{name}]({ORCID_RECORD_API + ORCID_ID})")
         else:
             autht.append(name)
     autht = ", ".join(autht)
-    try:
-        journal = meta["journal"]
-    except KeyError:
-        journal = meta["publisher"]
+    journal = meta["publisher"]
 
     url_doi = url.split("//", 1)[-1]
     reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
