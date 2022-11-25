@@ -17,4 +17,4 @@ I am now a research scientist in the lab of Loren M. Frankat Howard Hughes Medic
 + [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
 + [Uri T. Eden @ Boston University](https://math.bu.edu/people/tzvi/)
 
-This is my {download}`reasonably up-to-date CV here <_static/eric_denovellis_CV.pdf>`.
+Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
