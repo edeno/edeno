@@ -2,7 +2,7 @@
 
 Co-organizer of Summer Undergraduate Training Program for NSF funded Science of Learning Center CELEST
 
-+ The program provided research and training experience for under-represented groups in neuroscience. It included professional development seminars covering various issues, including on how graduate training is funded, what a successful graduate application looks like, how implicit bias can influence careers, how to organize scientific presentations, how to write effective papers, and other topics. I helped organize the professional development seminars, led programming tutorials, and led laboratory tours.
++ The program provided research and training experience for under-represented groups in neuroscience. It included professional development seminars covering various issues, including on how graduate training is funded, what a successful graduate application looks like, how implicit bias can influence careers, how to organize scientific presentations, how to write effective papers, and other topics. I helped organize the professional development seminars, led programming tutorials, and led laboratory tours for two summers.
 
 Teaching Fellow for CN540 - Neural and Computational Models of Adaptive Movement Planning and Control.
 
