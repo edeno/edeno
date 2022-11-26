@@ -8,7 +8,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/fra_11_04_0001.gif
 :alt: replay movie
-:width: 200px
+:width: 400px
 :align: center
 ```
 
