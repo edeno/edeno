@@ -448,6 +448,11 @@
 </ol>
 <p><a class="reference external" href="https://github.com/Eden-Kramer-Lab/replay_trajectory_classification">Repo</a></p>
 </section>
+<section id="spyglass">
+<h2>Spyglass<a class="headerlink" href="#spyglass" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">spyglass</span></code> is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the NWB format and integrates open-source tools into a coherent frameworks.</p>
+<p><a class="reference external" href="https://github.com/LorenFrankLab/spyglass">Repo</a></p>
+</section>
 <section id="spectral-connectivity">
 <h2>Spectral Connectivity<a class="headerlink" href="#spectral-connectivity" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">spectral_connectivity</span></code> is a Python software package that computes multitaper spectral estimates and frequency-domain brain connectivity measures such as coherence, spectral granger causality, and the phase lag index using the multitaper Fourier transform. Although there are other Python packages that do this (see <a class="reference external" href="https://github.com/nipy/nitime">nitime</a> and <a class="reference external" href="https://github.com/mne-tools/mne-python">MNE-Python</a>), <code class="docutils literal notranslate"><span class="pre">spectral_connectivity</span></code> has several differences:</p>
@@ -459,45 +464,25 @@
 <li><p>it implements the canonical coherence, which can
 efficiently summarize brain-area level coherences from multielectrode recordings.</p></li>
 <li><p>easier user interface for the multitaper fourier transform</p></li>
-<li><p>all function are GPU-enabled if <code class="docutils literal notranslate"><span class="pre">cupy</span></code> is installed and the environmental variable <code class="docutils literal notranslate"><span class="pre">SPECTRAL_CONNECTIVITY_ENABLE_GPU</span></code> is set to ‘true’.</p></li>
+<li><p>all function are GPU-enabled.</p></li>
 </ul>
 <p><a class="reference external" href="https://github.com/Eden-Kramer-Lab/spectral_connectivity">Repo</a>.</p>
 </section>
 <section id="spectravis">
 <h2>SpectraVis<a class="headerlink" href="#spectravis" title="Permalink to this heading">#</a></h2>
-<p>SpectraVis is a javascript-based interactive web-based neuroscience tool for analyzing task-related functional networks over time and frequency. It allows users to:</p>
-<ul class="simple">
-<li><p>examine how network dynamics change over time and frequency</p></li>
-<li><p>compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics.</p></li>
-<li><p>compare different types of functional connectivity measures (correlation, coherence).</p></li>
-<li><p>compare between different subjects.</p></li>
-<li><p>examine only within- or between-brain area connections</p></li>
-<li><p>switch between multiple network views for better understanding of the network structure</p></li>
-</ul>
+<p>SpectraVis is a interactive javascript-based neuroscience visualization tool for analyzing task-related functional networks over time and frequency. It allows users to examine how network dynamics change over time and frequency, compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics., compare different types of functional connectivity measures (correlation, coherence) and switch between multiple network views for better understanding of the network structure.</p>
 <p><a class="reference external" href="https://neurophysvis.github.io/SpectraVis/">Demo</a>. <a class="reference external" href="https://github.com/NeurophysVis/SpectraVis">Repo</a>.
 <img alt="demo" src="https://github.com/NeurophysVis/SpectraVis/blob/master/SpectraVis-Demo.gif" /></p>
 </section>
 <section id="rastervis">
 <h2>RasterVis<a class="headerlink" href="#rastervis" title="Permalink to this heading">#</a></h2>
-<p>RasterVis is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons.</p>
-<p>This tool allows you to:</p>
-<ul class="simple">
-<li><p>Generate and change between rasters for many neurons</p></li>
-<li><p>Quickly view rasters aligned to experimental trial events.</p></li>
-<li><p>Add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing.</p></li>
-<li><p>Group spikes based on experimental factors.</p></li>
-</ul>
+<p>RasterVis is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing and group spikes based on experimental factors.</p>
 <p><a class="reference external" href="https://neurophysvis.github.io/RasterVis/public/">Demo</a>. <a class="reference external" href="https://github.com/NeurophysVis/RasterVis">Repo</a>.
 <img alt="demo" src="https://github.com/NeurophysVis/RasterVis/blob/master/img/RasterVis-ChangeNeurons.gif" /></p>
 </section>
-<section id="spyglass">
-<h2>Spyglass<a class="headerlink" href="#spyglass" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">spyglass</span></code> is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the NWB format and integrates open-source tools into a coherent framework.s</p>
-<p><a class="reference external" href="https://github.com/LorenFrankLab/spyglass">Repo</a></p>
-</section>
 <section id="track-linearization">
 <h2>Track Linearization<a class="headerlink" href="#track-linearization" title="Permalink to this heading">#</a></h2>
-<p>Tools to flexible linearize 2D position to 1D position. Works for any type of spatial environment.</p>
+<p>The hippocampal field often projects the tracked position of the animal from 2D to 1D to simplify computations. These projections are often only computed for one specific spatial environment. This python package provides tools to flexibly project 2D position to 1D position for any type of spatial environment. There are also visualization tools to inspect these projections.</p>
 <p><a class="reference external" href="https://github.com/LorenFrankLab/track_linearization">Repo</a></p>
 </section>
 </section>
@@ -549,6 +534,11 @@ efficiently summarize brain-area level coherences from multielectrode recordings
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spyglass">
+   Spyglass
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spectral-connectivity">
    Spectral Connectivity
   </a>
@@ -561,11 +551,6 @@ efficiently summarize brain-area level coherences from multielectrode recordings
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rastervis">
    RasterVis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#spyglass">
-   Spyglass
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
