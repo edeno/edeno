@@ -27,7 +27,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/spyglass.png
 :alt: replay movie
-:width: 400px
 :align: center
 ```
 
@@ -52,7 +51,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 9
 
-`spectral_connectivity` is a Python software package that computes multitaper spectral estimates and frequency-domain brain connectivity measures such as coherence, spectral granger causality, and the phase lag index using the multitaper Fourier transform.
+[spectral_connectivity](https://github.com/Eden-Kramer-Lab/spectral_connectivity) is a Python software package that computes multitaper spectral estimates and frequency-domain brain connectivity measures such as coherence, spectral granger causality, and the phase lag index using the multitaper Fourier transform.
 
 
 ````
