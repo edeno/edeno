@@ -61,34 +61,18 @@ html_theme_options = {
 html_favicon = "_static/favicon.ico"
 html_title = "Eric L. Denovellis"
 html_static_path = ["_static"]
-html_extra_path = ["feed.xml"]
 html_sidebars = {
     "index": ["hello.html"],
     "about": ["hello.html"],
     "publications": ["hello.html"],
     "projects": ["hello.html"],
     "talks": ["hello.html"],
-    "blog": ["categories.html", "tagcloud.html", "archives.html"],
-    "blog/**": ["postcard.html", "recentposts.html", "archives.html"],
 }
 
 # OpenGraph config
 ogp_site_url = "https://www.edenovellis.com"
 ogp_image = "https://www.edenovellis.com/_static/profile-bw.png"
 
-
-# -- ABlog ---------------------------------------------------
-
-blog_baseurl = "https://www.edenovellis.com"
-blog_title = "Eric L. Denovellis"
-blog_path = "blog"
-blog_post_pattern = "blog/*/*"
-blog_feed_fulltext = True
-blog_feed_subtitle = ""
-fontawesome_included = True
-post_redirect_refresh = 1
-post_auto_image = 1
-post_auto_excerpt = 2
 
 # -- MyST and MyST-NB ---------------------------------------------------
 

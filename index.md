@@ -19,5 +19,4 @@ about
 projects
 publications
 talks
-blog
 ```
