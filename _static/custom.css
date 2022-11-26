@@ -25,42 +25,6 @@ div.profile-pic img {
     font-weight: bold;
 }
 
-.whatido {
-    margin-top: 1em;
-}
-
-/* Timeline CSS */
-div.timeline div.card {
-    border: 0px;
-}
-
-div.timeline div.left {
-    text-align: right;
-    border-right: 1px solid var(--pst-color-border);
-}
-
-div.timeline div.entry::after {
-    width: 1em;
-    height: 1em;
-    background: var(--pst-color-background);
-    border-radius: 50%;
-    content: "";
-    top: 0.8rem;
-    display: block;
-    position: relative;
-    border: 1px var(--pst-color-text-base) solid;
-    z-index: 999;
-}
-
-div.timeline div.entry.left::after {
-    right: -1.3em;
-}
-
-div.timeline div.entry.right::after {
-    left: -1.3em;
-}
-
-
 /* Blog post comments */
 .gsc-reactions {
     margin-top: 1em;
