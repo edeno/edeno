@@ -87,9 +87,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 9
 
-[RasterVis](https://github.com/NeurophysVis/RasterVis) is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing and group spikes based on experimental factors.
-
-[Demo](https://neurophysvis.github.io/SpectraVis/)
+[RasterVis](https://github.com/NeurophysVis/RasterVis) is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing and group spikes based on experimental factors. [Demo](https://neurophysvis.github.io/SpectraVis/)
 ````
 
 ````
@@ -107,6 +105,5 @@ Code for most of my projects can be found on my [Github page](https://github.com
 :columns: 9
 
 [Track linearization](https://github.com/LorenFrankLab/track_linearization). The hippocampal field often projects the tracked position of the animal from 2D to 1D to simplify computations. These projections are often only computed for one specific spatial environment. This python package provides tools to flexibly project 2D position to 1D position for any type of spatial environment. There are also visualization tools to inspect these projections.
-
 ````
 `````
