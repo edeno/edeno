@@ -63,7 +63,6 @@ html_title = "Eric L. Denovellis"
 html_static_path = ["_static"]
 html_sidebars = {
     "index": ["hello.html"],
-    "about": ["hello.html"],
     "publications": ["hello.html"],
     "projects": ["hello.html"],
     "talks": ["hello.html"],
