@@ -66,6 +66,7 @@ html_sidebars = {
     "publications": ["hello.html"],
     "projects": ["hello.html"],
     "talks": ["hello.html"],
+    "teaching": ["hello.html"],
 }
 
 # OpenGraph config
