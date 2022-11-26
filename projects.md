@@ -9,7 +9,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/fra_11_04_0001.gif
 :alt: replay movie
-:width: 400px
 :align: center
 ```
 
@@ -45,7 +44,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/spectral_connectivity.png
 :alt: spectral connectivity image
-:width: 400px
 :align: center
 ```
 
@@ -64,7 +62,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/SpectraVis-Demo.gif
 :alt: demo of interactive visualization
-:width: 400px
 :align: center
 ```
 
@@ -81,7 +78,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/RasterVis-ChangeNeurons.gif
 :alt: demo of interactive visualization
-:width: 400px
 :align: center
 ```
 
