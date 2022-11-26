@@ -88,7 +88,9 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
             break
 
     meta = fetchmeta(doi, fmt="dict")
-    print(meta)
+    # meta.pop('reference')
+    # pprint.pprint(meta)
+
     doi_url = meta["URL"]
     title = meta["title"]
     references_count = meta["references-count"]
@@ -111,7 +113,10 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
         else:
             autht.append(name)
     autht = ", ".join(autht)
-    journal = meta["publisher"]
+    publisher = meta["publisher"]
+    journal = meta["container-title"]
+    if publisher == "Cold Spring Harbor Laboratory":
+        journal = "Biorxiv preprint"
 
     url_doi = url.split("//", 1)[-1]
     reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
