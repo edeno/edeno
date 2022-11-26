@@ -6,9 +6,11 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 `replay_trajectory_classification` is a python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.
 
-<p align="center">
-  <img src="https://github.com/Eden-Kramer-Lab/replay_trajectory_classification/blob/master/fra_11_04_0001.gif" height="400"></img>
-</p>
+```{image} https://github.com/Eden-Kramer-Lab/replay_trajectory_classification/blob/master/fra_11_04_0001.gif
+:alt: replay movie
+:width: 200px
+:align: center
+```
 
 It has several advantages over decoders typically used to characterize hippocampal data:
 
