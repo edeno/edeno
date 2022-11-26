@@ -70,7 +70,7 @@ html_sidebars = {
 
 # OpenGraph config
 ogp_site_url = "https://www.edenovellis.com"
-ogp_image = "https://www.edenovellis.com/_static/profile-bw.png"
+ogp_image = "https://www.edenovellis.com/_static/profile.jpg"
 
 
 # -- MyST and MyST-NB ---------------------------------------------------
