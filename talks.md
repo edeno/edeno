@@ -1,6 +1,6 @@
 # Talks
 
-[**Characterizing hippocampal replay using switching point process state space models.**](Stanford Computational Neuroscience Journal Club). Stanford Computational Neuroscience Journal Club. Stanford, CA August 2020.
+**Characterizing hippocampal replay using switching point process state space models.** Stanford Computational Neuroscience Journal Club. Stanford, CA August 2020.
 
 **Characterizing hippocampal replay using hybrid point process filters.** IEEE Asilomar Conference
 on Signals, Systems, and Computers. Pacific Grove, CA November 2019
