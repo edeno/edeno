@@ -26,7 +26,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 :columns: 3
 
 ```{image} ../_static/spyglass.png
-:alt: replay movie
+:alt: spyglass logo
 :align: center
 ```
 
@@ -44,7 +44,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 :columns: 3
 
 ```{image} ../_static/spectral_connectivity.png
-:alt: replay movie
+:alt: spectral connectivity image
 :width: 400px
 :align: center
 ```
@@ -63,7 +63,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 :columns: 3
 
 ```{image} ../_static/SpectraVis-Demo.gif
-:alt: replay movie
+:alt: demo of interactive visualization
 :width: 400px
 :align: center
 ```
@@ -80,7 +80,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 :columns: 3
 
 ```{image} ../_static/RasterVis-ChangeNeurons.gif
-:alt: replay movie
+:alt: demo of interactive visualization
 :width: 400px
 :align: center
 ```
@@ -96,8 +96,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 :columns: 3
 
 ```{image} ../_static/track_linearization.png
-:alt: replay movie
-:width: 400px
+:alt: linearization image
 :align: center
 ```
 
