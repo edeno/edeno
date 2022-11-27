@@ -4,7 +4,7 @@
 
 I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 
-`````{grid} 3
+`````{grid} 4
 
 ````{grid-item}
 :columns: 3
