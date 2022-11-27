@@ -54,6 +54,11 @@ html_theme_options = {
             "url": "https://www.linkedin.com/in/eric-denovellis-70908238/",
             "icon": "fa-brands fa-linkedin",
         },
+        {
+            "name": "ORCID ID",
+            "url": "https://orcid.org/0000-0003-4606-087X",
+            "icon": "fa-brands fa-orcid",
+        },
 
     ],
 }
