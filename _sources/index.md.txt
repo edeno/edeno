@@ -33,4 +33,5 @@ projects
 publications
 talks
 teaching
+fun
 ```
