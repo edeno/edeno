@@ -2,7 +2,7 @@
 
 ## Hiking
 
-I am an avid hiker and backpacker. I have completed the John Muir Tral and all of the New Hampshire 4000 footers.
+I am an avid hiker and backpacker. I have completed the [John Muir Trail](https://en.wikipedia.org/wiki/John_Muir_Trail) and all 48 of the [New Hampshire 4000 footers](http://4000footers.com/nh.shtml).
 
 Here are some routes I have enjoyed:
 
@@ -113,11 +113,6 @@ I add songs to this playlist when I hear something I like:
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6uT300NuatGCkwNBucFqjJ?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 My favorite places to find music are:
-
-`````{grid} 2
-
-
-`````
 
 ![KEXP LOGO](/images/kexp.png) [KEXP](https://www.kexp.org/)
 
