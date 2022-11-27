@@ -86,7 +86,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 9
 
-[RasterVis](https://github.com/NeurophysVis/RasterVis) is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing and group spikes based on experimental factors. [Demo](https://neurophysvis.github.io/SpectraVis/)````
+[RasterVis](https://github.com/NeurophysVis/RasterVis) is interactive javascript-based neuroscience visualization tool for quickly viewing, grouping and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing and group spikes based on experimental factors. [Demo](https://neurophysvis.github.io/RasterVis/)
+````
+
 
 ````{grid-item}
 :columns: 3
