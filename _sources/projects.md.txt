@@ -26,6 +26,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/spyglass.png
 :alt: spyglass logo
+:width: 600 px
 :align: center
 ```
 
