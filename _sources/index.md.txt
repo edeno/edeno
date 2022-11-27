@@ -8,7 +8,7 @@ Previously, I completed my PhD in computational neuroscience at Boston Universit
 
 Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
 
-Contact Me [Email](eric.denovellis@ucsf.edu) | [Twitter](https://twitter.com/eric_denovellis) | [Github](https://github.com/edeno)
+Contact Me: [Email](mailto:eric.denovellis@ucsf.edu) | [Twitter](https://twitter.com/eric_denovellis) | [Github](https://github.com/edeno)
 
 ## Education
 
