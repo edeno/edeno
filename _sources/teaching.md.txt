@@ -2,7 +2,7 @@
 
 ## University of California, San Francisco
 
-Frank lab Python tutorial
+**Frank lab Python tutorial**
 (August, 2021)
 
 + I led a tutorial series for the lab that covers Python basics, numpy, scipy, and matplotlib. [Tutorial Code](https://github.com/LorenFrankLab/franklab_python_tutorial)
