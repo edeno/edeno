@@ -9,6 +9,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/fra_11_04_0001.gif
 :alt: replay movie
+:target: https://github.com/Eden-Kramer-Lab/replay_trajectory_classification
 :align: center
 ```
 
@@ -17,7 +18,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 6
 
-[replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.
+[replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.
 
 ````
 
@@ -26,7 +27,8 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/spyglass.png
 :alt: spyglass logo
-:width: 400 px
+:target: https://github.com/LorenFrankLab/spyglass
+:width: 70%
 :align: center
 ```
 
@@ -44,6 +46,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/spectral_connectivity.png
 :alt: spectral connectivity image
+:target: https://github.com/Eden-Kramer-Lab/spectral_connectivity
 :align: center
 ```
 
@@ -61,6 +64,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/RasterVis.gif
 :alt: demo of interactive visualization
+:target: https://github.com/NeurophysVis/RasterVis
 :align: center
 ```
 
@@ -78,6 +82,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/SpectraVis-Demo.gif
 :alt: demo of interactive visualization
+:target: https://github.com/NeurophysVis/SpectraVis
 :align: center
 ```
 
@@ -95,6 +100,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ```{image} ../_static/track_linearization.png
 :alt: linearization image
+:target: https://github.com/LorenFrankLab/track_linearization
 :align: center
 ```
 
