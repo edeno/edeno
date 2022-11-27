@@ -114,6 +114,5 @@ I add songs to this playlist when I hear something I like:
 
 My favorite places to find music are:
 
-![KEXP LOGO](/images/kexp.png) [KEXP](https://www.kexp.org/)
-
-![GVB LOGO](/images/gvsb_gold2019-v2.png) [Gorilla vs. Bear](https://www.gorillavsbear.net/)
+[![KEXP](/images/kexp.png)](https://www.kexp.org/)
+[![Gorilla vs. Bear](/images/gvsb_gold2019-v2.pngg)](https://www.gorillavsbear.net/)
