@@ -1,11 +1,18 @@
 # Teaching
 
+## University of California, San Francisco
+
+Frank lab Python tutorial
+(August, 2021)
+
++ I led a tutorial series for the lab that covers Python basics, numpy, scipy, and matplotlib. [Tutorial Code](https://github.com/LorenFrankLab/franklab_python_tutorial)
+
 ## Boston University
 
 **Co-organizer of CELEST Summer Undergraduate Training Program for NSF funded Science of Learning Center**
 (Summer, 2014-2015)
 
-+ The program provided research and training experience for under-represented groups in neuroscience. It included professional development seminars covering various issues, including on how graduate training is funded, what a successful graduate application looks like, how implicit bias can influence careers, how to organize scientific presentations, how to write effective papers, and other topics. I helped organize the professional development seminars, led programming tutorials, and led laboratory tours for two summers.
++ The program provided research and training experience for under-represented groups in neuroscience. It included professional development seminars covering various issues, including on how graduate training is funded, what a successful graduate application looks like, how implicit bias can influence careers, how to organize scientific presentations, how to write effective papers, and other topics. I helped organize the professional development seminars, led programming tutorials, and led laboratory tours for two summers. [Matlab Tutorial](https://github.com/edeno/CELEST-Matlab-Tutorial)
 
 **Teaching Fellow for CN540 - Neural and Computational Models of Adaptive Movement Planning and Control.**
 (January, 2014  - May, 2014)
