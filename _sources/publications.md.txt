@@ -17,7 +17,7 @@ Gillespie, A.K., Astudillo Maya, D.A., , **Denovellis, E.L.** Desse, S., Eden, U
 
 **Denovellis, E.L.** A.K. Gillespie, M.E. Coulter, M. Sosa, U.T. Eden, L.M. Frank. Hippocampal replay of experience at real-world speeds. Program No. 842.02. 2021 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2021. Online.
 
-A.K. Gillespie, D.A. Astudillo Maya, Denovellis, E.L. D.F. Liu, D.B. Kastner, M.E. Coulter, D.K. Roumis, U.T. Eden, L.M. Frank. Hippocampal replay reflects specific past experiences rather than a plan for subsequent choice. Program No. 842.01. 2021 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2021. Online.
+A.K. Gillespie, D.A. Astudillo Maya, **Denovellis, E.L.**, D.F. Liu, D.B. Kastner, M.E. Coulter, D.K. Roumis, U.T. Eden, L.M. Frank. Hippocampal replay reflects specific past experiences rather than a plan for subsequent choice. Program No. 842.01. 2021 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2021. Online.
 
 **Denovellis, E.L.** A.K. Gillespie, M.E. Coulter, L.M. Frank, U.T. Eden. A state space model for characterizing replay dynamics. Program No. 162.04. 2019 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2019. Online.
 
