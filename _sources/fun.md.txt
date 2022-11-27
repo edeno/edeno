@@ -115,4 +115,4 @@ I add songs to this playlist when I hear something I like:
 My favorite places to find music are:
 
 [![KEXP](/images/kexp.png)](https://www.kexp.org/)
-[![Gorilla vs. Bear](/images/gvsb_gold2019-v2.pngg)](https://www.gorillavsbear.net/)
+[![Gorilla vs. Bear](/images/gvsb_gold2019-v2.png)](https://www.gorillavsbear.net/)
