@@ -113,4 +113,22 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 ````
 
+````{grid-item}
+:columns: 6
+
+```{image} ../_static/ripple_detection.png
+:alt: linearization image
+:target: https://github.com/Eden-Kramer-Lab/ripple_detection
+:align: center
+```
+
+````
+
+````{grid-item}
+:columns: 6
+
+[Ripple detection](https://github.com/Eden-Kramer-Lab/ripple_detection). Sharp wave ripples are 150-250 Hz oscillations in the hippocampus (combined with a slower sharp wave) in the hippocampus. They are associated with hippocampal replay, a burst of hippocampal spiking activity where cells recapitulate previously experienced trajectories in the spatial environment. A common task in hippocampal neuroscience is to detect these sharp wave ripples, but detection varies from lab to lab (see [Liu et al. 2022](https://www.nature.com/articles/s41467-022-33536-x)). I have collected the Frank lab methods for ripple detection in a Python software package so that our methods are transparent and reproducible.
+
+````
+
 `````
