@@ -107,6 +107,8 @@ Here are some photos from hikes:
 
 `````
 
+You can find more on my [instagram](https://www.instagram.com/edenovellis/).
+
 ## Music I like
 
 I add songs to this playlist when I hear something I like:
