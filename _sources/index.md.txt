@@ -27,6 +27,7 @@ Contact Me: [Email](mailto:eric.denovellis@ucsf.edu) | [Twitter](https://twitter
 
 + [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
 + [Eden group @ Boston University](https://math.bu.edu/people/tzvi/)
++ [Stephen group @ Boston University](http://emilystephen.com/)
 
 ```{toctree}
 :maxdepth: 2
