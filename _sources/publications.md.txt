@@ -21,7 +21,7 @@ A.K. Gillespie, D.A. Astudillo Maya, **Denovellis, E.L.**, D.F. Liu, D.B. Kastne
 
 **Denovellis, E.L.** A.K. Gillespie, M.E. Coulter, L.M. Frank, U.T. Eden. A state space model for characterizing replay dynamics. Program No. 162.04. 2019 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2019. Online.
 
-A.K. Gillespie, D.A. Astudillo Maya, D.F. Liu, M.E. Coulter, Denovellis, E.L. S. Desse, D.K. Roumis, U.T. Eden, L.M. Frank. Operant conditioning of hippocampal sharp wave ripples Program No. 162.02. 2019 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2019. Online.
+A.K. Gillespie, D.A. Astudillo Maya, D.F. Liu, M.E. Coulter, **Denovellis, E.L.**, S. Desse, D.K. Roumis, U.T. Eden, L.M. Frank. Operant conditioning of hippocampal sharp wave ripples Program No. 162.02. 2019 Neuroscience Meeting Planner. Chicago, IL: Society for Neuroscience, 2019. Online.
 
 **Denovellis, E.L.** A.K. Gillespie, M.E. Coulter, L.M. Frank, U.T. Eden. A state space model for characterizing trajectory dynamics of non-local spatial firing in hippocampus. Ninth International Workshop Statistical Analysis of Neuronal Data, 2019.
 
