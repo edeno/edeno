@@ -1,8 +1,17 @@
 # Fun
 
-## Hiking Pictures
+## Hiking
 
-I am an avid hiker and backpacker. Here are a couple of photos from hikes:
+I am an avid hiker and backpacker. I have completed the John Muir Tral and all of the New Hampshire 4000 footers.
+
+Here are some routes I have enjoyed:
+
++ [High Sierra, Cloud Canyon, Deadman's Canyon](https://caltopo.com/m/30NR)
++ [John Muir Trail](https://caltopo.com/m/SVKB)
++ [Pemi Loop](https://caltopo.com/m/H5N8)
++ [Goat Rock's Wilderness](https://caltopo.com/m/BJT08)
+
+Here are some photos from hikes:
 
 `````{grid} 3
 
@@ -102,3 +111,9 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 
 I add songs to this playlist when I hear something I like:
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6uT300NuatGCkwNBucFqjJ?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+My favorite places to find music are:
+
++ ![KEXP LOGO](/images/kexp-logo-white.svg) [KEXP](https://www.kexp.org/)
+
++ ![GVB LOGO](/images/gvsb_gold2019-v2.png) [Gorilla vs. Bear](https://www.gorillavsbear.net/)
