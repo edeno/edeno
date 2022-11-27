@@ -59,7 +59,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 6
 
-```{image} ../_static/RasterVis-ChangeNeurons.gif
+```{image} ../_static/RasterVis.gif
 :alt: demo of interactive visualization
 :align: center
 ```
