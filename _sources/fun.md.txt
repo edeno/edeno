@@ -4,10 +4,10 @@
 
 I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 
-`````{grid} 4
+`````{grid} 3
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking.jpg
 :alt: photo
@@ -17,7 +17,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking1.jpg
 :alt: photo
@@ -27,7 +27,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking2.jpg
 :alt: photo
@@ -37,7 +37,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking3.jpg
 :alt: photo
@@ -47,7 +47,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking4.jpg
 :alt: photo
@@ -57,7 +57,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking5.jpg
 :alt: photo
@@ -67,7 +67,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking6.jpg
 :alt: photo
@@ -77,7 +77,7 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking7.jpg
 :alt: photo
@@ -87,19 +87,9 @@ I am an avid hiker and backpacker. Here are a couple of photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 3
+:columns: 4
 
 ```{image} /images/backpacking8.jpg
-:alt: photo
-:align: center
-```
-
-````
-
-````{grid-item}
-:columns: 3
-
-```{image} /images/backpacking9.jpg
 :alt: photo
 :align: center
 ```
