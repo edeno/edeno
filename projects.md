@@ -17,7 +17,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 6
 
-[replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.
+[replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.
 
 ````
 
