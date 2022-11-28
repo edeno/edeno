@@ -10,10 +10,6 @@ Previously, I completed my PhD in computational neuroscience at Boston Universit
 + I used generalized additive models to show that anterior cingulate neurons can represent context, but do not play a significant role in switching between contexts
 + Finally, I developed a set of web-enabled interactive visualization tools designed to provide a multi-dimensional integrated view of electrophysiological datasets.
 
-Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
-
-Contact Me: [Email](mailto:eric.denovellis@ucsf.edu) | [Twitter](https://twitter.com/eric_denovellis) | [Github](https://github.com/edeno) | [LinkedIn](https://www.linkedin.com/in/eric-denovellis-70908238/) | [Instagram](https://www.instagram.com/edenovellis/) | [ORCID ID](https://orcid.org/0000-0003-4606-087X)
-
 ## Education
 
 + Ph.D. in Computational Neuroscience, Boston University
@@ -28,6 +24,24 @@ Contact Me: [Email](mailto:eric.denovellis@ucsf.edu) | [Twitter](https://twitter
 + [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
 + [Eden group @ Boston University](https://math.bu.edu/people/tzvi/)
 + [Stephen group @ Boston University](http://emilystephen.com/)
+
+## CV
+
+Here is a hard-copy of my {download}`CV <_static/eric_denovellis_CV.pdf>`.
+
+## Contact Me
+
+You can find me online at:
+
++ [Email](mailto:eric.denovellis@ucsf.edu)
++ [Twitter](https://twitter.com/eric_denovellis)
++ [Github](https://github.com/edeno)
++ [LinkedIn](https://www.linkedin.com/in/eric-denovellis-70908238/)
++ [Instagram](https://www.instagram.com/edenovellis/)
++ [ORCID ID](https://orcid.org/0000-0003-4606-087X)
+
+or in person:
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8768444182783!2d-122.39456318463857!3d37.769485820236646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7fcfb1bed239%3A0xd91f3236176b61d8!2sSandler%20Neurosciences%20Center!5e0!3m2!1sen!2sus!4v1669647603597!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ```{toctree}
 :maxdepth: 2
