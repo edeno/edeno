@@ -2,7 +2,7 @@
 
 ## About me
 
-I am a computational research scientist in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/) at [UCSF](https://www.ucsf.edu/). My work focuses on developing scalable, interpretable algorithms and tools to categorize, decode and visualize neural representations. This work extends and applies marked point process switching state space models I developed during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). I work closely with experimental collaborators to ensure these algorithms and tools are usable on large scale data.
+I am a computational research scientist in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/) at [UCSF](https://www.ucsf.edu/). My work focuses on developing scalable, interpretable algorithms and tools to decode, categorize and visualize neural representations. This work extends and applies marked point process switching state space models I developed during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). I work closely with experimental collaborators to ensure these algorithms and tools are usable on large scale data.
 
 Previously, I completed my PhD in computational neuroscience at Boston University with Drs. [Daniel H. Bullock](https://www.bu.edu/psych/profile/daniel-bullock/) and [Earl K. Miller](https://ekmillerlab.mit.edu/earl-miller/). There I developed computational tools and models to understand how prefrontal cortex supports the underlying neural comptuations necessary to switch between contexts. Specifically:
 
