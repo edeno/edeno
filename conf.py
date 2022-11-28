@@ -32,7 +32,7 @@ html_theme = "pydata_sphinx_theme"
 
 html_theme_options = {
     "search_bar_text": "Search this site...",
-    "analytics": {"google_analytics_id": "UA-88310237-1"},
+    "analytics": {"google_analytics_id": "G-R14SV5XX1X"},
     "icon_links": [
         {
             "name": "GitHub",
