@@ -10,7 +10,7 @@ Previously, I completed my PhD in computational neuroscience at Boston Universit
 + I used generalized additive models to show that anterior cingulate neurons can represent context, but do not play a significant role in switching between contexts
 + Finally, I developed a set of web-enabled interactive visualization tools designed to provide a multi-dimensional integrated view of electrophysiological datasets.
 
-Here is my {download}`CV <_static/Eric_Denovellis_CV.pdf>`.
+Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
 
 Contact Me: [Email](mailto:eric.denovellis@ucsf.edu) | [Twitter](https://twitter.com/eric_denovellis) | [Github](https://github.com/edeno) | [LinkedIn](https://www.linkedin.com/in/eric-denovellis-70908238/) | [Instagram](https://www.instagram.com/edenovellis/) | [ORCID ID](https://orcid.org/0000-0003-4606-087X)
 
