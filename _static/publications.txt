@@ -1,19 +1,19 @@
 ## 2022
-[Gillespie, A.K](http://orcid.org/0000-0003-0980-2408), Astudillo Maya, D.A, [**Denovellis, EL**](http://orcid.org/0000-0003-4606-087X), Desse, S, [Frank, L.M](http://orcid.org/0000-0002-1752-5677) (2022). **Neurofeedback training can modulate task-relevant memory replay in rats**. Biorxiv preprint. [dx.doi.org/10.1101/2022.10.13.512183](http://dx.doi.org/10.1101/2022.10.13.512183)
+[Gillespie, A.K.](http://orcid.org/0000-0003-0980-2408), Astudillo Maya, D.A., [**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), Desse, S., [Frank, L.M.](http://orcid.org/0000-0002-1752-5677) (2022). **Neurofeedback training can modulate task-relevant memory replay in rats**. Biorxiv preprint. [dx.doi.org/10.1101/2022.10.13.512183](http://dx.doi.org/10.1101/2022.10.13.512183)
 
-[Joshi, A](http://orcid.org/0000-0002-0511-3747), [**Denovellis, EL**](http://orcid.org/0000-0003-4606-087X), Mankili, A, Meneksedag, Y, Davidson, T, [Gillespie, A.K](http://orcid.org/0000-0003-0980-2408), Guidera, J.A, Roumis, D, Frank, L.M (2022). **Dynamic Synchronization between Hippocampal Spatial Representations and the Stepping Rhythm**. Biorxiv preprint. [dx.doi.org/10.1101/2022.02.23.481357](http://dx.doi.org/10.1101/2022.02.23.481357)
+[Joshi, A.](http://orcid.org/0000-0002-0511-3747), [**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), Mankili, A., Meneksedag, Y., Davidson, T., [Gillespie, A.K.](http://orcid.org/0000-0003-0980-2408), Guidera, J.A., Roumis, D., Frank, L.M. (2022). **Dynamic Synchronization between Hippocampal Spatial Representations and the Stepping Rhythm**. Biorxiv preprint. [dx.doi.org/10.1101/2022.02.23.481357](http://dx.doi.org/10.1101/2022.02.23.481357)
 
 
 ## 2021
-[**Denovellis, EL**](http://orcid.org/0000-0003-4606-087X), [Gillespie, A.K](http://orcid.org/0000-0003-0980-2408), Coulter, M.E, [Sosa, M](http://orcid.org/0000-0003-0762-1128), Chung, J.E, Eden, U.T, [Frank, L.M](http://orcid.org/0000-0002-1752-5677) (2021). **Hippocampal replay of experience at real-world speeds**. eLife. [dx.doi.org/10.7554/eLife.64505](http://dx.doi.org/10.7554/eLife.64505)
+[**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), [Gillespie, A.K.](http://orcid.org/0000-0003-0980-2408), Coulter, M.E., [Sosa, M.](http://orcid.org/0000-0003-0762-1128), Chung, J.E., Eden, U.T., [Frank, L.M.](http://orcid.org/0000-0002-1752-5677) (2021). **Hippocampal replay of experience at real-world speeds**. eLife. [dx.doi.org/10.7554/eLife.64505](http://dx.doi.org/10.7554/eLife.64505)
 
-Gillespie, A.K, Astudillo Maya, D.A, [**Denovellis, EL**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Liu, D.F, Kastner, D.B, Coulter, M.E, Roumis, D.K, Eden, U.T, Frank, L.M (2021). **Hippocampal replay reflects specific past experiences rather than a plan for subsequent choice**. Neuron. [dx.doi.org/10.1016/j.neuron.2021.07.029](http://dx.doi.org/10.1016/j.neuron.2021.07.029)
+Gillespie, A.K., Astudillo Maya, D.A., [**Denovellis, E.L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Liu, D.F., Kastner, D.B., Coulter, M.E., Roumis, D.K., Eden, U.T., Frank, L.M. (2021). **Hippocampal replay reflects specific past experiences rather than a plan for subsequent choice**. Neuron. [dx.doi.org/10.1016/j.neuron.2021.07.029](http://dx.doi.org/10.1016/j.neuron.2021.07.029)
 
 
 ## 2019
-[**Denovellis, EL**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Frank, L.M, Eden, U.T (2019). **Characterizing hippocampal replay using hybrid point process state space models**. 2019 53rd Asilomar Conference on Signals, Systems, and Computers. [dx.doi.org/10.1109/ieeeconf44664.2019.9048688](http://dx.doi.org/10.1109/ieeeconf44664.2019.9048688)
+[**Denovellis, E.L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Frank, L.M., Eden, U.T. (2019). **Characterizing hippocampal replay using hybrid point process state space models**. 2019 53rd Asilomar Conference on Signals, Systems, and Computers. [dx.doi.org/10.1109/ieeeconf44664.2019.9048688](http://dx.doi.org/10.1109/ieeeconf44664.2019.9048688)
 
 
 ## 2012
-Buschman, T.J, [**Denovellis, EL**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Diogo, C, Bullock, D, Miller, E.K (2012). **Synchronous Oscillatory Neural Ensembles for Rules in the Prefrontal Cortex**. Neuron. [dx.doi.org/10.1016/j.neuron.2012.09.029](http://dx.doi.org/10.1016/j.neuron.2012.09.029)
+Buschman, T.J., [**Denovellis, E.L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Diogo, C., Bullock, D., Miller, E.K. (2012). **Synchronous Oscillatory Neural Ensembles for Rules in the Prefrontal Cortex**. Neuron. [dx.doi.org/10.1016/j.neuron.2012.09.029](http://dx.doi.org/10.1016/j.neuron.2012.09.029)
 
