@@ -101,7 +101,7 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
     authors = meta["author"]
     autht = []
     for author in authors:
-        given_name = ''.join([name[0] for name in  author["given"].split()])
+        given_name = '.'.join([name[0] for name in  author["given"].split()])
         name = f"{author['family']}, {given_name}"
 
         if "denovellis" in author["family"].lower():
