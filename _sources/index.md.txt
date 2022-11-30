@@ -39,4 +39,5 @@ publications
 talks
 teaching
 fun
+contact
 ```
