@@ -22,7 +22,7 @@ exclude_patterns = [
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
     "README.md",
-    "**/.ipynb_checkpoints/*"
+    "**/.ipynb_checkpoints/*",
 ]
 
 
@@ -59,7 +59,6 @@ html_theme_options = {
             "url": "https://orcid.org/0000-0003-4606-087X",
             "icon": "fa-brands fa-orcid",
         },
-
     ],
 }
 
@@ -73,6 +72,7 @@ html_sidebars = {
     "talks": ["hello.html"],
     "teaching": ["hello.html"],
     "fun": ["hello.html"],
+    "contact": ["hello.html"],
 }
 
 # OpenGraph config
@@ -91,6 +91,7 @@ myst_enable_extensions = [
 
 # MyST-NB
 nb_execution_mode = "cache"
+
 
 def setup(app):
     app.add_css_file("custom.css")
