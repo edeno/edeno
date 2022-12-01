@@ -101,6 +101,6 @@ def setup(app):
 
 
 # Sitemap
-html_baseurl = os.environ.get("SPHINX_HTML_BASE_URL", "http://127.0.0.1:8000/")
+html_baseurl = "https://www.edenovellis.com"
 sitemap_locales = [None]
 sitemap_url_scheme = "{link}"
