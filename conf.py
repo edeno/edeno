@@ -1,3 +1,5 @@
+import os
+
 # -- Project information -----------------------------------------------------
 
 project = "Eric L. Denovellis"
@@ -12,6 +14,7 @@ extensions = [
     "sphinx_examples",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
+    "sphinx_sitemap",
 ]
 
 templates_path = ["_templates"]
@@ -95,3 +98,9 @@ nb_execution_mode = "cache"
 
 def setup(app):
     app.add_css_file("custom.css")
+
+
+# Sitemap
+html_baseurl = os.environ.get("SPHINX_HTML_BASE_URL", "http://127.0.0.1:8000/")
+sitemap_locales = [None]
+sitemap_url_scheme = "{link}"
