@@ -12,6 +12,7 @@ sphinx-examples
 sphinxcontrib-bibtex
 sphinxext-opengraph
 sphinxext-rediraffe
+sphinx-sitemap
 requests
 ipython
 pandas
