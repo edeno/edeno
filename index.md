@@ -40,4 +40,5 @@ talks
 teaching
 fun
 contact
+genindex
 ```
