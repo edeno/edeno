@@ -30,6 +30,7 @@ Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
 + [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
 + [Eden group @ Boston University](https://math.bu.edu/people/tzvi/)
 + [Stephen group @ Boston University](http://emilystephen.com/)
++ [Abhilasha Joshi](https://www.simonsfoundation.org/people/abhilasha-joshi/)
 
 ```{toctree}
 :maxdepth: 2
