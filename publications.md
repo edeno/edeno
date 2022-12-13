@@ -1,4 +1,4 @@
-# Publications and Preprints
+# Publications
 
 ```{include} _static/publications.txt
 ```
