@@ -5,7 +5,7 @@
 
 ## Conference Proceedings and Posters
 
-**Denovellis, E.L.**, Guidera, J.A., Frank, L.M. Switching state-space models enable decoding of replay across multiple spatial environments. Montreal, Quebec, CA: Computational and Systems Neuroscience (COSYNE) 2023.
+**Denovellis, E.L.**, Guidera, J.A., Frank, L.M. **Switching state-space models enable decoding of replay across multiple spatial environments.** Montreal, Quebec, CA: Computational and Systems Neuroscience (COSYNE) 2023.
 
 **Denovellis, E.L.**, Joshi, A., Eden, U.T., Frank, L.M. **Hippocampal replay outside of sharp wave ripples.** Program No. 742.04. 2022 Neuroscience Meeting Planner. San Diego, CA: Society for Neuroscience, 2022. [Online.](https://www.abstractsonline.com/pp8/#!/10619/presentation/80196)
 
