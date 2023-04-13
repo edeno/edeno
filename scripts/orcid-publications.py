@@ -6,13 +6,15 @@ import requests
 from rich import progress
 
 # My ORCID
-ORCID_ID="0000-0003-4606-087X"
+ORCID_ID = "0000-0003-4606-087X"
 ORCID_RECORD_API = "https://pub.orcid.org/v3.0/"
 
 # Download all of my ORCID records
 print("Retrieving ORCID entries from API...")
-response = requests.get(url=requests.utils.requote_uri(ORCID_RECORD_API + ORCID_ID),
-                      headers={'Accept': 'application/json'})
+response = requests.get(
+    url=requests.utils.requote_uri(ORCID_RECORD_API + ORCID_ID),
+    headers={"Accept": "application/json"},
+)
 response.raise_for_status()
 orcid_record = response.json()
 
@@ -22,7 +24,7 @@ orcid_record = response.json()
 # https://gist.github.com/brews/8d3b3ede15d120a86a6bd6fc43859c5e
 
 
-def fetchmeta(doi, fmt='reference', **kwargs):
+def fetchmeta(doi, fmt="reference", **kwargs):
     """Fetch metadata for a given DOI.
 
     Parameters
@@ -51,11 +53,11 @@ def fetchmeta(doi, fmt='reference', **kwargs):
     https://www.doi.org/hb.html
     """
     # Parse args and setup the server response we want.
-    accept_type = 'application/'
-    if fmt == 'dict':
-        accept_type += 'citeproc+json'
-    elif fmt == 'bibtex':
-        accept_type += 'x-bibtex'
+    accept_type = "application/"
+    if fmt == "dict":
+        accept_type += "citeproc+json"
+    elif fmt == "bibtex":
+        accept_type += "x-bibtex"
     elif fmt == "reference":
         accept_type = "text/x-bibliography; style=apa"
     else:
@@ -63,13 +65,13 @@ def fetchmeta(doi, fmt='reference', **kwargs):
 
     # Request data from server.
     url = "https://dx.doi.org/" + str(doi)
-    header = {'accept': accept_type}
+    header = {"accept": accept_type}
     r = requests.get(url, headers=header)
 
     # Format metadata if server response is good.
     out = None
     if r.status_code == 200:
-        if fmt == 'dict':
+        if fmt == "dict":
             out = json.loads(r.text, **kwargs)
         else:
             out = r.text
@@ -78,7 +80,9 @@ def fetchmeta(doi, fmt='reference', **kwargs):
 
 # Extract metadata for each entry
 df = []
-for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"], "Fetching reference data..."):
+for iwork in progress.track(
+    orcid_record["activities-summary"]["works"]["group"], "Fetching reference data..."
+):
     isummary = iwork["work-summary"][0]
 
     # Extract the DOI
@@ -101,7 +105,7 @@ for iwork in progress.track(orcid_record["activities-summary"]["works"]["group"]
     authors = meta["author"]
     autht = []
     for author in authors:
-        given_name = '.'.join([name[0] for name in  author["given"].split()])
+        given_name = ".".join([name[0] for name in author["given"].split()])
         name = f"{author['family']}, {given_name}."
 
         if "denovellis" in author["family"].lower():
