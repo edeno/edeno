@@ -120,8 +120,11 @@ for iwork in progress.track(
     autht = ", ".join(autht)
     publisher = meta["publisher"]
     journal = meta["container-title"]
-    if publisher == "Cold Spring Harbor Laboratory":
-        journal = "Biorxiv preprint"
+    if meta.get("subtype") == "preprint":
+        if publisher == "Cold Spring Harbor Laboratory":
+            journal = "bioRxiv preprint"
+        elif publisher == "eLife Sciences Publications, Ltd":
+            journal = "eLife reviewed preprint"
 
     url_doi = url.split("//", 1)[-1]
     reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
@@ -138,7 +141,8 @@ for year, items in df.groupby("year", sort=False):
     md.append("")
 mds = "\n".join(md)
 
-# This will only work if this is run as a script
-path_out = Path(__file__).parent.parent / "_static/publications.txt"
-path_out.write_text(mds)
-print(f"Finished updating ORCID entries at: {path_out}")
+if __name__ == "__main__":
+    # This will only work if this is run as a script
+    path_out = Path(__file__).parent.parent / "_static/publications.txt"
+    path_out.write_text(mds)
+    print(f"Finished updating ORCID entries at: {path_out}")
