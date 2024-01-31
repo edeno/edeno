@@ -5,6 +5,16 @@
 
 ## Conference Proceedings and Posters
 
+Sun, X., Comrie, A.E., Monroe, E., Kahn, A., Joshi, A., Guidera, J.A., Tong, L., **Denovellis, E.L.**, Krauz, T., Shin, D., Berke, J., Daw, N., Frank, L.M. **Dynamic value codes in the medial prefrontal cortex to inform decision-making.** Lisbon, Portugal: Computational and Systems Neuroscience (COSYNE) 2024.
+
+Coulter, M.E., Gillespie, A.K., Chu, J., **Denovellis, E.L.**, Nguyen, T., Liu, D.F., Wadhwani, K., Sharma, B., Wang, K., Deng, X., Kemere, C., Eden, U.T., Frank, L.M. Closed-loop modulation of hippocampal representations through neurofeedback. 2023 Neuroscience Meeting Planner. Washington, D.C.: Society for Neuroscience, 2023.[Online.](https://www.abstractsonline.com/pp8/#!/10892/presentation/34994)
+
+Krausz, T.A., Egert, D., Comrie, A.E., **Denovellis, E.L.**, Daw, N.D., Frank, L.M., Berke, J.D. Hippocampal non-local representations retrieve and update dopaminergic place values. 2023 Neuroscience Meeting Planner. Washington, D.C.: Society for Neuroscience, 2023. [Online.](https://www.abstractsonline.com/pp8/#!/10892/presentation/34995)
+
+Comrie, A.E., Monroe, E.J., **Denovellis, E.L.**, Joshi, A., Guidera, J.A., Kahn, A.E., Krausz, T.A., Berke, J.D., Daw, N.D., Frank, L.M. Dynamic engagement of non-local spatial representations in the hippocampus during value-guided foraging decisions. 2023 Neuroscience Meeting Planner. Washington, D.C.: Society for Neuroscience, 2023. [Online.](https://www.abstractsonline.com/pp8/#!/10892/presentation/34993)
+
+Krausz, T.A., Egert, D., Comrie, A.E., **Denovellis, E.L.**, Daw, N.D., Frank, L.M., Berke, J.D. Hippocampal non-local representations retrieve and update dopaminergic place values. Gordon Research Conference: Catecholamines; August 2023; Castelldefels, Spain.
+
 **Denovellis, E.L.**, Guidera, J.A., Frank, L.M. **Switching state-space models enable decoding of replay across multiple spatial environments.** Montreal, Quebec, CA: Computational and Systems Neuroscience (COSYNE) 2023.
 
 Guidera, J.A., Gramling, D., **Denovellis, E.L.**, Comrie, A., Joshi, A., Zhou, J., Thompson, P., Hernandez, J., Yorita, A., Haque, R., Kirst, C., Frank, L.M. **A region—specific code for specific and generalized representations across prefrontal cortex and hippocampus.** Montreal, Quebec, CA: Computational and Systems Neuroscience (COSYNE) 2023.

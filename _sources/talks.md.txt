@@ -1,5 +1,7 @@
 # Talks
 
+**Building Accessible Computational Tools for Modern Systems Neuroscience.** Databinge. NeuroImaging and NeuroComputation Centre. University of British Columbia. Vancouver, BC Canada. February 2024.
+
 **Characterizing hippocampal replay using switching point process state space models.** Stanford Computational Neuroscience Journal Club. Stanford, CA August 2020.
 
 **Characterizing hippocampal replay using hybrid point process filters.** IEEE Asilomar Conference
