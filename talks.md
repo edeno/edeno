@@ -1,5 +1,7 @@
 # Talks
 
+**Understanding cognitive representations and dynamics through statistical machine learning.** Computational Neuroscience Center. University of Washington, Seattle, WA. May 2024.
+
 **Building Accessible Computational Tools for Modern Systems Neuroscience.** Databinge. NeuroImaging and NeuroComputation Centre. University of British Columbia. Vancouver, BC Canada. February 2024.
 
 **Characterizing hippocampal replay using switching point process state space models.** Stanford Computational Neuroscience Journal Club. Stanford, CA August 2020.
