@@ -3,7 +3,7 @@
 
 [Gillespie, A.K.](http://orcid.org/0000-0003-0980-2408), Astudillo Maya, D., [**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), Desse, S., [Frank, L.M.](http://orcid.org/0000-0002-1752-5677) (2024). **Neurofeedback training can modulate task-relevant memory replay rate in rats**. eLife. [dx.doi.org/10.7554/eLife.90944.3](http://dx.doi.org/10.7554/eLife.90944.3)
 
-[Coulter, M.E.](http://orcid.org/0000-0003-0357-351X), Gillespie, A.K., Chu, J., [**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), Nguyen, T.T., Liu, D.F., Wadhwani, K., Sharma, B., Wang, K., Deng, X., Eden, U.T., Kemere, C., Frank, L.M. (2024). **Closed-loop modulation of remote hippocampal representations with neurofeedback**. bioRxiv preprint. [dx.doi.org/10.1101/2024.05.08.593085](http://dx.doi.org/10.1101/2024.05.08.593085)
+[Coulter, M.E.](http://orcid.org/0000-0003-0357-351X), [Gillespie, A.K.](http://orcid.org/0000-0003-0980-2408), Chu, J.P., [**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), Nguyen, T.T., Liu, D., Wadhwani, K., Sharma, B., Wang, K., Deng, X., Eden, U., Kemere, C., Frank, L.M. (2024). **Closed-loop modulation of remote hippocampal representations with neurofeedback**. bioRxiv preprint. [dx.doi.org/10.1101/2024.05.08.593085](http://dx.doi.org/10.1101/2024.05.08.593085)
 
 Chu, J.P., Coulter, M.E., [**Denovellis, E.L.**](http://orcid.org/0000-0003-4606-087X), Nguyen, T.T.K., Liu, D.F., Deng, X., Eden, U.T., Kemere, C.T., Frank, L.M. (2024). **RealtimeDecoder: A fast software module for online clusterless decoding**. bioRxiv preprint. [dx.doi.org/10.1101/2024.05.03.592417](http://dx.doi.org/10.1101/2024.05.03.592417)
 
