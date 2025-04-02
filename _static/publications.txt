@@ -1,9 +1,9 @@
+## 2025
+Coulter, M.E., Gillespie, A.K., Chu, J., [**Denovellis, E.L.**](https://pub.orcid.org/v3.0/0000-0003-4606-087X), Nguyen, T.T.K., Liu, D.F., Wadhwani, K., Sharma, B., Wang, K., Deng, X., Eden, U.T., Kemere, C., Frank, L.M. (2025). **Closed-loop modulation of remote hippocampal representations with neurofeedback**. Neuron. [dx.doi.org/10.1016/j.neuron.2024.12.023](http://dx.doi.org/10.1016/j.neuron.2024.12.023)
+
+
 ## 2024
 [Comrie, A.E.](https://orcid.org/0000-0002-2251-4892), [Monroe, E.J.](https://orcid.org/0000-0002-5751-231X), [Kahn, A.E.](https://orcid.org/0000-0002-2127-0507), [**Denovellis, E.L.**](https://orcid.org/0000-0003-4606-087X), [Joshi, A.](https://orcid.org/0000-0002-0511-3747), [Guidera, J.A.](https://orcid.org/0000-0003-4013-214X), [Krausz, T.A.](https://orcid.org/0000-0002-9561-8641), [Berke, J.D.](https://orcid.org/0000-0003-1436-6823), [Daw, N.D.](https://orcid.org/0000-0001-5029-1430), [Frank, L.M.](https://orcid.org/0000-0002-1752-5677) (2024). **Hippocampal representations of alternative possibilities are flexibly generated to meet cognitive demands**. bioRxiv preprint. [dx.doi.org/10.1101/2024.09.23.613567](http://dx.doi.org/10.1101/2024.09.23.613567)
-
-[Gillespie, A.K.](https://orcid.org/0000-0003-0980-2408), Astudillo Maya, D., [**Denovellis, E.L.**](https://orcid.org/0000-0003-4606-087X), Desse, S., [Frank, L.M.](https://orcid.org/0000-0002-1752-5677) (2024). **Neurofeedback training can modulate task-relevant memory replay rate in rats**. eLife. [dx.doi.org/10.7554/eLife.90944.3](http://dx.doi.org/10.7554/eLife.90944.3)
-
-[Coulter, M.E.](https://orcid.org/0000-0003-0357-351X), [Gillespie, A.K.](https://orcid.org/0000-0003-0980-2408), Chu, J., [**Denovellis, E.L.**](https://orcid.org/0000-0003-4606-087X), Nguyen, T.T., Liu, D.F., Wadhwani, K., Sharma, B., Wang, K., Deng, X., Eden, U.T., Kemere, C., Frank, L.M. (2024). **Closed-loop modulation of remote hippocampal representations with neurofeedback**. bioRxiv preprint. [dx.doi.org/10.1101/2024.05.08.593085](http://dx.doi.org/10.1101/2024.05.08.593085)
 
 Chu, J.P., Coulter, M.E., [**Denovellis, E.L.**](https://orcid.org/0000-0003-4606-087X), Nguyen, T.T.K., Liu, D.F., Deng, X., Eden, U.T., Kemere, C.T., Frank, L.M. (2024). **RealtimeDecoder: A fast software module for online clusterless decoding**. bioRxiv preprint. [dx.doi.org/10.1101/2024.05.03.592417](http://dx.doi.org/10.1101/2024.05.03.592417)
 
