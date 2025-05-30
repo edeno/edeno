@@ -69,7 +69,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-warning}`JavaScript` {bdg-info}`Visualization` {bdg-light}`Neuroscience`
 
-  :::{button-link} https://github.com/NeurophysVis/RasterVis
+  :::{button-link} <https://github.com/NeurophysVis/RasterVis>
       :color: primary
       :outline:
       GitHub Repository
@@ -118,6 +118,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
   **Technologies:** {bdg-primary}`Python` {bdg-info}`Spatial Analysis` {bdg-light}`Neuroscience`
 
   :::{button-link} https://github.com/LorenFrankLab/track_linearization
+  :::{button-link} <https://github.com/LorenFrankLab/track_linearization>
       :color: primary
       :outline:
       GitHub Repository
