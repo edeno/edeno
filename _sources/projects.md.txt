@@ -21,6 +21,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
     GitHub Repository
 ```
 
+```
+```
+
 ```{grid-item}
 ```{card} Spyglass
 :img-top: ../_static/spyglass.png
@@ -35,4 +38,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
     :color: primary
     :outline:
     GitHub Repository
+```
+
+```
+```
+
 ```
