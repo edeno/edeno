@@ -5,8 +5,8 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ::::{grid} 1 2 2 2
 :gutter: 3
 
-  :::{grid-item} <!-- grid-item -->
-  :::{card} Replay Trajectory Classification <!-- card -->
+  :::{grid-item}
+  :::{card} Replay Trajectory Classification
   :img-top: ../_static/fra_11_04_0001.gif
   :img-alt: Animation of classifying replay trajectories
   :text-align: start
@@ -16,17 +16,17 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-primary}`Python` {bdg-info}`GPU` {bdg-light}`Neuroscience`
 
-  :::{button-link} <https://github.com/Eden-Kramer-Lab/replay_trajectory_classification> <!-- button-link -->
+  :::{button-link} <https://github.com/Eden-Kramer-Lab/replay_trajectory_classification>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close card -->
-  ::: <!-- close grid-item -->
+  :::
+  :::
 
-  :::{grid-item} <!-- grid-item -->
-  :::{card} Spyglass <!-- card -->
+  :::{grid-item}
+  :::{card} Spyglass
   :img-top: ../_static/spyglass.png
   :img-alt: Spyglass logo
   :text-align: start
@@ -36,17 +36,17 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-primary}`Python` {bdg-info}`NWB` {bdg-light}`Data Framework`
 
-  :::{button-link} <https://github.com/LorenFrankLab/spyglass> <!-- button-link -->
+  :::{button-link} <https://github.com/LorenFrankLab/spyglass>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close card -->
-  ::: <!-- close grid-item -->
+  :::
+  :::
 
-  :::{grid-item} <!-- grid-item -->
-  :::{card} Spectral Connectivity <!-- card -->
+  :::{grid-item}
+  :::{card} Spectral Connectivity
   :img-top: ../_static/spectral_connectivity.png
   :img-alt: Spectral Connectivity visualization example
   :text-align: start
@@ -56,17 +56,17 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-primary}`Python` {bdg-info}`Signal Processing` {bdg-light}`Neuroscience`
 
-  :::{button-link} <https://github.com/Eden-Kramer-Lab/spectral_connectivity> <!-- button-link -->
+  :::{button-link} <https://github.com/Eden-Kramer-Lab/spectral_connectivity>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close card -->
-  ::: <!-- close grid-item -->
+  :::
+  :::
 
-  :::{grid-item} <!-- grid-item -->
-  :::{card} RasterVis <!-- card -->
+  :::{grid-item}
+  :::{card} RasterVis
   :img-top: ../_static/RasterVis.gif
   :img-alt: Demonstration of RasterVis interactive visualization
   :text-align: start
@@ -76,23 +76,23 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-warning}`JavaScript` {bdg-info}`Visualization` {bdg-light}`Neuroscience`
 
-  :::{button-link} <https://github.com/NeurophysVis/RasterVis> <!-- button-link -->
+  :::{button-link} <https://github.com/NeurophysVis/RasterVis>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  :::{button-link} <https://neurophysvis.github.io/RasterVis/public/> <!-- button-link -->
+  :::{button-link} <https://neurophysvis.github.io/RasterVis/public/>
       :color: secondary
       :outline:
       View Demo
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close card -->
-  ::: <!-- close grid-item -->
+  :::
+  :::
 
-  :::{grid-item} <!-- grid-item -->
-  :::{card} SpectraVis <!-- card -->
+  :::{grid-item}
+  :::{card} SpectraVis
   :img-top: ../_static/SpectraVis-Demo.gif
   :img-alt: Demonstration of SpectraVis interactive network visualization
   :text-align: start
@@ -102,20 +102,20 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-warning}`JavaScript` {bdg-info}`Visualization` {bdg-light}`Network Analysis`
 
-  :::{button-link} <https://github.com/NeurophysVis/SpectraVis> <!-- button-link -->
+  :::{button-link} <https://github.com/NeurophysVis/SpectraVis>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
   :::{button-link} <https://neurophysvis.github.io/SpectraVis/public/>
       :color: secondary
       :outline:
       View Demo
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close card -->
-  ::: <!-- close grid-item -->
+  :::
+  :::
 
   :::{grid-item}
   :::{card} Track Linearization
@@ -128,17 +128,17 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-primary}`Python` {bdg-info}`Spatial Analysis` {bdg-light}`Neuroscience`
 
-  :::{button-link} <https://github.com/LorenFrankLab/track_linearization> <!-- button-link -->
+  :::{button-link} <https://github.com/LorenFrankLab/track_linearization>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item -->
-  ::: <!-- close card -->
+  :::
+  :::
 
-  :::{grid-item} <!-- grid-item -->
-  :::{card} Ripple Detection <!-- card -->
+  :::{grid-item}
+  :::{card} Ripple Detection
   :img-top: ../_static/ripple_detection.png
   :img-alt: Illustration of hippocampal ripple detection
   :text-align: start
@@ -148,13 +148,13 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-primary}`Python` {bdg-info}`Signal Processing` {bdg-light}`Neuroscience`
 
-  :::{button-link} <https://github.com/Eden-Kramer-Lab/ripple_detection> <!-- button-link -->
+  :::{button-link} <https://github.com/Eden-Kramer-Lab/ripple_detection>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item -->
-  ::: <!-- close card -->
+  :::
+  :::
 
 ::::  <!-- close grid -->
