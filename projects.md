@@ -7,7 +7,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 :::{card} Replay Trajectory Classification
 :img-top: ../_static/fra_11_04_0001.gif
-:img-alt: Replay Trajectory Classification logo
+:img-alt: Animation of classifying replay trajectories
 :text-align: start
 
 [replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory. It can decode both clustered and unclustered spiking activity and can take advantage of the GPU for faster computation.
@@ -44,7 +44,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 :::{card} Spectral Connectivity
 :img-top: ../_static/spectral_connectivity.png
-:img-alt: Spectral Connectivity logo
+:img-alt: Spectral Connectivity visualization example
 :text-align: start
 
 [spectral_connectivity](https://github.com/Eden-Kramer-Lab/spectral_connectivity) is a Python software package that computes multitaper spectral estimates and frequency-domain brain connectivity measures such as coherence, spectral granger causality, and the phase lag index using the multitaper Fourier transform.
@@ -62,6 +62,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 :::{card} RasterVis
 :img-top: ../_static/RasterVis.gif
+:img-alt: Demonstration of RasterVis interactive visualization
 :text-align: start
 
 [RasterVis](https://github.com/NeurophysVis/RasterVis) is an interactive JavaScript-based neuroscience visualization tool for quickly viewing, grouping, and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing, and group spikes based on experimental factors.
@@ -85,6 +86,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 :::{card} SpectraVis
 :img-top: ../_static/SpectraVis-Demo.gif
+:img-alt: Demonstration of SpectraVis interactive network visualization
 :text-align: start
 
 [SpectraVis](https://github.com/NeurophysVis/SpectraVis) is an interactive JavaScript-based neuroscience visualization tool for analyzing task-related functional networks over time and frequency. It allows users to examine how network dynamics change over time and frequency, compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics, compare different types of functional connectivity measures (correlation, coherence), and switch between multiple network views for better understanding of the network structure.
@@ -108,6 +110,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 :::{card} Track Linearization
 :img-top: ../_static/track_linearization.png
+:img-alt: Example of track linearization from 2D to 1D
 :text-align: start
 
 [Track linearization](https://github.com/LorenFrankLab/track_linearization). The hippocampal field often projects the tracked position of the animal from 2D to 1D to simplify computations. These projections are often only computed for one specific spatial environment. This Python package provides tools to flexibly project 2D position to 1D position for any type of spatial environment. There are also visualization tools to inspect these projections.
@@ -125,6 +128,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
 :::{card} Ripple Detection
 :img-top: ../_static/ripple_detection.png
+:img-alt: Illustration of hippocampal ripple detection
 :text-align: start
 
 [Ripple detection](https://github.com/Eden-Kramer-Lab/ripple_detection). Sharp wave ripples are 150-250 Hz oscillations in the hippocampus (combined with a slower sharp wave). They are associated with replay, a burst of hippocampal spiking activity where cells recapitulate previously experienced trajectories in the spatial environment. A common task is to detect these sharp wave ripples, but detection varies from lab to lab (see [Liu et al. 2022](https://www.nature.com/articles/s41467-022-33536-x)). I have collected the Frank lab methods for ripple detection in a Python software package so that our methods are transparent and reproducible.
