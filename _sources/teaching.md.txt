@@ -29,4 +29,4 @@
 University of California, Santa Barbara Campus Learning Assistance Services - Mathematics Tutor
 (September, 2005 - June, 2007)
 
-+ I tutored students in college level mathematics courses including calculus and linear algebra.
++ I tutored students in college-level mathematics courses including calculus and linear algebra.
