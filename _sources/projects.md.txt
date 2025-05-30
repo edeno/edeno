@@ -21,7 +21,10 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       GitHub Repository
   :::
-  ::: ::: :::{grid-item}
+
+  :::
+
+  :::{grid-item}
   :::{card} Spyglass
   :img-top: ../_static/spyglass.png
   :img-alt: Spyglass logo
@@ -30,7 +33,6 @@ Code for most of my projects can be found on my [Github page](https://github.com
   [Spyglass](https://github.com/LorenFrankLab/spyglass) is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the [NWB format](https://www.nwb.org/) (a data standard for neurophysiology) and integrates open-source tools such as [SpikeInterface](https://spikeinterface.readthedocs.io/en/latest/) and [DeepLabCut](http://www.mackenziemathislab.org/deeplabcut) into a coherent framework.
 
   ---
-
   **Technologies:** {bdg-primary}`Python` {bdg-info}`NWB` {bdg-light}`Data Framework`
 
   :::{button-link} <https://github.com/LorenFrankLab/spyglass>
@@ -38,7 +40,10 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       GitHub Repository
   :::
-  ::: ::: :::{grid-item}
+
+  :::
+
+  :::{grid-item}
   :::{card} Spectral Connectivity
   :img-top: ../_static/spectral_connectivity.png
   :img-alt: Spectral Connectivity visualization example
@@ -54,7 +59,10 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       GitHub Repository
   :::
-  ::: ::: :::{grid-item}
+
+  :::
+
+  :::{grid-item}
   :::{card} RasterVis
   :img-top: ../_static/RasterVis.gif
   :img-alt: Demonstration of RasterVis interactive visualization
@@ -76,7 +84,10 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       View Demo
   :::
-  ::: ::: :::{grid-item}
+
+  :::
+
+  :::{grid-item}
   :::{card} SpectraVis
   :img-top: ../_static/SpectraVis-Demo.gif
   :img-alt: Demonstration of SpectraVis interactive network visualization
@@ -98,7 +109,10 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       View Demo
   :::
-  ::: ::: :::{grid-item}
+
+  :::
+
+  :::{grid-item}
   :::{card} Track Linearization
   :img-top: ../_static/track_linearization.png
   :img-alt: Example of track linearization from 2D to 1D
@@ -114,7 +128,10 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       GitHub Repository
   :::
-  ::: ::: :::{grid-item}
+
+  :::
+
+  :::{grid-item}
   :::{card} Ripple Detection
   :img-top: ../_static/ripple_detection.png
   :img-alt: Illustration of hippocampal ripple detection
@@ -130,4 +147,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :outline:
       GitHub Repository
   :::
-  ::: ::: ::::
+
+  :::
+
+::::  <!-- close grid -->
