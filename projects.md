@@ -5,8 +5,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ```{grid} 1 2 2 2
 :gutter: 3
 
-```{grid-item}
-```{card} Replay Trajectory Classification
+```{grid-item-card} Replay Trajectory Classification
 :img-top: ../_static/fra_11_04_0001.gif
 :text-align: start
 
@@ -21,8 +20,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
     GitHub Repository
 ```
 
-```{grid-item}
-```{card} Spyglass
+```{grid-item-card} Spyglass
 :img-top: ../_static/spyglass.png
 :text-align: start
 
@@ -37,8 +35,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
     GitHub Repository
 ```
 
-```{grid-item}
-```{card} Spectral Connectivity
+```{grid-item-card} Spectral Connectivity
 :img-top: ../_static/spectral_connectivity.png
 :text-align: start
 
@@ -53,8 +50,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
     GitHub Repository
 ```
 
-```{grid-item}
-```{card} RasterVis
+```{grid-item-card} RasterVis
 :img-top: ../_static/RasterVis.gif
 :text-align: start
 
@@ -75,8 +71,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
     View Demo
 ```
 
-```{grid-item}
-```{card} SpectraVis
+```{grid-item-card} SpectraVis
 :img-top: ../_static/SpectraVis-Demo.gif
 :text-align: start
 
@@ -97,8 +92,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
     View Demo
 ```
 
-```{grid-item}
-```{card} Track Linearization
+```{grid-item-card} Track Linearization
 :img-top: ../_static/track_linearization.png
 :text-align: start
 
@@ -113,8 +107,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
     GitHub Repository
 ```
 
-```{grid-item}
-```{card} Ripple Detection
+```{grid-item-card} Ripple Detection
 :img-top: ../_static/ripple_detection.png
 :text-align: start
 
