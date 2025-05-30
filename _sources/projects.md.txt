@@ -2,10 +2,11 @@
 
 Code for most of my projects can be found on my [Github page](https://github.com/edeno). Here are some select projects I've worked on:
 
-::::{grid} 1 2 2 2 <!-- 1 row, 2 columns, 2 gutters -->
-:gutter: 3 <!-- 3 rem gutter between items -->
+::::{grid} 1 2 2 2
+:gutter: 3
 
-  :::{grid-item-card} Replay Trajectory Classification
+  :::{grid-item}
+  :::{card} Replay Trajectory Classification
   :img-top: ../_static/fra_11_04_0001.gif
   :img-alt: Animation of classifying replay trajectories
   :text-align: start
@@ -19,11 +20,12 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
-  :::{grid-item-card} Spyglass
+  :::{grid-item}
+  :::{card} Spyglass
   :img-top: ../_static/spyglass.png
   :img-alt: Spyglass logo
   :text-align: start
@@ -37,11 +39,12 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
-  :::{grid-item-card} Spectral Connectivity
+  :::{grid-item}
+  :::{card} Spectral Connectivity
   :img-top: ../_static/spectral_connectivity.png
   :img-alt: Spectral Connectivity visualization example
   :text-align: start
@@ -55,11 +58,12 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
-  :::{grid-item-card} RasterVis
+  :::{grid-item}
+  :::{card} RasterVis
   :img-top: ../_static/RasterVis.gif
   :img-alt: Demonstration of RasterVis interactive visualization
   :text-align: start
@@ -69,21 +73,22 @@ Code for most of my projects can be found on my [Github page](https://github.com
   ---
   **Technologies:** {bdg-warning}`JavaScript` {bdg-info}`Visualization` {bdg-light}`Neuroscience`
 
-  :::{button-link} https://github.com/NeurophysVis/RasterVis
+  :::{button-link} <https://github.com/NeurophysVis/RasterVis>
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
   :::{button-link} https://neurophysvis.github.io/RasterVis/public/
       :color: secondary
       :outline:
       View Demo
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
-  :::{grid-item-card} SpectraVis
+  :::{grid-item}
+  :::{card} SpectraVis
   :img-top: ../_static/SpectraVis-Demo.gif
   :img-alt: Demonstration of SpectraVis interactive network visualization
   :text-align: start
@@ -97,17 +102,18 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
   :::{button-link} https://neurophysvis.github.io/SpectraVis/public/
       :color: secondary
       :outline:
       View Demo
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
-  :::{grid-item-card} Track Linearization
+  :::{grid-item}
+  :::{card} Track Linearization
   :img-top: ../_static/track_linearization.png
   :img-alt: Example of track linearization from 2D to 1D
   :text-align: start
@@ -121,11 +127,12 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
-  :::{grid-item-card} Ripple Detection
+  :::{grid-item}
+  :::{card} Ripple Detection
   :img-top: ../_static/ripple_detection.png
   :img-alt: Illustration of hippocampal ripple detection
   :text-align: start
@@ -139,8 +146,8 @@ Code for most of my projects can be found on my [Github page](https://github.com
       :color: primary
       :outline:
       GitHub Repository
-  ::: <!-- close button-link -->
+  :::
 
-  ::: <!-- close grid-item-card -->
+  :::
 
 ::::  <!-- close grid -->
