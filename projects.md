@@ -91,7 +91,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 ````{grid-item}
 :columns: 6
 #### SpectraVis
-[SpectraVis](https://github.com/NeurophysVis/SpectraVis) is a interactive javascript-based neuroscience visualization tool for analyzing task-related functional networks over time and frequency. It allows users to examine how network dynamics change over time and frequency, compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics., compare different types of functional connectivity measures (correlation, coherence) and switch between multiple network views for better understanding of the network structure. [Demo](https://neurophysvis.github.io/SpectraVis/public/)
+[SpectraVis](https://github.com/NeurophysVis/SpectraVis) is a interactive javascript-based neuroscience visualization tool for analyzing task-related functional networks over time and frequency. It allows users to examine how network dynamics change over time and frequency, compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics, compare different types of functional connectivity measures (correlation, coherence) and switch between multiple network views for better understanding of the network structure. [Demo](https://neurophysvis.github.io/SpectraVis/public/)
 
 ````
 
