@@ -133,7 +133,7 @@ df = pd.DataFrame(df)
 
 # Convert into a markdown string
 md = []
-for year, items in df.groupby("year", sort=False):
+for year, items in df.groupby("year").sort_index(ascending=False):
     md.append(f"## {year}")
     for _, item in items.iterrows():
         md.append(item["reference"])
