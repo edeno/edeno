@@ -43,11 +43,6 @@ html_theme_options = {
             "icon": "fa-brands fa-github",
         },
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/eric_denovellis",
-            "icon": "fa-brands fa-twitter",
-        },
-        {
             "name": "Instagram",
             "url": "https://www.instagram.com/edenovellis/",
             "icon": "fa-brands fa-instagram",
