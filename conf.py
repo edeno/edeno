@@ -73,9 +73,20 @@ html_sidebars = {
     "contact": ["hello.html"],
 }
 
-# OpenGraph config
+# OpenGraph + Twitter Card config
 ogp_site_url = "https://www.edenovellis.com"
 ogp_image = "https://www.edenovellis.com/_static/profile.jpg"
+ogp_type = "profile"
+ogp_site_name = "Eric L. Denovellis"
+ogp_description_length = 200
+ogp_custom_meta_tags = [
+    '<meta property="profile:first_name" content="Eric">',
+    '<meta property="profile:last_name" content="Denovellis">',
+    '<meta name="twitter:card" content="summary">',
+    '<meta name="twitter:title" content="Eric L. Denovellis">',
+    '<meta name="twitter:image" content="https://www.edenovellis.com/_static/profile.jpg">',
+    '<meta name="twitter:image:alt" content="Photo of Eric L. Denovellis">',
+]
 
 
 # -- MyST and MyST-NB ---------------------------------------------------
