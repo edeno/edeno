@@ -1,172 +1,189 @@
-import json
+"""Generate _static/publications.txt from ORCID for publications.md to include."""
+
+import logging
 import sys
+from collections import defaultdict
 from pathlib import Path
 
-import pandas as pd
 import requests
-from rich import progress
+from requests.adapters import HTTPAdapter
+from rich.progress import track
+from urllib3.util.retry import Retry
 
-# My ORCID
 ORCID_ID = "0000-0003-4606-087X"
 ORCID_RECORD_API = "https://pub.orcid.org/v3.0/"
 HTTP_TIMEOUT = 15  # seconds
+OUTPUT_PATH = Path(__file__).parent.parent / "_static/publications.txt"
 
-# Download all of my ORCID records
-print("Retrieving ORCID entries from API...")
-try:
-    response = requests.get(
-        url=requests.utils.requote_uri(ORCID_RECORD_API + ORCID_ID),
-        headers={"Accept": "application/json"},
+PREPRINT_JOURNAL_LABELS = {
+    "Cold Spring Harbor Laboratory": "bioRxiv preprint",
+    "eLife Sciences Publications, Ltd": "eLife reviewed preprint",
+}
+
+logger = logging.getLogger("orcid-publications")
+
+
+def make_session() -> requests.Session:
+    session = requests.Session()
+    retry = Retry(
+        total=4,
+        backoff_factor=1.0,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=("GET",),
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
+
+
+def fetch_orcid_record(session: requests.Session, orcid_id: str) -> dict:
+    url = requests.utils.requote_uri(ORCID_RECORD_API + orcid_id)
+    response = session.get(
+        url, headers={"Accept": "application/json"}, timeout=HTTP_TIMEOUT
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def fetch_doi_metadata(session: requests.Session, doi: str) -> dict:
+    response = session.get(
+        f"https://doi.org/{doi}",
+        headers={"accept": "application/citeproc+json"},
         timeout=HTTP_TIMEOUT,
     )
     response.raise_for_status()
-except requests.RequestException as exc:
-    sys.exit(f"ORCID API request failed; aborting to preserve existing publications.txt: {exc}")
-orcid_record = response.json()
-
-###
-# Resolve my DOIs from ORCID as references
-# Shamelessly copied from:
-# https://gist.github.com/brews/8d3b3ede15d120a86a6bd6fc43859c5e
+    return response.json()
 
 
-def fetchmeta(doi, fmt="reference", **kwargs):
-    """Fetch metadata for a given DOI.
+def initials(given_name: str) -> str:
+    """Build dotted initials, treating hyphenated parts (Jean-Pierre) separately."""
+    parts = []
+    for word in given_name.split():
+        for sub in word.split("-"):
+            if sub:
+                parts.append(sub[0].upper())
+    return ".".join(parts)
 
-    Parameters
-    ----------
-    doi : str
-    fmt : str, optional
-        Desired metadata format. Can be 'dict' or 'bibtex'.
-        Default is 'dict'.
-    **kwargs :
-        Additional keyword arguments are passed to `json.loads()` if `fmt`
-        is 'dict' and you're a big JSON nerd.
 
-    Returns
-    -------
-    out : str or dict or None
-        `None` is returned if the server gives unhappy response. Usually
-        this means the DOI is bad.
+def format_author(author: dict) -> str:
+    family = author.get("family", "")
+    given = author.get("given", "")
+    is_self = "denovellis" in family.lower()
 
-    Examples
-    --------
-    >>> fetchmeta('10.1016/j.dendro.2018.02.005')
-    >>> fetchmeta('10.1016/j.dendro.2018.02.005', 'bibtex')
-
-    References
-    ----------
-    https://www.doi.org/hb.html
-    """
-    # Parse args and setup the server response we want.
-    accept_type = "application/"
-    if fmt == "dict":
-        accept_type += "citeproc+json"
-    elif fmt == "bibtex":
-        accept_type += "x-bibtex"
-    elif fmt == "reference":
-        accept_type = "text/x-bibliography; style=apa"
+    if is_self:
+        display = "**Denovellis, E.L.**"
+    elif given:
+        display = f"{family}, {initials(given)}."
     else:
-        raise ValueError(f"Unrecognized `fmt`: {fmt}")
+        display = family or "<unknown>"
 
-    # Request data from server.
-    url = "https://doi.org/" + str(doi)
-    header = {"accept": accept_type}
-    r = requests.get(url, headers=header, timeout=HTTP_TIMEOUT)
-
-    # Format metadata if server response is good.
-    out = None
-    if r.status_code == 200:
-        if fmt == "dict":
-            out = json.loads(r.text, **kwargs)
-        else:
-            out = r.text
-    return out
+    if "ORCID" in author:
+        return f"[{display}]({author['ORCID']})"
+    if is_self:
+        return f"[{display}]({ORCID_RECORD_API}{ORCID_ID})"
+    return display
 
 
-# Extract metadata for each entry
-df = []
-for iwork in progress.track(
-    orcid_record["activities-summary"]["works"]["group"], "Fetching reference data..."
-):
-    isummary = iwork["work-summary"][0]
-
-    # Extract the DOI
-    doi = None
-    for ii in isummary["external-ids"]["external-id"]:
-        if ii["external-id-type"] == "doi":
-            doi = ii["external-id-value"]
-            break
-    if doi is None:
-        title_value = (
-            (isummary.get("title") or {}).get("title", {}).get("value", "<unknown>")
-        )
-        print(f"Skipping work without DOI: {title_value}", file=sys.stderr)
-        continue
-
-    try:
-        meta = fetchmeta(doi, fmt="dict")
-    except requests.RequestException as exc:
-        print(f"Skipping {doi}: Crossref request failed ({exc})", file=sys.stderr)
-        continue
-    if meta is None:
-        print(f"Skipping {doi}: Crossref returned no metadata", file=sys.stderr)
-        continue
-
+def format_reference(meta: dict, doi: str) -> dict | None:
     try:
         title = meta["title"]
         year = meta["issued"]["date-parts"][0][0]
-        url = meta["URL"]
-
-        # Create authors list with links to their ORCIDs
-        authors = meta["author"]
-        autht = []
-        for author in authors:
-            given_name = ".".join([name[0] for name in author["given"].split()])
-            name = f"{author['family']}, {given_name}."
-
-            if "denovellis" in author["family"].lower():
-                name = "**Denovellis, E.L.**"
-
-            if "ORCID" in author:
-                autht.append(f"[{name}]({author['ORCID']})")
-            elif "ORCID" not in author and "denovellis" in author["family"].lower():
-                autht.append(f"[**Denovellis, E.L.**]({ORCID_RECORD_API + ORCID_ID})")
-            else:
-                autht.append(name)
-        autht = ", ".join(autht)
-        publisher = meta["publisher"]
-        journal = meta["container-title"]
-        if meta.get("subtype") == "preprint":
-            if publisher == "Cold Spring Harbor Laboratory":
-                journal = "bioRxiv preprint"
-            elif publisher == "eLife Sciences Publications, Ltd":
-                journal = "eLife reviewed preprint"
-
-        url_doi = url.split("//", 1)[-1]
-        reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
-        df.append({"year": year, "reference": reference})
+        authors = ", ".join(format_author(a) for a in meta["author"])
+        publisher = meta.get("publisher", "")
+        journal = meta.get("container-title", "")
+        if meta.get("subtype") == "preprint" and publisher in PREPRINT_JOURNAL_LABELS:
+            journal = PREPRINT_JOURNAL_LABELS[publisher]
     except (KeyError, IndexError, TypeError) as exc:
-        print(f"Skipping {doi}: malformed metadata ({exc})", file=sys.stderr)
-        continue
-df = pd.DataFrame(df)
+        logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
+        return None
 
-if df.empty:
-    sys.exit("All DOIs failed; refusing to overwrite publications.txt with an empty file")
+    reference = (
+        f"{authors} ({year}). **{title}**. {journal}. "
+        f"[{doi}](https://doi.org/{doi})"
+    )
+    return {"year": year, "reference": reference}
 
-# Convert into a markdown string
-md = []
-for year in sorted(df["year"].unique(), reverse=True):
-    items = df[df["year"] == year]
-    md.append(f"## {year}")
-    for _, item in items.iterrows():
-        md.append(item["reference"])
-        md.append("")
-    md.append("")
-mds = "\n".join(md)
+
+def extract_doi(work_summary: dict) -> str | None:
+    ext_ids = (work_summary.get("external-ids") or {}).get("external-id", [])
+    for ext in ext_ids:
+        if ext.get("external-id-type") == "doi":
+            return ext.get("external-id-value")
+    return None
+
+
+def extract_title(work_summary: dict) -> str:
+    return (
+        (work_summary.get("title") or {})
+        .get("title", {})
+        .get("value", "<unknown>")
+    )
+
+
+def render_markdown(entries: list[dict]) -> str:
+    by_year: dict[int, list[str]] = defaultdict(list)
+    for entry in entries:
+        by_year[entry["year"]].append(entry["reference"])
+
+    lines = []
+    for year in sorted(by_year, reverse=True):
+        lines.append(f"## {year}")
+        for ref in by_year[year]:
+            lines.append(ref)
+            lines.append("")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def main() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(levelname)s: %(message)s",
+        stream=sys.stderr,
+    )
+
+    session = make_session()
+
+    logger.info("Retrieving ORCID entries from API...")
+    try:
+        record = fetch_orcid_record(session, ORCID_ID)
+    except requests.RequestException as exc:
+        sys.exit(
+            f"ORCID API request failed; aborting to preserve existing "
+            f"{OUTPUT_PATH.name}: {exc}"
+        )
+
+    entries: list[dict] = []
+    for work in track(
+        record["activities-summary"]["works"]["group"],
+        "Fetching reference data...",
+    ):
+        summary = work["work-summary"][0]
+        doi = extract_doi(summary)
+        if doi is None:
+            logger.warning("Skipping work without DOI: %s", extract_title(summary))
+            continue
+
+        try:
+            meta = fetch_doi_metadata(session, doi)
+        except requests.RequestException as exc:
+            logger.warning("Skipping %s: Crossref fetch failed (%s)", doi, exc)
+            continue
+
+        entry = format_reference(meta, doi)
+        if entry is not None:
+            entries.append(entry)
+
+    if not entries:
+        sys.exit(
+            f"All DOIs failed; refusing to overwrite {OUTPUT_PATH.name} with "
+            f"an empty file"
+        )
+
+    OUTPUT_PATH.write_text(render_markdown(entries))
+    logger.info("Wrote %d entries to %s", len(entries), OUTPUT_PATH)
+
 
 if __name__ == "__main__":
-    # This will only work if this is run as a script
-    path_out = Path(__file__).parent.parent / "_static/publications.txt"
-    path_out.write_text(mds)
-    print(f"Finished updating ORCID entries at: {path_out}")
+    main()
