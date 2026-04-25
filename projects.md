@@ -7,9 +7,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} Replay Trajectory Classification
-  :img-top: ../_static/fra_11_04_0001.gif
+  :img-top: _static/fra_11_04_0001.gif
   :img-alt: Animation of classifying replay trajectories
-  :text-align: start
+  :text-align: left
 
   [replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory. It can decode both clustered and unclustered spiking activity and can take advantage of the GPU for faster computation.
 
@@ -22,9 +22,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} Spyglass
-  :img-top: ../_static/spyglass.png
+  :img-top: _static/spyglass.png
   :img-alt: Spyglass logo
-  :text-align: start
+  :text-align: left
 
   [Spyglass](https://github.com/LorenFrankLab/spyglass) is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the [NWB format](https://www.nwb.org/) (a data standard for neurophysiology) and integrates open-source tools such as [SpikeInterface](https://spikeinterface.readthedocs.io/en/latest/) and [DeepLabCut](https://www.mackenziemathislab.org/deeplabcut) into a coherent framework.
 
@@ -37,9 +37,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} Spectral Connectivity
-  :img-top: ../_static/spectral_connectivity.png
+  :img-top: _static/spectral_connectivity.png
   :img-alt: Spectral Connectivity visualization example
-  :text-align: start
+  :text-align: left
 
   [spectral_connectivity](https://github.com/Eden-Kramer-Lab/spectral_connectivity) is a Python software package that computes multitaper spectral estimates and frequency-domain brain connectivity measures such as coherence, spectral granger causality, and the phase lag index using the multitaper Fourier transform.
 
@@ -52,7 +52,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} RasterVis
-  :text-align: start
+  :text-align: left
 
   ```{raw} html
   <video autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of RasterVis interactive visualization" style="width:100%;display:block;border-top-left-radius:inherit;border-top-right-radius:inherit;">
@@ -71,7 +71,7 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} SpectraVis
-  :text-align: start
+  :text-align: left
 
   ```{raw} html
   <video autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of SpectraVis interactive network visualization" style="width:100%;display:block;border-top-left-radius:inherit;border-top-right-radius:inherit;">
@@ -90,9 +90,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} Track Linearization
-  :img-top: ../_static/track_linearization.png
+  :img-top: _static/track_linearization.png
   :img-alt: Example of track linearization from 2D to 1D
-  :text-align: start
+  :text-align: left
 
   [Track linearization](https://github.com/LorenFrankLab/track_linearization). The hippocampal field often projects the tracked position of the animal from 2D to 1D to simplify computations. These projections are often only computed for one specific spatial environment. This Python package provides tools to flexibly project 2D position to 1D position for any type of spatial environment. There are also visualization tools to inspect these projections.
 
@@ -105,9 +105,9 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} Ripple Detection
-  :img-top: ../_static/ripple_detection.png
+  :img-top: _static/ripple_detection.png
   :img-alt: Illustration of hippocampal ripple detection
-  :text-align: start
+  :text-align: left
 
   [Ripple detection](https://github.com/Eden-Kramer-Lab/ripple_detection). Sharp wave ripples are 150-250 Hz oscillations in the hippocampus (combined with a slower sharp wave). They are associated with replay, a burst of hippocampal spiking activity where cells recapitulate previously experienced trajectories in the spatial environment. A common task is to detect these sharp wave ripples, but detection varies from lab to lab (see [Liu et al. 2022](https://www.nature.com/articles/s41467-022-33536-x)). I have collected the Frank lab methods for ripple detection in a Python software package so that our methods are transparent and reproducible.
 

@@ -8,7 +8,6 @@ author = "Eric L. Denovellis"
 
 extensions = [
     "myst_nb",
-    "ablog",
     "sphinx_design",
     "sphinx_copybutton",
     "sphinx_examples",
@@ -24,7 +23,9 @@ exclude_patterns = [
     ".DS_Store",
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
+    ".venv/*",
     "README.md",
+    "CLAUDE.md",
     "**/.ipynb_checkpoints/*",
 ]
 
