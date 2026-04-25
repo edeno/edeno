@@ -31,46 +31,37 @@ exclude_patterns = [
 
 # -- HTML output -------------------------------------------------
 
-html_theme = "pydata_sphinx_theme"
+html_theme = "furo"
 
+# Furo theme options. Note: Pydata's `analytics` and `icon_links` keys
+# don't exist in Furo. Google Analytics needs to be re-injected via the
+# layout.html extrahead block if this prototype is adopted; social links
+# can be added via Furo's `footer_icons` (requires inline SVG markup).
 html_theme_options = {
-    "search_bar_text": "Search this site...",
-    "analytics": {"google_analytics_id": "G-R14SV5XX1X"},
-    "icon_links": [
-        {
-            "name": "GitHub",
-            "url": "https://github.com/edeno/",
-            "icon": "fa-brands fa-github",
-        },
-        {
-            "name": "Instagram",
-            "url": "https://www.instagram.com/edenovellis/",
-            "icon": "fa-brands fa-instagram",
-        },
-        {
-            "name": "LinkedIn",
-            "url": "https://www.linkedin.com/in/eric-denovellis-70908238/",
-            "icon": "fa-brands fa-linkedin",
-        },
-        {
-            "name": "ORCID ID",
-            "url": "https://orcid.org/0000-0003-4606-087X",
-            "icon": "fa-brands fa-orcid",
-        },
-    ],
+    "sidebar_hide_name": False,
+    "navigation_with_keys": True,
+    "light_css_variables": {
+        "color-brand-primary": "#2563eb",
+        "color-brand-content": "#2563eb",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#60a5fa",
+        "color-brand-content": "#60a5fa",
+    },
 }
 
 html_favicon = "_static/favicon.ico"
 html_title = "Eric L. Denovellis"
 html_static_path = ["_static"]
+html_logo = "_static/profile.jpg"
 html_sidebars = {
-    "index": ["hello.html"],
-    "publications": ["hello.html"],
-    "projects": ["hello.html"],
-    "talks": ["hello.html"],
-    "teaching": ["hello.html"],
-    "fun": ["hello.html"],
-    "contact": ["hello.html"],
+    "**": [
+        "sidebar/scroll-start.html",
+        "hello.html",
+        "sidebar/search.html",
+        "sidebar/navigation.html",
+        "sidebar/scroll-end.html",
+    ]
 }
 
 # OpenGraph + Twitter Card config
