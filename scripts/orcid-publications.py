@@ -85,6 +85,21 @@ def format_author(author: dict) -> str:
     return display
 
 
+def format_journal_details(meta: dict, journal: str) -> str:
+    """Render `*Journal*, *vol*(issue), pages.` for an APA-style citation tail."""
+    if not journal:
+        return ""
+    parts = [f"*{journal}*"]
+    volume = meta.get("volume")
+    issue = meta.get("issue")
+    page = meta.get("page")
+    if volume:
+        parts.append(f"*{volume}*({issue})" if issue else f"*{volume}*")
+    if page:
+        parts.append(page)
+    return ", ".join(parts) + "."
+
+
 def format_reference(meta: dict, doi: str) -> dict | None:
     try:
         title = meta["title"]
@@ -94,15 +109,16 @@ def format_reference(meta: dict, doi: str) -> dict | None:
         journal = meta.get("container-title", "")
         if meta.get("subtype") == "preprint" and publisher in PREPRINT_JOURNAL_LABELS:
             journal = PREPRINT_JOURNAL_LABELS[publisher]
+        details = format_journal_details(meta, journal)
     except (KeyError, IndexError, TypeError) as exc:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
         return None
 
-    reference = (
-        f"{authors} ({year}). **{title}**. {journal}. "
-        f"[{doi}](https://doi.org/{doi})"
-    )
-    return {"year": year, "reference": reference}
+    parts = [f"{authors}.", f"**{title}**."]
+    if details:
+        parts.append(details)
+    parts.append(f"[{doi}](https://doi.org/{doi})")
+    return {"year": year, "reference": " ".join(parts)}
 
 
 def extract_doi(work_summary: dict) -> str | None:
@@ -114,11 +130,7 @@ def extract_doi(work_summary: dict) -> str | None:
 
 
 def extract_title(work_summary: dict) -> str:
-    return (
-        (work_summary.get("title") or {})
-        .get("title", {})
-        .get("value", "<unknown>")
-    )
+    return (work_summary.get("title") or {}).get("title", {}).get("value", "<unknown>")
 
 
 def render_markdown(entries: list[dict]) -> str:
@@ -132,7 +144,6 @@ def render_markdown(entries: list[dict]) -> str:
         for ref in by_year[year]:
             lines.append(ref)
             lines.append("")
-        lines.append("")
     return "\n".join(lines)
 
 
