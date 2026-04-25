@@ -86,49 +86,60 @@ for iwork in progress.track(
     isummary = iwork["work-summary"][0]
 
     # Extract the DOI
+    doi = None
     for ii in isummary["external-ids"]["external-id"]:
         if ii["external-id-type"] == "doi":
             doi = ii["external-id-value"]
             break
+    if doi is None:
+        print(f"Skipping work without DOI: {isummary.get('title')}")
+        continue
 
-    meta = fetchmeta(doi, fmt="dict")
-    # meta.pop('reference')
-    # pprint.pprint(meta)
+    try:
+        meta = fetchmeta(doi, fmt="dict")
+    except requests.RequestException as exc:
+        print(f"Skipping {doi}: Crossref request failed ({exc})")
+        continue
+    if meta is None:
+        print(f"Skipping {doi}: Crossref returned no metadata")
+        continue
 
-    doi_url = meta["URL"]
-    title = meta["title"]
-    references_count = meta["references-count"]
-    year = meta["issued"]["date-parts"][0][0]
-    url = meta["URL"]
+    try:
+        title = meta["title"]
+        year = meta["issued"]["date-parts"][0][0]
+        url = meta["URL"]
 
-    # Create authors list with links to their ORCIDs
-    authors = meta["author"]
-    autht = []
-    for author in authors:
-        given_name = ".".join([name[0] for name in author["given"].split()])
-        name = f"{author['family']}, {given_name}."
+        # Create authors list with links to their ORCIDs
+        authors = meta["author"]
+        autht = []
+        for author in authors:
+            given_name = ".".join([name[0] for name in author["given"].split()])
+            name = f"{author['family']}, {given_name}."
 
-        if "denovellis" in author["family"].lower():
-            name = f"**Denovellis, E.L.**"
+            if "denovellis" in author["family"].lower():
+                name = "**Denovellis, E.L.**"
 
-        if "ORCID" in author:
-            autht.append(f"[{name}]({author['ORCID']})")
-        elif "ORCID" not in author and "denovellis" in author["family"].lower():
-            autht.append(f"[**Denovellis, E.L.**]({ORCID_RECORD_API + ORCID_ID})")
-        else:
-            autht.append(name)
-    autht = ", ".join(autht)
-    publisher = meta["publisher"]
-    journal = meta["container-title"]
-    if meta.get("subtype") == "preprint":
-        if publisher == "Cold Spring Harbor Laboratory":
-            journal = "bioRxiv preprint"
-        elif publisher == "eLife Sciences Publications, Ltd":
-            journal = "eLife reviewed preprint"
+            if "ORCID" in author:
+                autht.append(f"[{name}]({author['ORCID']})")
+            elif "ORCID" not in author and "denovellis" in author["family"].lower():
+                autht.append(f"[**Denovellis, E.L.**]({ORCID_RECORD_API + ORCID_ID})")
+            else:
+                autht.append(name)
+        autht = ", ".join(autht)
+        publisher = meta["publisher"]
+        journal = meta["container-title"]
+        if meta.get("subtype") == "preprint":
+            if publisher == "Cold Spring Harbor Laboratory":
+                journal = "bioRxiv preprint"
+            elif publisher == "eLife Sciences Publications, Ltd":
+                journal = "eLife reviewed preprint"
 
-    url_doi = url.split("//", 1)[-1]
-    reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
-    df.append({"year": year, "reference": reference})
+        url_doi = url.split("//", 1)[-1]
+        reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
+        df.append({"year": year, "reference": reference})
+    except (KeyError, IndexError, TypeError) as exc:
+        print(f"Skipping {doi}: malformed metadata ({exc})")
+        continue
 df = pd.DataFrame(df)
 
 # Convert into a markdown string

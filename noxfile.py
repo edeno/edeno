@@ -16,7 +16,7 @@ def docs(session):
         session.run(
             *"sphinx-build -nW --keep-going -b dirhtml . _build/dirhtml".split()
         )
-        session.log("open ./_build/dirhtml}/index.html")
+        session.log("open ./_build/dirhtml/index.html")
 
 
 @nox.session

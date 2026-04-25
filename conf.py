@@ -3,7 +3,7 @@ import os
 # -- Project information -----------------------------------------------------
 
 project = "Eric L. Denovellis"
-copyright = "2022, Eric L. Denovellis"
+copyright = "2026, Eric L. Denovellis"
 author = "Eric L. Denovellis"
 
 extensions = [

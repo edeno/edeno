@@ -3,7 +3,6 @@
 You can contact me online. I am open to questions or collaborations:
 
 + [Email](mailto:eric.denovellis@ucsf.edu)
-+ [Twitter](https://twitter.com/eric_denovellis)
 + [Github](https://github.com/edeno)
 + [LinkedIn](https://www.linkedin.com/in/eric-denovellis-70908238/)
 + <a rel="me" href="https://neuromatch.social/@edeno">Mastodon</a>
