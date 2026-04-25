@@ -27,8 +27,6 @@ jobs:
         python scripts/orcid-publications.py
     # Build the book
     - name: Build the site
-      env:
-        CLOUDFLARE_ANALYTICS_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_TOKEN }}
       run: |
         make dirhtml
     # If we've pushed to main, push the book's HTML to github-pages
