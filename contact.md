@@ -7,5 +7,11 @@ You can contact me online. I am open to questions or collaborations:
 + [LinkedIn](https://www.linkedin.com/in/eric-denovellis-70908238/)
 + <a rel="me" href="https://neuromatch.social/@edeno">Mastodon</a>
 
-I am located in the Sandler Neurosciences Center at the UCSF Mission Bay Campus in San Francisco, California:
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8768444182783!2d-122.39456318463857!3d37.769485820236646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7fcfb1bed239%3A0xd91f3236176b61d8!2sSandler%20Neurosciences%20Center!5e0!3m2!1sen!2sus!4v1669826669300!5m2!1sen!2sus" title="Map of the Sandler Neurosciences Center at UCSF Mission Bay" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer"></iframe>
+## Where to find me
+
+**Sandler Neurosciences Center**
+675 Nelson Rising Lane
+San Francisco, CA 94158
+UCSF Mission Bay Campus
+
+[Get directions →](https://www.google.com/maps/place/Sandler+Neurosciences+Center,+675+Nelson+Rising+Ln,+San+Francisco,+CA+94158/)
