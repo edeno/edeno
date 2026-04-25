@@ -2,7 +2,7 @@ ablog
 docutils
 myst_nb
 MyST-Parser
-pydata-sphinx-theme
+furo
 rich
 sphinx
 sphinx-autobuild
