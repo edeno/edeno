@@ -35,7 +35,6 @@ html_theme = "pydata_sphinx_theme"
 
 html_theme_options = {
     "search_bar_text": "Search this site...",
-    "analytics": {"google_analytics_id": "G-R14SV5XX1X"},
     "icon_links": [
         {
             "name": "GitHub",
@@ -89,6 +88,13 @@ myst_enable_extensions = [
 
 # MyST-NB
 nb_execution_mode = "cache"
+
+
+html_context = {
+    # Set CLOUDFLARE_ANALYTICS_TOKEN in CI (or locally) to enable the
+    # Cloudflare Web Analytics beacon. Empty string = analytics off.
+    "cf_analytics_token": os.environ.get("CLOUDFLARE_ANALYTICS_TOKEN", ""),
+}
 
 
 def setup(app):
