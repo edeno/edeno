@@ -14,7 +14,7 @@ on Signals, Systems, and Computers. Pacific Grove, CA November 2019
 
 [**Better Science Code.**](https://www.youtube.com/watch?v=J53UVfvzd04) MIT Center for Brains, Minds, and Machines. Cambridge, MA May 2017
 
-[**Data visualization tools: from classroom to science.**](http://edeno.github.io/iSLC-2015-Presentation/) Inter Science of Learning Centers Conference Workshop. San Diego, CA June 2015
+[**Data visualization tools: from classroom to science.**](https://edeno.github.io/iSLC-2015-Presentation/) Inter Science of Learning Centers Conference Workshop. San Diego, CA June 2015
 
 **Synchronous Neural Ensembles for Rules in the Prefrontal Cortex.** The 5th Annual Dana and Betty
 Fisher Retreat of the Picower Institute. Red Jacket Resort. South Yarmouth, MA June 2012.

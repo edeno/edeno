@@ -2,7 +2,7 @@
 
 ## Hiking
 
-I am an avid hiker and backpacker. I have completed the [John Muir Trail](https://en.wikipedia.org/wiki/John_Muir_Trail) and all 48 of the [New Hampshire 4000 footers](http://4000footers.com/nh.shtml).
+I am an avid hiker and backpacker. I have completed the [John Muir Trail](https://en.wikipedia.org/wiki/John_Muir_Trail) and all 48 of the [New Hampshire 4000 footers](https://4000footers.com/nh.shtml).
 
 Here are some routes I have enjoyed:
 
