@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -8,14 +9,19 @@ from rich import progress
 # My ORCID
 ORCID_ID = "0000-0003-4606-087X"
 ORCID_RECORD_API = "https://pub.orcid.org/v3.0/"
+HTTP_TIMEOUT = 15  # seconds
 
 # Download all of my ORCID records
 print("Retrieving ORCID entries from API...")
-response = requests.get(
-    url=requests.utils.requote_uri(ORCID_RECORD_API + ORCID_ID),
-    headers={"Accept": "application/json"},
-)
-response.raise_for_status()
+try:
+    response = requests.get(
+        url=requests.utils.requote_uri(ORCID_RECORD_API + ORCID_ID),
+        headers={"Accept": "application/json"},
+        timeout=HTTP_TIMEOUT,
+    )
+    response.raise_for_status()
+except requests.RequestException as exc:
+    sys.exit(f"ORCID API request failed; aborting to preserve existing publications.txt: {exc}")
 orcid_record = response.json()
 
 ###
@@ -64,9 +70,9 @@ def fetchmeta(doi, fmt="reference", **kwargs):
         raise ValueError(f"Unrecognized `fmt`: {fmt}")
 
     # Request data from server.
-    url = "https://dx.doi.org/" + str(doi)
+    url = "https://doi.org/" + str(doi)
     header = {"accept": accept_type}
-    r = requests.get(url, headers=header)
+    r = requests.get(url, headers=header, timeout=HTTP_TIMEOUT)
 
     # Format metadata if server response is good.
     out = None
@@ -92,16 +98,19 @@ for iwork in progress.track(
             doi = ii["external-id-value"]
             break
     if doi is None:
-        print(f"Skipping work without DOI: {isummary.get('title')}")
+        title_value = (
+            (isummary.get("title") or {}).get("title", {}).get("value", "<unknown>")
+        )
+        print(f"Skipping work without DOI: {title_value}", file=sys.stderr)
         continue
 
     try:
         meta = fetchmeta(doi, fmt="dict")
     except requests.RequestException as exc:
-        print(f"Skipping {doi}: Crossref request failed ({exc})")
+        print(f"Skipping {doi}: Crossref request failed ({exc})", file=sys.stderr)
         continue
     if meta is None:
-        print(f"Skipping {doi}: Crossref returned no metadata")
+        print(f"Skipping {doi}: Crossref returned no metadata", file=sys.stderr)
         continue
 
     try:
@@ -138,9 +147,12 @@ for iwork in progress.track(
         reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
         df.append({"year": year, "reference": reference})
     except (KeyError, IndexError, TypeError) as exc:
-        print(f"Skipping {doi}: malformed metadata ({exc})")
+        print(f"Skipping {doi}: malformed metadata ({exc})", file=sys.stderr)
         continue
 df = pd.DataFrame(df)
+
+if df.empty:
+    sys.exit("All DOIs failed; refusing to overwrite publications.txt with an empty file")
 
 # Convert into a markdown string
 md = []
