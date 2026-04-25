@@ -52,9 +52,13 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} RasterVis
-  :img-top: ../_static/RasterVis.gif
-  :img-alt: Demonstration of RasterVis interactive visualization
   :text-align: start
+
+  ```{raw} html
+  <video autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of RasterVis interactive visualization" style="width:100%;display:block;border-top-left-radius:inherit;border-top-right-radius:inherit;">
+    <source src="../_static/RasterVis.mp4" type="video/mp4">
+  </video>
+  ```
 
   [RasterVis](https://github.com/NeurophysVis/RasterVis) is an interactive JavaScript-based neuroscience visualization tool for quickly viewing, grouping, and summarizing spike rasters for many neurons. This tool allows you to generate and change between rasters for many neurons, quickly view rasters aligned to experimental trial events, add Gaussian-smoothed peristimulus time kernel density estimates with arbitrary smoothing, and group spikes based on experimental factors.
 
@@ -67,9 +71,13 @@ Code for most of my projects can be found on my [Github page](https://github.com
 
   ::::{grid-item}
   :::{card} SpectraVis
-  :img-top: ../_static/SpectraVis-Demo.gif
-  :img-alt: Demonstration of SpectraVis interactive network visualization
   :text-align: start
+
+  ```{raw} html
+  <video autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of SpectraVis interactive network visualization" style="width:100%;display:block;border-top-left-radius:inherit;border-top-right-radius:inherit;">
+    <source src="../_static/SpectraVis-Demo.mp4" type="video/mp4">
+  </video>
+  ```
 
   [SpectraVis](https://github.com/NeurophysVis/SpectraVis) is an interactive JavaScript-based neuroscience visualization tool for analyzing task-related functional networks over time and frequency. It allows users to examine how network dynamics change over time and frequency, compare local (statistical dependencies between a single pair of nodes) and global (statistical dependencies between all nodes) dynamics, compare different types of functional connectivity measures (correlation, coherence), and switch between multiple network views for better understanding of the network structure.
 

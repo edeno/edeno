@@ -19,7 +19,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking.jpg
-:alt: photo
+:alt: A hiker walking along a volcanic ridge under a clear blue sky, with the snow-capped Three Sisters and Mount Washington in the distance.
 :align: center
 ```
 
@@ -29,7 +29,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking1.jpg
-:alt: photo
+:alt: Portrait of a hiker in a yellow Mountain Hardwear shell jacket and face mask, with snow-covered peaks in the background.
 :align: center
 ```
 
@@ -39,7 +39,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking2.jpg
-:alt: photo
+:alt: A green tent pitched at a high Sierra campsite with dramatic storm clouds and a weathered tree above a forested valley.
 :align: center
 ```
 
@@ -49,7 +49,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking3.jpg
-:alt: photo
+:alt: A wide alpine valley with a creek, granite peaks, and sage meadows under an overcast sky.
 :align: center
 ```
 
@@ -59,7 +59,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking4.jpg
-:alt: photo
+:alt: Pink and orange sunset clouds over jagged Sierra peaks, framed by tall pines and a granite-strewn slope.
 :align: center
 ```
 
@@ -69,7 +69,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking5.jpg
-:alt: photo
+:alt: Yellow wildflowers in the foreground with a hazy view across rolling hills and a distant valley below.
 :align: center
 ```
 
@@ -79,7 +79,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking6.jpg
-:alt: photo
+:alt: Group selfie of four smiling backpackers on a granite slab in the high Sierra, with pines and a domed peak behind them.
 :align: center
 ```
 
@@ -89,7 +89,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking7.jpg
-:alt: photo
+:alt: A meadow of red Indian paintbrush and pink wildflowers at sunrise, with a peak rising above a sea of clouds in the Goat Rocks Wilderness.
 :align: center
 ```
 
@@ -99,7 +99,7 @@ Here are some photos from hikes:
 :columns: 4
 
 ```{image} /images/backpacking8.jpg
-:alt: photo
+:alt: A hiker descending a ridge trail past a snowfield, with Mount Rainier rising in the distance under a clear blue sky.
 :align: center
 ```
 
@@ -112,9 +112,9 @@ You can find more on my [instagram](https://www.instagram.com/edenovellis/).
 ## Music I like
 
 I add songs to this playlist when I hear something I like:
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6uT300NuatGCkwNBucFqjJ?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe title="My Spotify playlist of recently liked songs" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6uT300NuatGCkwNBucFqjJ?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 My favorite places to find music are:
 
-[![KEXP](/images/kexp.png)](https://www.kexp.org/)
-[![Gorilla vs. Bear](/images/gvsb_gold2019-v2.png)](https://www.gorillavsbear.net/)
+[![KEXP — Seattle public radio station](/images/kexp.png)](https://www.kexp.org/)
+[![Gorilla vs. Bear — independent music blog](/images/gvsb_gold2019-v2.png)](https://www.gorillavsbear.net/)
