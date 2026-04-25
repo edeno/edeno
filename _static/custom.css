@@ -43,3 +43,47 @@ div.profile-pic img {
 .gsc-reactions {
     margin-top: 1em;
 }
+
+/* Homepage hero */
+.hero-tagline {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--color-foreground-secondary);
+    margin: 0.5em 0 1.25em 0;
+    max-width: 50em;
+}
+
+.hero-cta {
+    margin: 0 0 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.25rem;
+    align-items: center;
+}
+
+.hero-cta .sd-badge {
+    font-size: 0.95rem;
+    padding: 0.45em 0.9em;
+}
+
+/* Project cards: keep hero images at a sane height so cards align */
+.sd-card .sd-card-img-top {
+    max-height: 240px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.sd-card video {
+    max-height: 240px;
+    object-fit: cover;
+}
+
+/* Featured project cards: taller image, more breathing room */
+.featured-project .sd-card-img-top,
+.featured-project video {
+    max-height: 360px;
+}
+
+.featured-project .sd-card-title {
+    font-size: 1.6rem;
+}
