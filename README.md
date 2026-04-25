@@ -2,7 +2,7 @@
 
 ## About me
 
-I am a computational research scientist in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/) at [UCSF](https://www.ucsf.edu/). My work focuses on developing scalable, interpretable algorithms and tools to decode, categorize and visualize neural representations. This work extends and applies marked point process switching state space models I developed during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). I work closely with experimental collaborators to ensure these algorithms and tools are usable on large-scale data.
+I am a computational research scientist in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/) at [UCSF](https://www.ucsf.edu/). I develop scalable, interpretable algorithms and tools to decode, categorize, and visualize neural representations -- particularly in the hippocampus. My methodological focus is on marked point process switching state space models for characterizing replay dynamics, work I began during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). I work closely with experimental collaborators to ensure these methods are usable on large-scale data, and I build open-source infrastructure to make advanced computational techniques accessible to the broader neuroscience community.
 
 I also build open source software packages for neural data analysis. These include:
 

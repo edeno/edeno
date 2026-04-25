@@ -1,5 +1,9 @@
 # Talks
 
+**Understanding cognitive representations and dynamics through statistical machine learning.** National Centre for Biological Sciences. Bangalore, India. March 2026.
+
+**Understanding cognitive representations and dynamics through statistical machine learning.** Sainsbury Wellcome Centre / Gatsby Computational Neuroscience Unit. University College London, London, United Kingdom. August 2024.
+
 **Understanding cognitive representations and dynamics through statistical machine learning.** Computational Neuroscience Center. University of Washington, Seattle, WA. May 2024.
 
 **Building Accessible Computational Tools for Modern Systems Neuroscience.** Databinge. NeuroImaging and NeuroComputation Centre. University of British Columbia. Vancouver, BC Canada. February 2024.
