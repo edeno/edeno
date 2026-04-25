@@ -1,6 +1,9 @@
 name: deploy-website
 
-# Only run this when the master branch changes
+# Build on every PR, every push to main, and weekly (Mondays 13:00 UTC) so
+# the publications page picks up new ORCID entries even without a code push.
+# Only the push-to-main + cron paths actually publish (see the gating `if:`
+# on the gh-pages step below).
 on:
   pull_request:
   push:
@@ -8,7 +11,7 @@ on:
     - main
   schedule:
     - cron: '0 13 * * 1'
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
+
 jobs:
   deploy-book:
     runs-on: ubuntu-latest

@@ -38,7 +38,9 @@ uv run sphinx-autobuild -b dirhtml . _build/dirhtml \
 - Python is formatted with `uvx ruff format` (no project config; defaults).
 - Comments in Python and markdown should be sparing — only when the *why* is non-obvious.
 
-## Active branches
+## Theme
 
-- `main` — production
-- `prototype/furo-theme` — experimental theme migration (not merged); see commit `990c340` for caveats (GA disabled, social icons dropped, brand colour is a placeholder)
+The site uses [Furo](https://pradyunsg.me/furo/). Two things to know:
+
+- Brand colour is currently a placeholder (`#2563eb` light / `#60a5fa` dark, `conf.py: html_theme_options.light_css_variables`); pick something distinctive at leisure.
+- Furo doesn't accept Pydata-style theme options. Google Analytics, JSON-LD Person schema, and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py` (theme-agnostic). Social icons live in Furo's `footer_icons` slot as inline Bootstrap Icons SVGs.
