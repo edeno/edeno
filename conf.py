@@ -24,7 +24,9 @@ exclude_patterns = [
     ".DS_Store",
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
+    ".venv/*",
     "README.md",
+    "CLAUDE.md",
     "**/.ipynb_checkpoints/*",
 ]
 
