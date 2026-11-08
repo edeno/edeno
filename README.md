@@ -2,9 +2,9 @@
 
 ## About me
 
-I am a computational research scientist in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/) at [UCSF](https://www.ucsf.edu/). I develop scalable, interpretable algorithms and tools to decode, categorize, and visualize neural representations -- particularly in the hippocampus. My methodological focus is on marked point process switching state space models for characterizing replay dynamics, work I began during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). I work closely with experimental collaborators to ensure these methods are usable on large-scale data, and I build open-source infrastructure to make advanced computational techniques accessible to the broader neuroscience community.
+I am a computational research scientist in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/) at [UCSF](https://www.ucsf.edu/). I study how the brain represents past events and alternative possibilities, and how these representations support memory and decision-making. I develop statistical models to measure them: marked point process switching state space models that decode hippocampal replay and classify its dynamics, work I began during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). With collaborators, I adapted these models for real-time closed-loop neurofeedback, a brain-machine interface for hippocampal representations.
 
-I also build open source software packages for neural data analysis. These include:
+I also build open-source software that makes these methods reproducible across labs. This includes:
 
 + [replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory.
 + [Spyglass](https://github.com/LorenFrankLab/spyglass) is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the [NWB format](https://www.nwb.org/) (a data standard for neurophysiology) and integrates open-source tools such as [SpikeInterface](https://spikeinterface.readthedocs.io/en/latest/) and [DeepLabCut](https://www.mackenziemathislab.org/deeplabcut) into a coherent framework.
