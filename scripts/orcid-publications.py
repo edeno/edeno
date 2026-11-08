@@ -16,10 +16,9 @@ ORCID_PROFILE = f"https://orcid.org/{ORCID_ID}"
 HTTP_TIMEOUT = 15  # seconds
 OUTPUT_PATH = Path(__file__).parent.parent / "_static/publications.txt"
 
-PREPRINT_JOURNAL_LABELS = {
-    "Cold Spring Harbor Laboratory": "bioRxiv preprint",
-    "eLife Sciences Publications, Ltd": "eLife reviewed preprint",
-}
+# Preprint servers are named in Crossref's `institution` field; most are
+# labelled "<server> preprint".
+PREPRINT_SERVER_LABELS = {"eLife": "eLife reviewed preprint"}
 # Crossref relations linking different versions (preprint, reviewed preprint,
 # version of record) of the same work.
 SAME_WORK_RELATIONS = (
@@ -48,9 +47,10 @@ def make_session() -> requests.Session:
 
 
 def fetch_orcid_record(session: requests.Session, orcid_id: str) -> dict:
-    url = requests.utils.requote_uri(ORCID_RECORD_API + orcid_id)
     response = session.get(
-        url, headers={"Accept": "application/json"}, timeout=HTTP_TIMEOUT
+        ORCID_RECORD_API + orcid_id,
+        headers={"Accept": "application/json"},
+        timeout=HTTP_TIMEOUT,
     )
     response.raise_for_status()
     return response.json()
@@ -115,14 +115,13 @@ def format_reference(meta: dict, doi: str) -> dict | None:
         title = meta["title"]
         year = meta["issued"]["date-parts"][0][0]
         authors = ", ".join(format_author(a) for a in meta["author"])
-        publisher = meta.get("publisher", "")
         journal = meta.get("container-title", "")
         if is_preprint(meta):
             servers = [i["name"] for i in meta.get("institution", []) if "name" in i]
-            if publisher in PREPRINT_JOURNAL_LABELS:
-                journal = PREPRINT_JOURNAL_LABELS[publisher]
-            elif servers:
-                journal = f"{servers[0]} preprint"
+            if servers:
+                journal = PREPRINT_SERVER_LABELS.get(
+                    servers[0], f"{servers[0]} preprint"
+                )
         details = format_journal_details(meta, journal)
     except (KeyError, IndexError, TypeError) as exc:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
@@ -189,7 +188,6 @@ def drop_other_versions(works: list[tuple[str, dict]]) -> list[tuple[str, dict]]
     are considered first so they win over their preprints.
     """
     kept: list[tuple[str, set[str]]] = []
-    kept_dois: set[str] = set()
     for doi, meta in sorted(works, key=lambda work: is_preprint(work[1])):
         links = related_dois(meta)
         same_as_kept = next(
@@ -201,7 +199,7 @@ def drop_other_versions(works: list[tuple[str, dict]]) -> list[tuple[str, dict]]
             )
             continue
         kept.append((doi.lower(), links))
-        kept_dois.add(doi.lower())
+    kept_dois = {k for k, _ in kept}
     return [work for work in works if work[0].lower() in kept_dois]
 
 
