@@ -39,7 +39,7 @@
 **Teaching Fellow for CAS CN 570 - Neural and Computational Models of Conditioning, Reinforcement, Motivation and Rhythm.**
 (January - May, 2011)
 
-+ I designed a [final project assignment and neural network model](https://github.com/edeno/project-assignment-visuomotor-reach-adaptation) inspired by [Bullock et al. (1993)](http://www.cns.bu.edu/Profiles/Grossberg/BulGroGue1993JOCN.pdf) and [Grosse-Wentrup and Vidal (2007)](http://www.is.tuebingen.mpg.de/fileadmin/user_upload/files/publications/GrosseWentrupVidal2007_BioCyb_%5B0%5D.pdf). The project challenges the student to understand how the brain learns to perform visually-guided reaches by integrating both motor and visual sensory feedback. In order to complete the assignment, the student must show understanding of the neural network model by adding additional features to the model and by critiquing the added features.
++ I designed a [final project assignment and neural network model](https://github.com/edeno/project-assignment-visuomotor-reach-adaptation) inspired by [Bullock et al. (1993)](https://doi.org/10.1162/jocn.1993.5.4.408) and [Grosse-Wentrup and Contreras-Vidal (2007)](https://doi.org/10.1007/s00422-007-0142-8). The project challenges the student to understand how the brain learns to perform visually-guided reaches by integrating both motor and visual sensory feedback. In order to complete the assignment, the student must show understanding of the neural network model by adding additional features to the model and by critiquing the added features.
 
 ## University of California, Santa Barbara
 
