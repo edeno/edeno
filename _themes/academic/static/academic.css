@@ -246,13 +246,29 @@ img {
   }
 }
 
-/* Projects: a few featured with media, then a plain list. */
+/* Projects: a few featured with media, then a plain list. Each project is a
+   title line (name left, links right, faint rule under both) followed by a
+   softer description. */
+.featured,
+.project {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 0 0 2rem;
+}
+
 .featured {
-  margin: 1.5rem 0 2.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.75rem;
+}
+
+.featured > *,
+.project > * {
+  grid-column: 1 / -1;
 }
 
 .featured img,
 .featured video {
+  grid-row: 1;
   display: block;
   width: auto;
   max-width: 100%;
@@ -261,33 +277,16 @@ img {
   margin-bottom: 1rem;
 }
 
-.project {
-  margin: 0 0 2.5rem;
-}
-
-.featured > p,
-.project > p {
-  margin-bottom: 0.35rem;
-}
-
-/* On the projects page, section headings are small labels so they don't
-   compete with the project names. */
-section:has(> .featured, > .project) > h2 {
-  margin: 3rem 0 1.25rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Project names: larger and in the text colour, so they read as titles
-   rather than as more links. */
+/* Project name */
 .featured > p:first-of-type,
 .project > p:first-of-type {
+  grid-column: 1;
+  align-self: end;
+  margin: 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--hairline);
   font-size: 1.15rem;
   line-height: 1.3;
-  margin-bottom: 0.3rem;
 }
 
 .featured > p:first-of-type a,
@@ -302,12 +301,46 @@ section:has(> .featured, > .project) > h2 {
 }
 
 .project-links {
+  grid-column: 2;
+  align-self: end;
+  padding: 0 0 0.3rem 1rem;
+  border-bottom: 1px solid var(--hairline);
   color: var(--muted);
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .project-links p {
   margin: 0;
+}
+
+.featured > p:first-of-type,
+.featured > .project-links {
+  grid-row: 2;
+}
+
+.project > p:first-of-type,
+.project > .project-links {
+  grid-row: 1;
+}
+
+/* Description */
+.featured > p:nth-of-type(2),
+.project > p:nth-of-type(2) {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* On the projects page, section headings are small labels so they don't
+   compete with the project names. */
+section:has(> .featured, > .project) > h2 {
+  margin: 3rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* Transparent logos with dark lettering need a light backing on a dark page. */
