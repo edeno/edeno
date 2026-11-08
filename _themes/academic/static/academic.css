@@ -3,14 +3,18 @@
   --muted: #57606a;
   --hairline: #e5e7eb;
   --bg: #ffffff;
+  --fg-soft: #3d444d;
   --brand: #0f766e;
   --measure: 650px;
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --fg: #e6e8eb;
     --muted: #9aa4ae;
+    --fg-soft: #c3cad1;
     --hairline: #2b3138;
     --bg: #121519;
     --brand: #2dd4bf;
@@ -26,9 +30,15 @@ body {
   padding: 0 1.25rem;
   background: var(--bg);
   color: var(--fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
   line-height: 1.6;
+}
+
+/* Reading text is serif; the site chrome and small labels stay sans. */
+.site-header,
+.site-footer {
+  font-family: var(--sans);
 }
 
 .site-header,
@@ -87,7 +97,14 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  text-decoration-color: color-mix(in srgb, var(--brand) 40%, transparent);
+  /* Faint, but present: teal alone isn't 3:1 against body text (WCAG 1.4.1). */
+  text-decoration-color: color-mix(in srgb, var(--brand) 22%, transparent);
+}
+
+/* Co-author names in publication entries read as text, not as a row of links. */
+p > a[href^="https://orcid.org/"] {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--fg) 22%, transparent);
 }
 
 a:hover {
@@ -98,7 +115,7 @@ h1,
 h2,
 h3 {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -249,6 +266,7 @@ img {
 /* Projects: one line per project, grouped under small theme labels. */
 section:has(> .project-list) > h2 {
   margin: 2.5rem 0 0.75rem;
+  font-family: var(--sans);
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 600;
@@ -264,11 +282,13 @@ section:has(> .project-list) > h2 {
 
 .project-list li {
   margin: 0 0 0.6rem;
+  color: var(--fg-soft);
 }
 
 .project-list strong a {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .project-list strong a:hover {
