@@ -1,5 +1,9 @@
 # Talks
 
+**NeuroAI for the Hippocampus workshop** (session: NeuroAI tools for hippocampal data). Spring Hippocampal Symposium. Verona, Italy. May 2027 (upcoming).
+
+**Neuroscience Frontiers.** Columbia University. New York, NY. November 2026 (upcoming).
+
 **Understanding cognitive representations and dynamics through statistical machine learning.** National Centre for Biological Sciences. Bangalore, India. March 2026.
 
 **Understanding cognitive representations and dynamics through statistical machine learning.** Sainsbury Wellcome Centre / Gatsby Computational Neuroscience Unit. University College London, London, United Kingdom. August 2024.

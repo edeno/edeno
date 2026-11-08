@@ -2,14 +2,14 @@
 
 ## National Centre for Biological Sciences, Bangalore, India
 
-**Visiting Instructor — Computational Neuroscience**
+**Visiting Instructor — Neural Circuits for Navigation: Anatomy, Physiology, and Computational Methods**
 (February - March, 2026)
 
-+ Four-week course (two 1.5-hour lectures per week) covering open data use and visualization, spectral analysis of local field potentials, spike-stimulus analysis, neural decoding, and clusterless decoding approaches.
++ Co-designed and co-taught with [Abhilasha Joshi](https://www.neuroact.in/) for nine graduate students. I taught eight 1.5-hour sessions with Jupyter notebook assignments, followed by student projects and presentations. Topics: open data use and visualization, spectral analysis of local field potentials, spike-stimulus analysis, neural decoding, and clusterless decoding.
 
 ## University of California, San Francisco
 
-**Lecturer for NS219 - Encoder-Decoder Models for Neuroscience**
+**Guest Lecturer for NS219 - Encoder-Decoder Models for Neuroscience**
 (May, 2024)
 
 + Lecture on switching state space models for characterizing non-local activity in the hippocampus.
