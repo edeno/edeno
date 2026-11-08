@@ -1,3 +1,9 @@
+/* sphinx-design's default info colour (#17a2b8) gives white badge text
+   only 3.0:1 contrast; Bootstrap's darker info shade gives 5.0:1. */
+:root {
+    --sd-color-info: #117a8b;
+}
+
 /* Bio area */
 div.profile-pic {
     margin-top: 1em;
