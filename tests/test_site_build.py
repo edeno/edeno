@@ -1,0 +1,90 @@
+"""Build the site once and check the rendered HTML."""
+
+import re
+import shutil
+import sys
+from pathlib import Path
+
+import pytest
+from sphinx.cmd.build import build_main
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO))
+import conf  # noqa: E402
+
+NAV = ["Projects", "Publications", "Talks", "Teaching", "Fun", "Contact"]
+
+
+@pytest.fixture(scope="session")
+def built_site(tmp_path_factory) -> Path:
+    src = tmp_path_factory.mktemp("src") / "site"
+    out = tmp_path_factory.mktemp("out")
+    shutil.copytree(
+        REPO,
+        src,
+        ignore=shutil.ignore_patterns(
+            ".git",
+            ".venv",
+            "_build",
+            ".superpowers",
+            ".remember",
+            "__pycache__",
+            "tests",
+            "docs",
+        ),
+    )
+    # CI runs pytest before fetching publications from ORCID.
+    publications = src / "_static" / "publications.txt"
+    if not publications.exists():
+        publications.write_text("Publications placeholder.\n")
+    assert (
+        build_main(["-b", "dirhtml", "-nW", "--keep-going", "-q", str(src), str(out)])
+        == 0
+    )
+    return out
+
+
+def read_page(built_site: Path, page: str) -> str:
+    if page == "404":
+        return (built_site / "404.html").read_text()
+    return (built_site / page / "index.html").read_text()
+
+
+def test_top_nav_lists_pages_in_order(built_site):
+    html = read_page(built_site, "talks")
+    nav = re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
+    assert re.findall(r"<a [^>]*>([^<]+)</a>", nav) == NAV
+    assert re.search(r'<a class="site-name" href="\.\./"', html)
+
+
+def test_no_furo_no_search(built_site):
+    for page in ["", "projects", "publications"]:
+        html = read_page(built_site, page)
+        assert "furo" not in html.lower()
+        assert 'type="search"' not in html
+    assert not (built_site / "search").exists()
+    assert not (built_site / "searchindex.js").exists()
+
+
+def test_head_injection_survives(built_site):
+    html = read_page(built_site, "")
+    assert '<script type="application/ld+json">' in html
+    assert conf.GA_MEASUREMENT_ID in html
+    assert '<meta property="og:title"' in html
+    assert 'rel="icon"' in html
+
+
+def test_footer_social_links(built_site):
+    html = read_page(built_site, "")
+    footer = re.search(r"<footer.*?</footer>", html, re.S).group(0)
+    for name, url, _ in conf.SOCIAL_LINKS:
+        assert f'href="{url}"' in footer
+        assert f'aria-label="{name}"' in footer
+    assert "Furo" not in footer
+    assert "Sphinx" not in footer
+
+
+def test_404_page(built_site):
+    html = read_page(built_site, "404")
+    assert "search box" not in html
+    assert 'href="/_static/' in html

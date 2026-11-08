@@ -6,7 +6,6 @@ requires-python = ">=3.13"
 dependencies = [
     "docutils",
     "myst-parser",
-    "furo",
     "sphinx",
     "sphinx-design",
     "sphinxext-opengraph",

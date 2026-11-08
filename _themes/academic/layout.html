@@ -1,0 +1,30 @@
+{% extends "basic/layout.html" %}
+
+{%- block relbar1 %}{% endblock %}
+{%- block relbar2 %}{% endblock %}
+
+{%- block header %}
+<header class="site-header">
+  <a class="site-name" href="{{ pathto(root_doc) }}">{{ project }}</a>
+  <nav class="site-nav" aria-label="Main">
+    {{ toctree(maxdepth=1, titles_only=True, includehidden=True, collapse=False) }}
+  </nav>
+</header>
+{%- endblock %}
+
+{%- block content %}
+<main class="page">
+  {% block body %}{% endblock %}
+</main>
+{%- endblock %}
+
+{%- block footer %}
+<footer class="site-footer">
+  <div class="copyright">{{ copyright_block() }}</div>
+  <div class="icons">
+    {%- for name, url, icon in social_links %}
+    <a href="{{ url }}" aria-label="{{ name }}" title="{{ name }}">{{ icon }}</a>
+    {%- endfor %}
+  </div>
+</footer>
+{%- endblock %}

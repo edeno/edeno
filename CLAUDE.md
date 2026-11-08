@@ -38,7 +38,11 @@ uv run make live
 
 ## Theme
 
-The site uses [Furo](https://pradyunsg.me/furo/). Two things to know:
+The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `basic` theme: a top bar, a single ~650px column, and no sidebar or search. The design intent (simple, academic, no cards/badges/buttons) is in `docs/superpowers/specs/2026-11-08-site-redesign-design.md`.
 
-- Brand colour is teal (`#0f766e` light / `#2dd4bf` dark, `conf.py: html_theme_options.light_css_variables` / `dark_css_variables`); both meet WCAG AA text contrast on Furo's backgrounds (5.5:1 and 9.9:1), so keep that bar if changing it.
-- Furo doesn't accept Pydata-style theme options. Google Analytics, JSON-LD Person schema, and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py` (theme-agnostic). Social icons live in Furo's `footer_icons` slot as inline Bootstrap Icons SVGs.
+- `layout.html` renders the top nav from the hidden toctree in `index.md`, so add or reorder pages there. Footer icons come from `SOCIAL_LINKS` in `conf.py`, passed through `html_context` (inline Bootstrap Icons SVGs).
+- All styling lives in `static/academic.css`. Colours are CSS variables on `:root`. Dark mode follows the visitor's system setting via `prefers-color-scheme`; there is no toggle.
+- Brand colour is teal (`#0f766e` light / `#2dd4bf` dark). Both meet WCAG AA text contrast on the page backgrounds (5.5:1 on `#ffffff`, 9.8:1 on `#121519`), so keep that bar if changing it.
+- Search is turned off in `conf.py` (`_disable_search`), so no `search/` page or index is built.
+- Google Analytics, JSON-LD Person schema, and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py`.
+- `tests/test_site_build.py` builds the site and checks the nav, head tags, footer and 404 page. It runs with `uv run pytest`.
