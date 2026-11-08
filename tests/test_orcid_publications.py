@@ -180,6 +180,18 @@ def test_format_reference_single_period_after_initials():
 
 def test_format_reference_collapses_whitespace_in_title():
     meta = make_meta(title="Spectral Connectivity: a python\n  package")
-    assert "**Spectral Connectivity: a python package**." in (
-        op.format_reference(meta, "10.1/x")["reference"]
+    assert (
+        "**Spectral Connectivity: a python package**."
+        in (op.format_reference(meta, "10.1/x")["reference"])
     )
+
+
+@pytest.mark.parametrize(
+    ("extra", "expected_tail"),
+    [
+        ({"article-number": "e64505"}, "*eLife*, *10*, e64505."),
+        ({"page": "1-9", "article-number": "e64505"}, "*eLife*, *10*, 1-9."),
+    ],
+)
+def test_format_journal_details_uses_article_number_without_pages(extra, expected_tail):
+    assert op.format_journal_details(make_meta(**extra), "eLife") == expected_tail

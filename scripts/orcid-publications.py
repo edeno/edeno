@@ -103,13 +103,16 @@ def format_author(author: dict) -> str:
 
 
 def format_journal_details(meta: dict, journal: str) -> str:
-    """Render `*Journal*, *vol*(issue), pages.` for an APA-style citation tail."""
+    """Render `*Journal*, *vol*(issue), pages.` for an APA-style citation tail.
+
+    Journals without page ranges (e.g. eLife) use the article number instead.
+    """
     if not journal:
         return ""
     parts = [f"*{journal}*"]
     volume = meta.get("volume")
     issue = meta.get("issue")
-    page = meta.get("page")
+    page = meta.get("page") or meta.get("article-number")
     if volume:
         parts.append(f"*{volume}*({issue})" if issue else f"*{volume}*")
     if page:
