@@ -209,3 +209,10 @@ def test_format_reference_takes_casing_from_matching_short_title(full, short, ex
     assert (
         f"**A title**. {expected}" in op.format_reference(meta, "10.1/x")["reference"]
     )
+
+
+def test_format_reference_matches_co_first_via_linked_doi(monkeypatch):
+    monkeypatch.setitem(op.CO_FIRST_AUTHORS, "10.7554/elife.1.3", 1)
+    meta = make_meta(relation=related("10.7554/eLife.1.3", "is-same-as"))
+    reference = op.format_reference(meta, "10.7554/eLife.1")["reference"]
+    assert reference.startswith(f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK}.")

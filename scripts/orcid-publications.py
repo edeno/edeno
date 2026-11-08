@@ -124,7 +124,7 @@ def format_reference(meta: dict, doi: str) -> dict | None:
     try:
         title = " ".join(meta["title"].split())
         issued = meta["issued"]["date-parts"][0]
-        n_co_first = CO_FIRST_AUTHORS.get(doi.lower(), 0)
+        n_co_first = co_first_count(doi, meta)
         authors = ", ".join(
             format_author(a) + ("\\*" if i < n_co_first else "")
             for i, a in enumerate(meta["author"])
@@ -174,6 +174,16 @@ def related_dois(meta: dict) -> set[str]:
         for rel in relations.get(kind, [])
         if rel.get("id-type") == "doi"
     }
+
+
+def same_work_dois(doi: str, meta: dict) -> set[str]:
+    """Lowercased DOI plus every DOI Crossref links to it as the same work."""
+    return {doi.lower()} | related_dois(meta)
+
+
+def co_first_count(doi: str, meta: dict) -> int:
+    """Number of leading co-first authors, matched on any version's DOI."""
+    return max(CO_FIRST_AUTHORS.get(d, 0) for d in same_work_dois(doi, meta))
 
 
 def select_version(session: requests.Session, group: dict) -> tuple[str, dict] | None:
@@ -272,7 +282,8 @@ def main() -> None:
         works.append(selected)
 
     works = drop_other_versions(works)
-    unmatched = CO_FIRST_AUTHORS.keys() - {doi.lower() for doi, _ in works}
+    listed = set().union(*(same_work_dois(doi, meta) for doi, meta in works))
+    unmatched = CO_FIRST_AUTHORS.keys() - listed
     if unmatched:
         logger.warning("Co-first DOIs not in the publication list: %s", unmatched)
 
