@@ -12,21 +12,18 @@ uv sync
 
 Use `uv sync` / `uv run` / `uv add`, not `uv pip`: the project commands always target `.venv`, while `uv pip` targets whatever `VIRTUAL_ENV` points at (which may be conda base). To bump dependencies: `uv lock --upgrade`.
 
-Build the site:
+Build the site (the `Makefile` is the single entry point; CI runs the same target, strict on PRs):
 
 ```bash
-uv run sphinx-build -nW --keep-going -b dirhtml . _build/dirhtml
+uv run make dirhtml SPHINXOPTS="-nW --keep-going"
 open _build/dirhtml/index.html
 ```
 
-Live-reload while editing:
+Live-reload while editing (`sphinx-autobuild` is in the `dev` group, which `uv sync` installs by default; CI uses `--no-dev`):
 
 ```bash
-uv run sphinx-autobuild -b dirhtml . _build/dirhtml \
-  --ignore "_build/*" --ignore "**/.ipynb_checkpoints"
+uv run make live
 ```
-
-The `execute` dependency group (`uv sync --group execute`) only matters if a page actually executes a notebook — CI installs it, but there are no `.ipynb` pages yet.
 
 ## Generated files
 

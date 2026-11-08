@@ -5,12 +5,10 @@ description = "Personal academic website (Sphinx + MyST)"
 requires-python = ">=3.13"
 dependencies = [
     "docutils",
-    "myst-nb",
     "myst-parser",
     "furo",
     "rich",
     "sphinx",
-    "sphinx-autobuild",
     "sphinx-design",
     "sphinxext-opengraph",
     "sphinx-sitemap",
@@ -19,17 +17,4 @@ dependencies = [
 ]
 
 [dependency-groups]
-# Only needed if a page executes a notebook.
-execute = [
-    "colorspacious",
-    "ipywidgets",
-    "jupyterlab",
-    "jupytext",
-    "makeitpop",
-    "matplotlib",
-    "numpy",
-    "pandas",
-    "scipy",
-    "seaborn",
-    "xarray",
-]
+dev = ["sphinx-autobuild"]

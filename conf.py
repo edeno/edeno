@@ -8,7 +8,7 @@ copyright = "2026, Eric L. Denovellis"
 author = "Eric L. Denovellis"
 
 extensions = [
-    "myst_nb",
+    "myst_parser",
     "sphinx_design",
     "sphinxext.opengraph",
     "sphinx_sitemap",
@@ -16,18 +16,10 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = [
-    "_build",
-    "Thumbs.db",
-    ".DS_Store",
-    "**/pandoc_ipynb/inputs/*",
-    ".nox/*",
-    ".venv/*",
-    ".remember/*",
-    "README.md",
-    "CLAUDE.md",
-    "**/.ipynb_checkpoints/*",
-]
+# All pages live at the repo root; `*` doesn't cross `/`, so tool
+# directories (.venv, .remember, ...) are never scanned.
+include_patterns = ["*.md"]
+exclude_patterns = ["README.md", "CLAUDE.md"]
 
 
 # -- HTML output -------------------------------------------------
@@ -93,15 +85,13 @@ ogp_custom_meta_tags = [
 ]
 
 
-# -- MyST and MyST-NB ---------------------------------------------------
+# -- MyST ---------------------------------------------------------------
 
 myst_enable_extensions = [
     "colon_fence",
     "deflist",
     "html_image",
 ]
-
-nb_execution_mode = "cache"
 
 
 # -- Per-page <head> injection (theme-agnostic) -------------------------
