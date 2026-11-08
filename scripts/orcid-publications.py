@@ -93,7 +93,8 @@ def format_author(author: dict) -> str:
     elif given:
         display = f"{family}, {initials(given)}."
     else:
-        display = family or "<unknown>"
+        # Organizational authors (consortia) carry only a `name`.
+        display = family or author.get("name") or "<unknown>"
 
     if "ORCID" in author:
         return f"[{display}]({author['ORCID']})"

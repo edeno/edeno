@@ -47,6 +47,7 @@ def test_initials(given, expected):
         ),
         ({"family": "Denovellis", "given": "Eric"}, SELF_LINK),
         ({"family": "Plato"}, "Plato"),
+        ({"name": "Spyglass Consortium"}, "Spyglass Consortium"),
     ],
 )
 def test_format_author(author, expected):
