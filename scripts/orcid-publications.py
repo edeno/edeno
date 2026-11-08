@@ -29,6 +29,13 @@ SAME_WORK_RELATIONS = (
     "is-preprint-of",
 )
 
+# Crossref has no equal-contribution field, so co-first authorship (as
+# marked in the CV) is listed here: DOI -> number of leading co-first authors.
+CO_FIRST_AUTHORS = {
+    "10.7554/elife.108089.3": 2,
+    "10.1016/j.neuron.2012.09.029": 3,
+}
+
 logger = logging.getLogger("orcid-publications")
 
 
@@ -114,7 +121,11 @@ def format_reference(meta: dict, doi: str) -> dict | None:
     try:
         title = meta["title"]
         year = meta["issued"]["date-parts"][0][0]
-        authors = ", ".join(format_author(a) for a in meta["author"])
+        n_co_first = CO_FIRST_AUTHORS.get(doi.lower(), 0)
+        authors = ", ".join(
+            format_author(a) + ("\\*" if i < n_co_first else "")
+            for i, a in enumerate(meta["author"])
+        )
         journal = meta.get("container-title", "")
         if is_preprint(meta):
             servers = [i["name"] for i in meta.get("institution", []) if "name" in i]
@@ -253,8 +264,13 @@ def main() -> None:
             continue
         works.append(selected)
 
+    works = drop_other_versions(works)
+    unmatched = CO_FIRST_AUTHORS.keys() - {doi.lower() for doi, _ in works}
+    if unmatched:
+        logger.warning("Co-first DOIs not in the publication list: %s", unmatched)
+
     entries: list[dict] = []
-    for doi, meta in drop_other_versions(works):
+    for doi, meta in works:
         entry = format_reference(meta, doi)
         if entry is not None:
             entries.append(entry)

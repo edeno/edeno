@@ -1,5 +1,7 @@
 # Publications
 
+\* Co-first authors
+
 ```{include} _static/publications.txt
 ```
 
