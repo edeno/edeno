@@ -4,6 +4,16 @@
     --sd-color-info: #117a8b;
 }
 
+/* Footer social icons: Furo's 18px inline links are below the 24x24px
+   minimum target size (WCAG 2.5.8). */
+.bottom-of-page .icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+}
+
 /* Bio area */
 div.profile-pic {
     margin-top: 1em;
