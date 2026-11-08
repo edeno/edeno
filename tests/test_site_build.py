@@ -15,13 +15,10 @@ import conf  # noqa: E402
 NAV = ["Projects", "Publications", "Talks", "Teaching", "Fun", "Contact"]
 
 
-@pytest.fixture(scope="session")
-def built_site(tmp_path_factory) -> Path:
-    src = tmp_path_factory.mktemp("src") / "site"
-    out = tmp_path_factory.mktemp("out")
+def copy_site(dest: Path) -> Path:
     shutil.copytree(
         REPO,
-        src,
+        dest,
         ignore=shutil.ignore_patterns(
             ".git",
             ".venv",
@@ -34,14 +31,31 @@ def built_site(tmp_path_factory) -> Path:
         ),
     )
     # CI runs pytest before fetching publications from ORCID.
-    publications = src / "_static" / "publications.txt"
+    publications = dest / "_static" / "publications.txt"
     if not publications.exists():
         publications.write_text("Publications placeholder.\n")
-    assert (
-        build_main(["-b", "dirhtml", "-nW", "--keep-going", "-q", str(src), str(out)])
-        == 0
-    )
+    return dest
+
+
+def build_site(src: Path, out: Path) -> int:
+    return build_main(["-b", "dirhtml", "-q", str(src), str(out)])
+
+
+@pytest.fixture(scope="session")
+def built_site(tmp_path_factory) -> Path:
+    src = copy_site(tmp_path_factory.mktemp("src") / "site")
+    out = tmp_path_factory.mktemp("out")
+    assert build_site(src, out) == 0
     return out
+
+
+def test_page_warnings_do_not_fail_the_build(tmp_path):
+    # Deploys publish despite warnings (only PR builds are strict), and CI
+    # runs these tests before every deploy, so they must not be strict either.
+    src = copy_site(tmp_path / "site")
+    with (src / "talks.md").open("a") as f:
+        f.write("\nSee {ref}`a-label-that-does-not-exist`.\n")
+    assert build_site(src, tmp_path / "out") == 0
 
 
 def read_page(built_site: Path, page: str) -> str:
