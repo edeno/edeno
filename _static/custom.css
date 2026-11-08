@@ -10,9 +10,6 @@ div.profile-pic img {
     height: 180px;
     object-fit: cover;
     border-radius: 50%;
-    margin: 0 auto;
-    max-width: 190px;
-    display: block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -27,21 +24,16 @@ div.profile-pic img {
     font-size: 1.5em;
     font-weight: 600;
     margin-bottom: 0.5em;
-    color: #333;
+    color: var(--color-foreground-primary);
 }
 
 .focusareas {
     font-size: .9em;
     font-weight: bold;
-    color: #555;
+    color: var(--color-foreground-secondary);
     line-height: 1.6;
     letter-spacing: 0.025em;
     margin-bottom: 1em;
-}
-
-/* Blog post comments */
-.gsc-reactions {
-    margin-top: 1em;
 }
 
 /* Homepage hero */
@@ -76,9 +68,14 @@ div.profile-pic img {
     background-color: var(--color-background-secondary);
 }
 
+.sd-card video {
+    display: block;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
 /* Featured project cards: taller image, more breathing room. */
-.featured-project .sd-card-img-top,
-.featured-project video {
+.featured-project .sd-card-img-top {
     height: 360px;
 }
 

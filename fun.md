@@ -16,8 +16,6 @@ Here are some photos from hikes:
 `````{grid} 3
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking.jpg
 :alt: A hiker walking along a volcanic ridge under a clear blue sky, with the snow-capped Three Sisters and Mount Washington in the distance.
 :align: center
@@ -26,8 +24,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking1.jpg
 :alt: Portrait of a hiker in a yellow Mountain Hardwear shell jacket and face mask, with snow-covered peaks in the background.
 :align: center
@@ -36,8 +32,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking2.jpg
 :alt: A green tent pitched at a high Sierra campsite with dramatic storm clouds and a weathered tree above a forested valley.
 :align: center
@@ -46,8 +40,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking3.jpg
 :alt: A wide alpine valley with a creek, granite peaks, and sage meadows under an overcast sky.
 :align: center
@@ -56,8 +48,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking4.jpg
 :alt: Pink and orange sunset clouds over jagged Sierra peaks, framed by tall pines and a granite-strewn slope.
 :align: center
@@ -66,8 +56,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking5.jpg
 :alt: Yellow wildflowers in the foreground with a hazy view across rolling hills and a distant valley below.
 :align: center
@@ -76,8 +64,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking6.jpg
 :alt: Group selfie of four smiling backpackers on a granite slab in the high Sierra, with pines and a domed peak behind them.
 :align: center
@@ -86,8 +72,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking7.jpg
 :alt: A meadow of red Indian paintbrush and pink wildflowers at sunrise, with a peak rising above a sea of clouds in the Goat Rocks Wilderness.
 :align: center
@@ -96,8 +80,6 @@ Here are some photos from hikes:
 ````
 
 ````{grid-item}
-:columns: 4
-
 ```{image} /images/backpacking8.jpg
 :alt: A hiker descending a ridge trail past a snowfield, with Mount Rainier rising in the distance under a clear blue sky.
 :align: center
