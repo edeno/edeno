@@ -195,3 +195,17 @@ def test_format_reference_collapses_whitespace_in_title():
 )
 def test_format_journal_details_uses_article_number_without_pages(extra, expected_tail):
     assert op.format_journal_details(make_meta(**extra), "eLife") == expected_tail
+
+
+@pytest.mark.parametrize(
+    ("full", "short", "expected"),
+    [
+        ("eneuro", "eNeuro", "*eNeuro*"),
+        ("Journal of Open Source Software", "J. Open Source Softw.", "*Journal of"),
+    ],
+)
+def test_format_reference_takes_casing_from_matching_short_title(full, short, expected):
+    meta = make_meta(**{"container-title": full, "container-title-short": short})
+    assert (
+        f"**A title**. {expected}" in op.format_reference(meta, "10.1/x")["reference"]
+    )

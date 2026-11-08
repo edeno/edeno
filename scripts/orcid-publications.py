@@ -130,6 +130,11 @@ def format_reference(meta: dict, doi: str) -> dict | None:
             for i, a in enumerate(meta["author"])
         )
         journal = meta.get("container-title", "")
+        # Some full titles are mis-cased ("eneuro"); the short title, when it
+        # is the same name, carries the journal's own casing ("eNeuro").
+        short = meta.get("container-title-short")
+        if journal and short and short.lower() == journal.lower():
+            journal = short
         if is_preprint(meta):
             servers = [i["name"] for i in meta.get("institution", []) if "name" in i]
             if servers:
