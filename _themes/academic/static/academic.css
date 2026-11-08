@@ -262,7 +262,7 @@ img {
 }
 
 .project {
-  margin: 0 0 1.75rem;
+  margin: 0 0 2.5rem;
 }
 
 .featured > p,
@@ -270,14 +270,35 @@ img {
   margin-bottom: 0.35rem;
 }
 
+/* On the projects page, section headings are small labels so they don't
+   compete with the project names. */
+section:has(> .featured, > .project) > h2 {
+  margin: 3rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Project names: larger and in the text colour, so they read as titles
+   rather than as more links. */
 .featured > p:first-of-type,
 .project > p:first-of-type {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
 }
 
 .featured > p:first-of-type a,
 .project > p:first-of-type a {
+  color: var(--fg);
   text-decoration: none;
+}
+
+.featured > p:first-of-type a:hover,
+.project > p:first-of-type a:hover {
+  color: var(--brand);
 }
 
 .project-links {
