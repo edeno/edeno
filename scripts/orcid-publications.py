@@ -12,6 +12,7 @@ from urllib3.util.retry import Retry
 
 ORCID_ID = "0000-0003-4606-087X"
 ORCID_RECORD_API = "https://pub.orcid.org/v3.0/"
+ORCID_PROFILE = f"https://orcid.org/{ORCID_ID}"
 HTTP_TIMEOUT = 15  # seconds
 OUTPUT_PATH = Path(__file__).parent.parent / "_static/publications.txt"
 
@@ -90,7 +91,7 @@ def format_author(author: dict) -> str:
     if "ORCID" in author:
         return f"[{display}]({author['ORCID']})"
     if is_self:
-        return f"[{display}]({ORCID_RECORD_API}{ORCID_ID})"
+        return f"[{display}]({ORCID_PROFILE})"
     return display
 
 
