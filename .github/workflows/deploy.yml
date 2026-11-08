@@ -2,8 +2,8 @@ name: deploy-website
 
 # Build on every PR, every push to main, and weekly (Mondays 13:00 UTC) so
 # the publications page picks up new ORCID entries even without a code push.
-# Only the push-to-main + cron paths actually publish (see the gating `if:`
-# on the gh-pages step below).
+# Only the push-to-main + cron paths actually publish (see the `if:` on the
+# upload step and the deploy job).
 on:
   pull_request:
   push:
@@ -12,8 +12,17 @@ on:
   schedule:
     - cron: '0 13 * * 1'
 
+permissions:
+  contents: read
+
+# One run per ref at a time. Superseded PR builds are cancelled; deploys
+# from main queue instead so a publish is never interrupted midway.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  deploy-book:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v7
@@ -29,11 +38,22 @@ jobs:
     - name: Build the site
       run: |
         uv run make dirhtml
-    # If we've pushed to main, push the book's HTML to github-pages
+
     - if: ${{ github.ref == 'refs/heads/main' }}
-      name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v4.1.0
+      uses: actions/upload-pages-artifact@v5.0.0
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_build/dirhtml
-        cname: www.edenovellis.com
+        path: ./_build/dirhtml
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - id: deployment
+      uses: actions/deploy-pages@v5.0.1
