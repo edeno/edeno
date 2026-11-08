@@ -1,3 +1,10 @@
+---
+og:description: "Invited and contributed talks by Eric L. Denovellis on statistical machine learning, neural decoding, and hippocampal replay."
+myst:
+  html_meta:
+    description: "Invited and contributed talks by Eric L. Denovellis on statistical machine learning, neural decoding, and hippocampal replay."
+---
+
 # Talks
 
 **NeuroAI for the Hippocampus workshop** (session: NeuroAI tools for hippocampal data). Spring Hippocampal Symposium. Verona, Italy. May 2027.
