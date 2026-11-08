@@ -145,3 +145,24 @@ def test_contact_address_keeps_its_lines(built_site):
         r"<strong>Sandler Neurosciences Center</strong>.*?</p>", html, re.S
     ).group(0)
     assert address.count("<br") == 3
+
+
+def test_home_description_starts_with_tagline(built_site):
+    html = read_page(built_site, "")
+    for pattern in [
+        r'<meta content="([^"]*)" name="description"',
+        r'<meta property="og:description" content="([^"]*)"',
+    ]:
+        assert (
+            re.search(pattern, html)
+            .group(1)
+            .startswith("Computational research scientist")
+        )
+
+
+def test_titles_not_doubled(built_site):
+    assert "<title>Eric L. Denovellis</title>" in read_page(built_site, "")
+    assert re.search(
+        r"<title>Talks &#8212; Eric L\. Denovellis</title>",
+        read_page(built_site, "talks"),
+    )

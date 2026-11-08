@@ -1,3 +1,10 @@
+---
+og:description: "Computational research scientist at UCSF — building scalable, interpretable tools to decode, categorize, and visualize how the brain represents information."
+myst:
+  html_meta:
+    description: "Computational research scientist at UCSF — building scalable, interpretable tools to decode, categorize, and visualize how the brain represents information."
+---
+
 # Eric L. Denovellis
 
 ```{image} _static/profile.jpg
