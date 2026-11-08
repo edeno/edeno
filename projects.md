@@ -4,130 +4,110 @@ Code for most of my projects can be found on my [GitHub page](https://github.com
 
 ## Featured
 
-:::::{grid} 1
-:gutter: 3
+::::{div} featured
 
-  ::::{grid-item-card} Spyglass
-  :img-top: _static/spyglass.png
-  :img-alt: Spyglass logo
-  :text-align: left
-  :class-card: featured-project
+```{image} _static/spyglass.png
+:alt: Spyglass logo
+```
 
-  [Spyglass](https://github.com/LorenFrankLab/spyglass) is a data analysis framework that facilitates the storage, analysis, visualization, and sharing of neuroscience data to support reproducible research. It is designed to be interoperable with the [NWB format](https://www.nwb.org/) (a data standard for neurophysiology) and integrates open-source tools such as [SpikeInterface](https://spikeinterface.readthedocs.io/en/latest/) and [DeepLabCut](https://www.mackenziemathislab.org/deeplabcut) into a coherent framework. I am a co-first author on the [eLife paper](https://doi.org/10.7554/eLife.108089.3) describing it.
+**[Spyglass](https://github.com/LorenFrankLab/spyglass)**
 
-  +++
-  {bdg-primary}`Python` {bdg-info}`NWB` {bdg-light}`Data Framework`
+A framework for storing, analyzing, visualizing, and sharing neurophysiology data reproducibly. It stores data in the [NWB](https://www.nwb.org/) standard, tracks every analysis step with [DataJoint](https://datajoint.com/), and wraps tools such as [SpikeInterface](https://spikeinterface.readthedocs.io/en/latest/) and [DeepLabCut](https://www.mackenziemathislab.org/deeplabcut) in shared pipelines. I am a co-first author on the paper describing it.
 
-  {bdg-link-primary}`GitHub <https://github.com/LorenFrankLab/spyglass>` [![GitHub stars](https://img.shields.io/github/stars/LorenFrankLab/spyglass?style=social&label=Stars)](https://github.com/LorenFrankLab/spyglass)
-  ::::
+:::{div} project-links
+[Code](https://github.com/LorenFrankLab/spyglass) · [Paper](https://doi.org/10.7554/eLife.108089.3)
+:::
 
-  ::::{grid-item-card} Replay Trajectory Classification
-  :text-align: left
-  :class-card: featured-project
+::::
 
-  ```{raw} html
-  <video controls autoplay loop muted playsinline preload="metadata" aria-label="Animation of classifying replay trajectories">
-    <source src="/_static/replay-trajectory-classification.mp4" type="video/mp4">
-  </video>
-  ```
+::::{div} featured
 
-  [replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory. It can decode both clustered and unclustered spiking activity and uses GPU acceleration for fast inference. The underlying state-space methods are described in our [eLife paper](https://doi.org/10.7554/eLife.64505).
+```{raw} html
+<video controls autoplay loop muted playsinline preload="metadata" aria-label="Animation of classifying replay trajectories">
+  <source src="/_static/replay-trajectory-classification.mp4" type="video/mp4">
+</video>
+```
 
-  +++
-  {bdg-primary}`Python` {bdg-info}`GPU` {bdg-light}`Neuroscience`
+**[Replay Trajectory Classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification)**
 
-  {bdg-link-primary}`GitHub <https://github.com/Eden-Kramer-Lab/replay_trajectory_classification>` [![GitHub stars](https://img.shields.io/github/stars/Eden-Kramer-Lab/replay_trajectory_classification?style=social&label=Stars)](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification)
-  ::::
+Decodes position moment by moment from hippocampal spiking, sorted or clusterless, and classifies each replay as stationary, continuous, or fragmented. It handles linearized 1D and 2D environments and can run on the GPU.
 
-:::::
+:::{div} project-links
+[Code](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) · [Paper](https://doi.org/10.7554/eLife.64505)
+:::
+
+::::
 
 ## More projects
 
-:::::{grid} 1 2 2 3
-:gutter: 3
+::::{div} project
 
-  ::::{grid-item-card} Non-Local Detector
-  :text-align: left
+**[Non-Local Detector](https://github.com/LorenFrankLab/non_local_detector)**
 
-  [non_local_detector](https://github.com/LorenFrankLab/non_local_detector) decodes non-local neural activity, such as hippocampal replay, from sorted or clusterless spikes using Bayesian state space models in JAX. It includes continuous/fragmented and multi-environment classifiers and runs on the GPU.
+Detects non-local activity such as replay, and decodes position, from sorted or clusterless spikes using hidden Markov models written in JAX. It supports several likelihood models and multiple environments, and runs on the GPU.
 
-  +++
-  {bdg-primary}`Python` {bdg-info}`JAX` {bdg-light}`Neuroscience`
+:::{div} project-links
+[Code](https://github.com/LorenFrankLab/non_local_detector)
+:::
 
-  {bdg-link-primary}`GitHub <https://github.com/LorenFrankLab/non_local_detector>` [![GitHub stars](https://img.shields.io/github/stars/LorenFrankLab/non_local_detector?style=social&label=Stars)](https://github.com/LorenFrankLab/non_local_detector)
-  ::::
+::::
 
-  ::::{grid-item-card} Spectral Connectivity
-  :img-top: _static/spectral_connectivity.png
-  :img-alt: Spectral Connectivity visualization example
-  :text-align: left
+::::{div} project
 
-  [spectral_connectivity](https://github.com/Eden-Kramer-Lab/spectral_connectivity) computes multitaper spectral estimates and frequency-domain brain connectivity measures (coherence, spectral Granger causality, phase-lag index) on the CPU and GPU. Published in [JOSS](https://doi.org/10.21105/joss.04840).
+**[Spectral Connectivity](https://github.com/Eden-Kramer-Lab/spectral_connectivity)**
 
-  +++
-  {bdg-primary}`Python` {bdg-info}`Signal Processing` {bdg-light}`Neuroscience`
+Multitaper spectral estimates and frequency-domain connectivity measures, including coherence, spectral Granger causality, and phase-lag indices, for many signals at once on the CPU or GPU.
 
-  {bdg-link-primary}`GitHub <https://github.com/Eden-Kramer-Lab/spectral_connectivity>` [![GitHub stars](https://img.shields.io/github/stars/Eden-Kramer-Lab/spectral_connectivity?style=social&label=Stars)](https://github.com/Eden-Kramer-Lab/spectral_connectivity)
-  ::::
+:::{div} project-links
+[Code](https://github.com/Eden-Kramer-Lab/spectral_connectivity) · [Paper](https://doi.org/10.21105/joss.04840)
+:::
 
-  ::::{grid-item-card} RasterVis
-  :text-align: left
+::::
 
-  ```{raw} html
-  <video controls autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of RasterVis interactive visualization">
-    <source src="/_static/RasterVis.mp4" type="video/mp4">
-  </video>
-  ```
+::::{div} project
 
-  Interactive JavaScript tool for quickly viewing, grouping, and summarizing spike rasters across many neurons, with trial-aligned PSTH overlays and arbitrary smoothing.
+**[RasterVis](https://github.com/NeurophysVis/RasterVis)**
 
-  +++
-  {bdg-warning}`JavaScript` {bdg-info}`Visualization` {bdg-light}`Neuroscience`
+A browser tool for viewing spike rasters across many neurons: align them to trial events, group them by experimental factors, and overlay smoothed firing-rate estimates.
 
-  {bdg-link-primary}`GitHub <https://github.com/NeurophysVis/RasterVis>` {bdg-link-secondary}`Demo <https://neurophysvis.github.io/RasterVis/public/>` [![GitHub stars](https://img.shields.io/github/stars/NeurophysVis/RasterVis?style=social&label=Stars)](https://github.com/NeurophysVis/RasterVis)
-  ::::
+:::{div} project-links
+[Code](https://github.com/NeurophysVis/RasterVis) · [Demo](https://neurophysvis.github.io/RasterVis/public/)
+:::
 
-  ::::{grid-item-card} SpectraVis
-  :text-align: left
+::::
 
-  ```{raw} html
-  <video controls autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of SpectraVis interactive network visualization">
-    <source src="/_static/SpectraVis-Demo.mp4" type="video/mp4">
-  </video>
-  ```
+::::{div} project
 
-  Interactive JavaScript tool for analyzing task-related functional brain networks across time and frequency, with side-by-side local and global views.
+**[SpectraVis](https://github.com/NeurophysVis/SpectraVis)**
 
-  +++
-  {bdg-warning}`JavaScript` {bdg-info}`Visualization` {bdg-light}`Network Analysis`
+A browser tool for exploring functional brain networks over time and frequency, comparing pairwise and whole-network views across connectivity measures.
 
-  {bdg-link-primary}`GitHub <https://github.com/NeurophysVis/SpectraVis>` {bdg-link-secondary}`Demo <https://neurophysvis.github.io/SpectraVis/public/>` [![GitHub stars](https://img.shields.io/github/stars/NeurophysVis/SpectraVis?style=social&label=Stars)](https://github.com/NeurophysVis/SpectraVis)
-  ::::
+:::{div} project-links
+[Code](https://github.com/NeurophysVis/SpectraVis) · [Demo](https://neurophysvis.github.io/SpectraVis/public/)
+:::
 
-  ::::{grid-item-card} Track Linearization
-  :img-top: _static/track_linearization.png
-  :img-alt: Example of track linearization from 2D to 1D
-  :text-align: left
+::::
 
-  [track_linearization](https://github.com/LorenFrankLab/track_linearization) projects 2D animal-tracking position to 1D for any spatial environment, with visualization tools for inspecting the projection. The hippocampal field often relies on this transformation to simplify downstream analyses.
+::::{div} project
 
-  +++
-  {bdg-primary}`Python` {bdg-info}`Spatial Analysis` {bdg-light}`Neuroscience`
+**[Track Linearization](https://github.com/LorenFrankLab/track_linearization)**
 
-  {bdg-link-primary}`GitHub <https://github.com/LorenFrankLab/track_linearization>` [![GitHub stars](https://img.shields.io/github/stars/LorenFrankLab/track_linearization?style=social&label=Stars)](https://github.com/LorenFrankLab/track_linearization)
-  ::::
+Converts 2D position on a maze or track into 1D position along the track, using a graph of the track's layout and a hidden Markov model to handle noisy tracking.
 
-  ::::{grid-item-card} Ripple Detection
-  :img-top: _static/ripple_detection.png
-  :img-alt: Illustration of hippocampal ripple detection
-  :text-align: left
+:::{div} project-links
+[Code](https://github.com/LorenFrankLab/track_linearization)
+:::
 
-  [ripple_detection](https://github.com/Eden-Kramer-Lab/ripple_detection) is a Python package collecting the Frank lab methods for detecting hippocampal sharp-wave ripples (150-250 Hz oscillations associated with replay), so the procedure is transparent and reproducible across labs (see [Liu et al. 2022](https://www.nature.com/articles/s41467-022-33536-x) for a comparison).
+::::
 
-  +++
-  {bdg-primary}`Python` {bdg-info}`Signal Processing` {bdg-light}`Neuroscience`
+::::{div} project
 
-  {bdg-link-primary}`GitHub <https://github.com/Eden-Kramer-Lab/ripple_detection>` [![GitHub stars](https://img.shields.io/github/stars/Eden-Kramer-Lab/ripple_detection?style=social&label=Stars)](https://github.com/Eden-Kramer-Lab/ripple_detection)
-  ::::
+**[Ripple Detection](https://github.com/Eden-Kramer-Lab/ripple_detection)**
 
-:::::
+Detects hippocampal sharp-wave ripples (150–250 Hz) in local field potentials, with several published detectors side by side so results can be compared and reproduced (see [Liu et al. 2022](https://www.nature.com/articles/s41467-022-33536-x)).
+
+:::{div} project-links
+[Code](https://github.com/Eden-Kramer-Lab/ripple_detection)
+:::
+
+::::

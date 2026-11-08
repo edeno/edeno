@@ -245,3 +245,57 @@ img {
     margin-bottom: 1rem;
   }
 }
+
+/* Projects: a few featured with media, then a plain list. */
+.featured {
+  margin: 1.5rem 0 2.5rem;
+}
+
+.featured img,
+.featured video {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
+  margin-bottom: 1rem;
+}
+
+.project {
+  margin: 0 0 1.75rem;
+}
+
+.featured > p,
+.project > p {
+  margin-bottom: 0.35rem;
+}
+
+.featured > p:first-of-type,
+.project > p:first-of-type {
+  font-size: 1.05rem;
+}
+
+.featured > p:first-of-type a,
+.project > p:first-of-type a {
+  text-decoration: none;
+}
+
+.project-links {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.project-links p {
+  margin: 0;
+}
+
+/* Transparent logos with dark lettering need a light backing on a dark page. */
+@media (prefers-color-scheme: dark) {
+  .featured img,
+  .featured video {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+}

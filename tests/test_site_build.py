@@ -105,3 +105,25 @@ def test_home_intro_and_plain_links(built_site):
         "Email",
     ]
     assert "sd-badge" not in html
+
+
+REMOVED_MEDIA = [
+    "RasterVis.mp4",
+    "SpectraVis-Demo.mp4",
+    "spectral_connectivity.png",
+    "track_linearization.png",
+    "ripple_detection.png",
+]
+
+
+def test_projects_featured_then_list(built_site):
+    html = read_page(built_site, "projects")
+    assert len(re.findall(r'class="featured[ "]', html)) == 2
+    assert len(re.findall(r'class="project[ "]', html)) == 6
+    for banned in ["sd-card", "sd-badge", "shields.io"]:
+        assert banned not in html
+
+
+def test_unused_project_media_removed(built_site):
+    for name in REMOVED_MEDIA:
+        assert not (built_site / "_static" / name).exists()
