@@ -128,14 +128,35 @@ REMOVED_MEDIA = [
     "spectral_connectivity.png",
     "track_linearization.png",
     "ripple_detection.png",
+    "spyglass.png",
+    "replay-trajectory-classification.mp4",
 ]
 
 
-def test_projects_featured_then_list(built_site):
+PROJECT_GROUPS = {
+    "Data infrastructure": ["Spyglass"],
+    "Decoding hippocampal activity": [
+        "Replay Trajectory Classification",
+        "Non-Local Detector",
+        "Track Linearization",
+    ],
+    "Signal processing": ["Spectral Connectivity", "Ripple Detection"],
+    "Interactive visualization": ["RasterVis", "SpectraVis"],
+}
+
+
+def test_projects_grouped_by_theme(built_site):
     html = read_page(built_site, "projects")
-    assert len(re.findall(r'class="featured[ "]', html)) == 2
-    assert len(re.findall(r'class="project[ "]', html)) == 6
-    for banned in ["sd-card", "sd-badge", "shields.io"]:
+    headings = re.findall(r"<h2>(.*?)<a class=\"headerlink", html)
+    assert headings == list(PROJECT_GROUPS)
+    for group, names in PROJECT_GROUPS.items():
+        section = re.search(rf"<h2>{group}.*?</section>", html, re.S).group(0)
+        found = re.findall(
+            r'<strong><a class="reference external" href="https://github\.com/[^"]+">([^<]+)</a></strong>',
+            section,
+        )
+        assert found == names
+    for banned in ["sd-card", "sd-badge", "shields.io", "<video", "<img"]:
         assert banned not in html
 
 

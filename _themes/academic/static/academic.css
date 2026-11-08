@@ -246,96 +246,9 @@ img {
   }
 }
 
-/* Projects: a few featured with media, then a plain list. Each project is a
-   title line (name left, links right, faint rule under both) followed by a
-   softer description. */
-.featured,
-.project {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  margin: 0 0 2rem;
-}
-
-.featured {
-  margin-top: 1.5rem;
-  margin-bottom: 2.75rem;
-}
-
-.featured > *,
-.project > * {
-  grid-column: 1 / -1;
-}
-
-.featured img,
-.featured video {
-  grid-row: 1;
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 200px;
-  margin-bottom: 1rem;
-}
-
-/* Project name */
-.featured > p:first-of-type,
-.project > p:first-of-type {
-  grid-column: 1;
-  align-self: end;
-  margin: 0;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid var(--hairline);
-  font-size: 1.15rem;
-  line-height: 1.3;
-}
-
-.featured > p:first-of-type a,
-.project > p:first-of-type a {
-  color: var(--fg);
-  text-decoration: none;
-}
-
-.featured > p:first-of-type a:hover,
-.project > p:first-of-type a:hover {
-  color: var(--brand);
-}
-
-.project-links {
-  grid-column: 2;
-  align-self: end;
-  padding: 0 0 0.3rem 1rem;
-  border-bottom: 1px solid var(--hairline);
-  color: var(--muted);
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
-.project-links p {
-  margin: 0;
-}
-
-.featured > p:first-of-type,
-.featured > .project-links {
-  grid-row: 2;
-}
-
-.project > p:first-of-type,
-.project > .project-links {
-  grid-row: 1;
-}
-
-/* Description */
-.featured > p:nth-of-type(2),
-.project > p:nth-of-type(2) {
-  margin: 0.5rem 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* On the projects page, section headings are small labels so they don't
-   compete with the project names. */
-section:has(> .featured, > .project) > h2 {
-  margin: 3rem 0 1.25rem;
+/* Projects: one line per project, grouped under small theme labels. */
+section:has(> .project-list) > h2 {
+  margin: 2.5rem 0 0.75rem;
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 600;
@@ -343,15 +256,23 @@ section:has(> .featured, > .project) > h2 {
   text-transform: uppercase;
 }
 
-/* Transparent logos with dark lettering need a light backing on a dark page. */
-@media (prefers-color-scheme: dark) {
-  .featured img,
-  .featured video {
-    background: #ffffff;
-    border-radius: 4px;
-    padding: 0.5rem;
-    box-sizing: border-box;
-  }
+.project-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-list li {
+  margin: 0 0 0.6rem;
+}
+
+.project-list strong a {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.project-list strong a:hover {
+  color: var(--brand);
 }
 
 /* Fun page: uniform photo grid, modest inline logos. */
