@@ -5,6 +5,8 @@ You can contact me online. I am open to questions or collaborations:
 + [Email](mailto:eric.denovellis@ucsf.edu)
 + [Github](https://github.com/edeno)
 + [LinkedIn](https://www.linkedin.com/in/eric-denovellis-70908238/)
++ [Google Scholar](https://scholar.google.com/citations?user=vuENbkoAAAAJ)
++ [ORCID](https://orcid.org/0000-0003-4606-087X)
 + <a rel="me" href="https://neuromatch.social/@edeno">Mastodon</a>
 
 ## Where to find me
