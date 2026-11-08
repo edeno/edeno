@@ -19,6 +19,15 @@ PREPRINT_JOURNAL_LABELS = {
     "Cold Spring Harbor Laboratory": "bioRxiv preprint",
     "eLife Sciences Publications, Ltd": "eLife reviewed preprint",
 }
+# Crossref relations linking different versions (preprint, reviewed preprint,
+# version of record) of the same work.
+SAME_WORK_RELATIONS = (
+    "is-same-as",
+    "is-version-of",
+    "has-version",
+    "has-preprint",
+    "is-preprint-of",
+)
 
 logger = logging.getLogger("orcid-publications")
 
@@ -107,8 +116,12 @@ def format_reference(meta: dict, doi: str) -> dict | None:
         authors = ", ".join(format_author(a) for a in meta["author"])
         publisher = meta.get("publisher", "")
         journal = meta.get("container-title", "")
-        if meta.get("subtype") == "preprint" and publisher in PREPRINT_JOURNAL_LABELS:
-            journal = PREPRINT_JOURNAL_LABELS[publisher]
+        if is_preprint(meta):
+            servers = [i["name"] for i in meta.get("institution", []) if "name" in i]
+            if publisher in PREPRINT_JOURNAL_LABELS:
+                journal = PREPRINT_JOURNAL_LABELS[publisher]
+            elif servers:
+                journal = f"{servers[0]} preprint"
         details = format_journal_details(meta, journal)
     except (KeyError, IndexError, TypeError) as exc:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
@@ -121,12 +134,74 @@ def format_reference(meta: dict, doi: str) -> dict | None:
     return {"year": year, "reference": " ".join(parts)}
 
 
-def extract_doi(work_summary: dict) -> str | None:
+def extract_dois(work_summary: dict) -> list[str]:
     ext_ids = (work_summary.get("external-ids") or {}).get("external-id", [])
-    for ext in ext_ids:
-        if ext.get("external-id-type") == "doi":
-            return ext.get("external-id-value")
-    return None
+    return [
+        ext["external-id-value"]
+        for ext in ext_ids
+        if ext.get("external-id-type") == "doi" and ext.get("external-id-value")
+    ]
+
+
+def is_preprint(meta: dict) -> bool:
+    return meta.get("subtype") == "preprint" or meta.get("type") == "posted-content"
+
+
+def related_dois(meta: dict) -> set[str]:
+    relations = meta.get("relation") or {}
+    return {
+        rel["id"].lower()
+        for kind in SAME_WORK_RELATIONS
+        for rel in relations.get(kind, [])
+        if rel.get("id-type") == "doi"
+    }
+
+
+def select_version(session: requests.Session, group: dict) -> tuple[str, dict] | None:
+    """Return the first published (non-preprint) DOI in an ORCID work group.
+
+    Falls back to the first preprint if the group has no published version.
+    """
+    fallback = None
+    seen: set[str] = set()
+    for summary in group["work-summary"]:
+        for doi in extract_dois(summary):
+            if doi.lower() in seen:
+                continue
+            seen.add(doi.lower())
+            try:
+                meta = fetch_doi_metadata(session, doi)
+            except requests.RequestException as exc:
+                logger.warning("Skipping %s: Crossref fetch failed (%s)", doi, exc)
+                continue
+            if not is_preprint(meta):
+                return doi, meta
+            fallback = fallback or (doi, meta)
+    return fallback
+
+
+def drop_other_versions(works: list[tuple[str, dict]]) -> list[tuple[str, dict]]:
+    """Drop works that Crossref links to another listed version of the same work.
+
+    ORCID can split versions of one paper into separate groups (e.g., each
+    eLife reviewed-preprint version gets its own DOI). Published versions
+    are considered first so they win over their preprints.
+    """
+    kept: list[tuple[str, set[str]]] = []
+    kept_dois: set[str] = set()
+    for doi, meta in sorted(works, key=lambda work: is_preprint(work[1])):
+        links = related_dois(meta)
+        same_as_kept = next(
+            (k for k, k_links in kept if doi.lower() in k_links or k in links), None
+        )
+        if same_as_kept is not None:
+            logger.info(
+                "Skipping %s: another version (%s) is listed", doi, same_as_kept
+            )
+            continue
+        kept.append((doi.lower(), links))
+        kept_dois.add(doi.lower())
+    return [work for work in works if work[0].lower() in kept_dois]
 
 
 def extract_title(work_summary: dict) -> str:
@@ -165,23 +240,22 @@ def main() -> None:
             f"{OUTPUT_PATH.name}: {exc}"
         )
 
-    entries: list[dict] = []
-    for work in track(
+    works: list[tuple[str, dict]] = []
+    for group in track(
         record["activities-summary"]["works"]["group"],
         "Fetching reference data...",
     ):
-        summary = work["work-summary"][0]
-        doi = extract_doi(summary)
-        if doi is None:
-            logger.warning("Skipping work without DOI: %s", extract_title(summary))
+        selected = select_version(session, group)
+        if selected is None:
+            logger.warning(
+                "Skipping work without a resolvable DOI: %s",
+                extract_title(group["work-summary"][0]),
+            )
             continue
+        works.append(selected)
 
-        try:
-            meta = fetch_doi_metadata(session, doi)
-        except requests.RequestException as exc:
-            logger.warning("Skipping %s: Crossref fetch failed (%s)", doi, exc)
-            continue
-
+    entries: list[dict] = []
+    for doi, meta in drop_other_versions(works):
         entry = format_reference(meta, doi)
         if entry is not None:
             entries.append(entry)
