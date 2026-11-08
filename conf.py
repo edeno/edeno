@@ -12,7 +12,6 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_examples",
     "sphinxext.opengraph",
-    "sphinxext.rediraffe",
     "sphinx_sitemap",
 ]
 
