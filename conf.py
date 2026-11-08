@@ -61,6 +61,8 @@ html_theme_options = {
 html_favicon = "_static/favicon.ico"
 html_title = "Eric L. Denovellis"
 html_static_path = ["_static"]
+# No index entries exist, so the generated index page would be empty.
+html_use_index = False
 # No html_logo: hello.html shows the profile photo in the sidebar already.
 html_sidebars = {
     "**": [
