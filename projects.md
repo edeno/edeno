@@ -71,7 +71,7 @@ Code for most of my projects can be found on my [GitHub page](https://github.com
 
   ```{raw} html
   <video autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of RasterVis interactive visualization">
-    <source src="../_static/RasterVis.mp4" type="video/mp4">
+    <source src="/_static/RasterVis.mp4" type="video/mp4">
   </video>
   ```
 
@@ -88,7 +88,7 @@ Code for most of my projects can be found on my [GitHub page](https://github.com
 
   ```{raw} html
   <video autoplay loop muted playsinline preload="metadata" aria-label="Demonstration of SpectraVis interactive network visualization">
-    <source src="../_static/SpectraVis-Demo.mp4" type="video/mp4">
+    <source src="/_static/SpectraVis-Demo.mp4" type="video/mp4">
   </video>
   ```
 
