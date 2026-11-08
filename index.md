@@ -30,10 +30,6 @@ Previously, I completed my Ph.D. in computational neuroscience at [Boston Univer
 + B.S. in Mathematics, University of California, Santa Barbara
 + B.A. in Philosophy, University of California, Santa Barbara
 
-## CV
-
-Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
-
 ## Collaborators
 
 + [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
