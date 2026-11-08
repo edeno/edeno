@@ -7,7 +7,6 @@ dependencies = [
     "docutils",
     "myst-parser",
     "furo",
-    "rich",
     "sphinx",
     "sphinx-design",
     "sphinxext-opengraph",

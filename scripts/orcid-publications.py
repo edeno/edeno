@@ -7,7 +7,6 @@ from pathlib import Path
 
 import requests
 from requests.adapters import HTTPAdapter
-from rich.progress import track
 from urllib3.util.retry import Retry
 
 ORCID_ID = "0000-0003-4606-087X"
@@ -253,10 +252,8 @@ def main() -> None:
         )
 
     works: list[tuple[str, dict]] = []
-    for group in track(
-        record["activities-summary"]["works"]["group"],
-        "Fetching reference data...",
-    ):
+    logger.info("Fetching reference data from Crossref...")
+    for group in record["activities-summary"]["works"]["group"]:
         selected = select_version(session, group)
         if selected is None:
             logger.warning(
