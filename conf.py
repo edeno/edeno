@@ -159,6 +159,6 @@ def setup(app):
 
 
 # Sitemap
-html_baseurl = "https://www.edenovellis.com"
+html_baseurl = "https://www.edenovellis.com/"
 sitemap_locales = [None]
 sitemap_url_scheme = "{link}"
