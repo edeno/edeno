@@ -49,12 +49,12 @@ SOCIAL_LINKS = [
 html_theme_options = {
     "navigation_with_keys": True,
     "light_css_variables": {
-        "color-brand-primary": "#2563eb",
-        "color-brand-content": "#2563eb",
+        "color-brand-primary": "#0f766e",
+        "color-brand-content": "#0f766e",
     },
     "dark_css_variables": {
-        "color-brand-primary": "#60a5fa",
-        "color-brand-content": "#60a5fa",
+        "color-brand-primary": "#2dd4bf",
+        "color-brand-content": "#2dd4bf",
     },
     "footer_icons": [
         {"name": name, "url": url, "html": icon} for name, url, icon in SOCIAL_LINKS

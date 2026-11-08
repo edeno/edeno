@@ -40,5 +40,5 @@ uv run make live
 
 The site uses [Furo](https://pradyunsg.me/furo/). Two things to know:
 
-- Brand colour is currently a placeholder (`#2563eb` light / `#60a5fa` dark, `conf.py: html_theme_options.light_css_variables`); pick something distinctive at leisure.
+- Brand colour is teal (`#0f766e` light / `#2dd4bf` dark, `conf.py: html_theme_options.light_css_variables` / `dark_css_variables`); both meet WCAG AA text contrast on Furo's backgrounds (5.5:1 and 9.9:1), so keep that bar if changing it.
 - Furo doesn't accept Pydata-style theme options. Google Analytics, JSON-LD Person schema, and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py` (theme-agnostic). Social icons live in Furo's `footer_icons` slot as inline Bootstrap Icons SVGs.
