@@ -127,3 +127,20 @@ def test_projects_featured_then_list(built_site):
 def test_unused_project_media_removed(built_site):
     for name in REMOVED_MEDIA:
         assert not (built_site / "_static" / name).exists()
+
+
+@pytest.mark.parametrize(
+    "page", ["", "projects", "publications", "talks", "teaching", "fun", "contact"]
+)
+def test_no_boxed_components(built_site, page):
+    html = read_page(built_site, page)
+    for banned in ["sd-card", "sd-badge", "sd-shadow", "sd-btn"]:
+        assert banned not in html
+
+
+def test_contact_address_keeps_its_lines(built_site):
+    html = read_page(built_site, "contact")
+    address = re.search(
+        r"<strong>Sandler Neurosciences Center</strong>.*?</p>", html, re.S
+    ).group(0)
+    assert address.count("<br") == 3

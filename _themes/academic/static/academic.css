@@ -299,3 +299,31 @@ img {
     box-sizing: border-box;
   }
 }
+
+/* Fun page: uniform photo grid, modest inline logos. */
+.sd-row img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+iframe {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+p > a > img {
+  height: 56px;
+  width: auto;
+  margin-right: 1.25rem;
+  vertical-align: middle;
+}
+
+@media (prefers-color-scheme: dark) {
+  p > a > img {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 4px;
+  }
+}

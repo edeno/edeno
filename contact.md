@@ -11,9 +11,9 @@ You can contact me online. I am open to questions or collaborations:
 
 ## Where to find me
 
-**Sandler Neurosciences Center**
-675 Nelson Rising Lane
-San Francisco, CA 94158
+**Sandler Neurosciences Center**\
+675 Nelson Rising Lane\
+San Francisco, CA 94158\
 UCSF Mission Bay Campus
 
 [Get directions →](https://www.google.com/maps/place/Sandler+Neurosciences+Center,+675+Nelson+Rising+Ln,+San+Francisco,+CA+94158/)
