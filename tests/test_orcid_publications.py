@@ -56,7 +56,7 @@ def test_format_author(author, expected):
 def test_format_reference_journal_article():
     entry = op.format_reference(make_meta(issue="3", page="1-9"), "10.1/x")
     assert entry == {
-        "year": 2021,
+        "issued": [2021, 9, 27],
         "reference": (
             f"[Smith, J.]({SMITH_ORCID}), {SELF_LINK}. **A title**. "
             "*eLife*, *10*(3), 1-9. [10.1/x](https://doi.org/10.1/x)"
@@ -161,10 +161,13 @@ def test_select_version_skips_failed_and_repeated_dois(fake_fetch):
 
 def test_render_markdown_groups_by_year_newest_first():
     entries = [
-        {"year": 2019, "reference": "old"},
-        {"year": 2021, "reference": "new"},
+        {"issued": [2019, 11], "reference": "old"},
+        {"issued": [2021, 9, 27], "reference": "september"},
+        {"issued": [2021, 10], "reference": "october"},
     ]
-    assert op.render_markdown(entries) == "## 2021\nnew\n\n## 2019\nold\n"
+    assert op.render_markdown(entries) == (
+        "## 2021\noctober\n\nseptember\n\n## 2019\nold\n"
+    )
 
 
 def test_format_reference_single_period_after_initials():

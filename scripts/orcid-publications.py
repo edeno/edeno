@@ -120,7 +120,7 @@ def format_journal_details(meta: dict, journal: str) -> str:
 def format_reference(meta: dict, doi: str) -> dict | None:
     try:
         title = " ".join(meta["title"].split())
-        year = meta["issued"]["date-parts"][0][0]
+        issued = meta["issued"]["date-parts"][0]
         n_co_first = CO_FIRST_AUTHORS.get(doi.lower(), 0)
         authors = ", ".join(
             format_author(a) + ("\\*" if i < n_co_first else "")
@@ -142,7 +142,7 @@ def format_reference(meta: dict, doi: str) -> dict | None:
     if details:
         parts.append(details)
     parts.append(f"[{doi}](https://doi.org/{doi})")
-    return {"year": year, "reference": " ".join(parts)}
+    return {"issued": issued, "reference": " ".join(parts)}
 
 
 def extract_dois(work_summary: dict) -> list[str]:
@@ -219,9 +219,10 @@ def extract_title(work_summary: dict) -> str:
 
 
 def render_markdown(entries: list[dict]) -> str:
+    """Group references under year headings, newest first by issued date."""
     by_year: dict[int, list[str]] = defaultdict(list)
-    for entry in entries:
-        by_year[entry["year"]].append(entry["reference"])
+    for entry in sorted(entries, key=lambda e: e["issued"], reverse=True):
+        by_year[entry["issued"][0]].append(entry["reference"])
 
     lines = []
     for year in sorted(by_year, reverse=True):
