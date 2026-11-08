@@ -119,7 +119,7 @@ def format_journal_details(meta: dict, journal: str) -> str:
 
 def format_reference(meta: dict, doi: str) -> dict | None:
     try:
-        title = meta["title"]
+        title = " ".join(meta["title"].split())
         year = meta["issued"]["date-parts"][0][0]
         n_co_first = CO_FIRST_AUTHORS.get(doi.lower(), 0)
         authors = ", ".join(

@@ -172,3 +172,10 @@ def test_format_reference_single_period_after_initials():
     assert op.format_reference(meta, "10.1/x")["reference"].startswith(
         "Frank, L.M. **A title**."
     )
+
+
+def test_format_reference_collapses_whitespace_in_title():
+    meta = make_meta(title="Spectral Connectivity: a python\n  package")
+    assert "**Spectral Connectivity: a python package**." in (
+        op.format_reference(meta, "10.1/x")["reference"]
+    )
