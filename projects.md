@@ -92,7 +92,7 @@ A browser tool for exploring functional brain networks over time and frequency, 
 
 **[Track Linearization](https://github.com/LorenFrankLab/track_linearization)**
 
-Converts 2D position on a maze or track into 1D position along the track, using a graph of the track's layout and a hidden Markov model to handle noisy tracking.
+Converts 2D position on a maze or track into 1D position along the track, using a graph of the track's layout, with an optional hidden Markov model to handle noisy tracking.
 
 :::{div} project-links
 [Code](https://github.com/LorenFrankLab/track_linearization)
