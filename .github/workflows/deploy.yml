@@ -34,9 +34,11 @@ jobs:
     - uses: astral-sh/setup-uv@v10.3.3
 
     - name: Install dependencies
-      run: |
-        uv sync --locked
-        uv run python scripts/orcid-publications.py
+      run: uv sync --locked --group test
+    - name: Test the publications script
+      run: uv run --group test pytest
+    - name: Fetch publications from ORCID
+      run: uv run python scripts/orcid-publications.py
     # Warnings fail PR builds only. Deploys (CV pushes, weekly ORCID refresh)
     # include content we don't control, so they log warnings but still publish.
     - name: Build the site

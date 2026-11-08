@@ -17,4 +17,8 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["sphinx-autobuild"]
+test = ["pytest"]
+dev = [{ include-group = "test" }, "sphinx-autobuild"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

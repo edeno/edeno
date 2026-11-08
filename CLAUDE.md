@@ -27,7 +27,7 @@ uv run make live
 
 ## Generated files
 
-- `_static/publications.txt` — produced by `scripts/orcid-publications.py` from the ORCID API. Not committed; regenerated on each CI build. To regenerate locally: `uv run python scripts/orcid-publications.py`.
+- `_static/publications.txt` — produced by `scripts/orcid-publications.py` from the ORCID API. Not committed; regenerated on each CI build. To regenerate locally: `uv run python scripts/orcid-publications.py`. Its offline tests run with `uv run pytest` (also in CI).
 - `_build/` — Sphinx output; gitignored.
 
 ## Conventions
