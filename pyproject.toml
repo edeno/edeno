@@ -4,7 +4,6 @@ version = "0.0.0"
 description = "Personal academic website (Sphinx + MyST)"
 requires-python = ">=3.13"
 dependencies = [
-    "ablog",
     "docutils",
     "myst-nb",
     "myst-parser",
@@ -12,15 +11,10 @@ dependencies = [
     "rich",
     "sphinx",
     "sphinx-autobuild",
-    "sphinx-copybutton",
     "sphinx-design",
-    "sphinx-examples",
-    "sphinxcontrib-bibtex",
     "sphinxext-opengraph",
     "sphinx-sitemap",
     "requests",
-    "ipython",
-    "pandas",
 ]
 
 [dependency-groups]

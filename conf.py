@@ -9,8 +9,6 @@ author = "Eric L. Denovellis"
 extensions = [
     "myst_nb",
     "sphinx_design",
-    "sphinx_copybutton",
-    "sphinx_examples",
     "sphinxext.opengraph",
     "sphinx_sitemap",
 ]
