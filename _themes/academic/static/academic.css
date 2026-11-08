@@ -182,3 +182,66 @@ img {
   width: 18px;
   height: 18px;
 }
+
+/* Home intro: photo beside the name and tagline; everything after spans the column. */
+.page > section:has(> img.portrait) {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  column-gap: 1.5rem;
+  align-items: center;
+}
+
+.page > section:has(> img.portrait) > * {
+  grid-column: 1 / -1;
+}
+
+.page > section > img.portrait {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.page > section:has(> img.portrait) > h1,
+.page > section:has(> img.portrait) > .tagline {
+  grid-column: 2;
+}
+
+.page > section:has(> img.portrait) > h1 {
+  align-self: end;
+  margin: 0 0 0.25rem;
+}
+
+.tagline {
+  align-self: start;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.tagline p {
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .page > section:has(> img.portrait) > img.portrait,
+  .page > section:has(> img.portrait) > h1,
+  .page > section:has(> img.portrait) > .tagline {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .page > section > img.portrait {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+}

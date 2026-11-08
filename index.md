@@ -1,14 +1,16 @@
 # Eric L. Denovellis
 
-```{div} hero-tagline
+```{image} _static/profile.jpg
+:alt: Photo of Eric L. Denovellis
+:class: portrait
+```
+
+```{div} tagline
 Computational research scientist at [UCSF](https://physiology.ucsf.edu/) — building scalable, interpretable tools to decode, categorize, and visualize how the brain represents information.
 ```
 
-```{div} hero-cta
-{bdg-ref-primary}`Projects <projects>`
-{bdg-ref-primary}`Publications <publications>`
-{bdg-ref-primary}`Contact <contact>`
-{bdg-link-secondary}`Download CV <_static/eric_denovellis_CV.pdf>`
+```{raw} html
+<p class="links"><a href="_static/eric_denovellis_CV.pdf">CV (PDF)</a> <a href="https://scholar.google.com/citations?user=vuENbkoAAAAJ">Google Scholar</a> <a href="https://github.com/edeno">GitHub</a> <a href="mailto:eric.denovellis@ucsf.edu">Email</a></p>
 ```
 
 ## About me

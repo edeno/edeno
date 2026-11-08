@@ -88,3 +88,20 @@ def test_404_page(built_site):
     html = read_page(built_site, "404")
     assert "search box" not in html
     assert 'href="/_static/' in html
+
+
+def test_home_intro_and_plain_links(built_site):
+    html = read_page(built_site, "")
+    # Everything between the name and the first subsection is the intro.
+    intro = re.search(r"<h1>Eric L\. Denovellis.*?<section", html, re.S).group(0)
+    assert re.search(r'<img[^>]*class="portrait', intro)
+    assert "profile.jpg" in intro
+    assert 'class="tagline' in intro
+    links = re.search(r'<p class="links">(.*?)</p>', html, re.S).group(1)
+    assert re.findall(r">([^<]+)</a>", links) == [
+        "CV (PDF)",
+        "Google Scholar",
+        "GitHub",
+        "Email",
+    ]
+    assert "sd-badge" not in html
