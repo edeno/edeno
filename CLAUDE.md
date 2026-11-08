@@ -4,12 +4,13 @@ Personal academic website at https://www.edenovellis.com — Sphinx + MyST built
 
 ## Local dev with uv
 
-One-time setup:
+Dependencies live in `pyproject.toml` and are pinned in `uv.lock`; the Python version is in `.python-version`. Setup (rerun after pulling changes to the lock):
 
 ```bash
-uv venv
-uv pip install -r requirements.txt
+uv sync
 ```
+
+Use `uv sync` / `uv run` / `uv add`, not `uv pip`: the project commands always target `.venv`, while `uv pip` targets whatever `VIRTUAL_ENV` points at (which may be conda base). To bump dependencies: `uv lock --upgrade`.
 
 Build the site:
 
@@ -25,7 +26,7 @@ uv run sphinx-autobuild -b dirhtml . _build/dirhtml \
   --ignore "_build/*" --ignore "**/.ipynb_checkpoints"
 ```
 
-`execute-requirements.txt` only matters if a page actually executes a notebook — install it if you start adding `.ipynb` content.
+The `execute` dependency group (`uv sync --group execute`) only matters if a page actually executes a notebook — CI installs it, but there are no `.ipynb` pages yet.
 
 ## Generated files
 

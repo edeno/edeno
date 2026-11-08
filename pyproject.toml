@@ -1,0 +1,40 @@
+[project]
+name = "edenovellis-site"
+version = "0.0.0"
+description = "Personal academic website (Sphinx + MyST)"
+requires-python = ">=3.13"
+dependencies = [
+    "ablog",
+    "docutils",
+    "myst-nb",
+    "myst-parser",
+    "furo",
+    "rich",
+    "sphinx",
+    "sphinx-autobuild",
+    "sphinx-copybutton",
+    "sphinx-design",
+    "sphinx-examples",
+    "sphinxcontrib-bibtex",
+    "sphinxext-opengraph",
+    "sphinx-sitemap",
+    "requests",
+    "ipython",
+    "pandas",
+]
+
+[dependency-groups]
+# Only needed if a page executes a notebook.
+execute = [
+    "colorspacious",
+    "ipywidgets",
+    "jupyterlab",
+    "jupytext",
+    "makeitpop",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scipy",
+    "seaborn",
+    "xarray",
+]

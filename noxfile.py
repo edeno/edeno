@@ -4,10 +4,17 @@ from shlex import split
 nox.options.reuse_existing_virtualenvs = True
 
 
-@nox.session
+def _sync(session):
+    session.run_install(
+        *split("uv sync --locked --group execute"),
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
+        external=True,
+    )
+
+
+@nox.session(venv_backend="uv")
 def docs(session):
-    session.install("-r", "requirements.txt")
-    session.install("-r", "execute-requirements.txt")
+    _sync(session)
     if "live" in session.posargs:
         session.run(
             *split("sphinx-autobuild -b dirhtml . _build/dirhtml --ignore _build/* --ignore **/.ipynb_checkpoints")
@@ -19,8 +26,7 @@ def docs(session):
         session.log("open ./_build/dirhtml/index.html")
 
 
-@nox.session
+@nox.session(venv_backend="uv")
 def lab(session):
-    session.install("-r", "requirements.txt")
-    session.install("-r", "execute-requirements.txt")
+    _sync(session)
     session.run(*split("jupyter lab ."))

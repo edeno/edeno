@@ -18,20 +18,17 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    # Install dependencies
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+    # Python version comes from .python-version; dependencies from uv.lock.
+    - uses: astral-sh/setup-uv@v10.3.3
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-        pip install -r execute-requirements.txt
-        python scripts/orcid-publications.py
+        uv sync --locked --group execute
+        uv run python scripts/orcid-publications.py
     # Build the book
     - name: Build the site
       run: |
-        make dirhtml
+        uv run make dirhtml
     # If we've pushed to main, push the book's HTML to github-pages
     - if: ${{ github.ref == 'refs/heads/main' }}
       name: GitHub Pages action
