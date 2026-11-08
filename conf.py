@@ -23,6 +23,7 @@ exclude_patterns = [
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
     ".venv/*",
+    ".remember/*",
     "README.md",
     "CLAUDE.md",
     "**/.ipynb_checkpoints/*",
