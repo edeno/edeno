@@ -5,7 +5,7 @@
 **Visiting Instructor — Neural Circuits for Navigation: Anatomy, Physiology, and Computational Methods**
 (February - March, 2026)
 
-+ Co-designed and co-taught with [Abhilasha Joshi](https://www.neuroact.in/) for nine graduate students. I taught eight 1.5-hour sessions with Jupyter notebook assignments, followed by student projects and presentations. Topics: open data use and visualization, spectral analysis of local field potentials, spike-stimulus analysis, neural decoding, and clusterless decoding.
++ Co-designed and co-taught with [Abhilasha Joshi](https://www.neuroact.in/) for nine graduate students. I taught eight 1.5-hour sessions with Jupyter notebook assignments, followed by student projects and presentations. Topics: open data use and visualization, spectral analysis of local field potentials, spike-stimulus analysis, neural decoding, and clusterless decoding. [Course materials](https://github.com/edeno/ncbs-neural-circuits-navigation)
 
 ## University of California, San Francisco
 
