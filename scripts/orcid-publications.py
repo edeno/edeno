@@ -138,7 +138,7 @@ def format_reference(meta: dict, doi: str) -> dict | None:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
         return None
 
-    parts = [f"{authors}.", f"**{title}**."]
+    parts = [authors if authors.endswith(".") else f"{authors}.", f"**{title}**."]
     if details:
         parts.append(details)
     parts.append(f"[{doi}](https://doi.org/{doi})")

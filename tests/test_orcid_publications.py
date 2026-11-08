@@ -165,3 +165,10 @@ def test_render_markdown_groups_by_year_newest_first():
         {"year": 2021, "reference": "new"},
     ]
     assert op.render_markdown(entries) == "## 2021\nnew\n\n## 2019\nold\n"
+
+
+def test_format_reference_single_period_after_initials():
+    meta = make_meta(author=[{"family": "Frank", "given": "Loren M."}])
+    assert op.format_reference(meta, "10.1/x")["reference"].startswith(
+        "Frank, L.M. **A title**."
+    )
