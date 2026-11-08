@@ -19,7 +19,7 @@ uv run make dirhtml SPHINXOPTS="-nW --keep-going"
 open _build/dirhtml/index.html
 ```
 
-Live-reload while editing (`sphinx-autobuild` is in the `dev` group, which `uv sync` installs by default; CI uses `--no-dev`):
+Live-reload while editing (`sphinx-autobuild` is in the `dev` group, which `uv sync` installs by default; CI sets `UV_NO_DEV=1`):
 
 ```bash
 uv run make live

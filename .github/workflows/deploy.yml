@@ -24,6 +24,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Applies to every uv command; `uv run` would otherwise re-sync the dev group.
+    env:
+      UV_NO_DEV: 1
     steps:
     - uses: actions/checkout@v7
 
@@ -32,7 +35,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        uv sync --locked --no-dev
+        uv sync --locked
         uv run python scripts/orcid-publications.py
     # Warnings fail PR builds only. Deploys (CV pushes, weekly ORCID refresh)
     # include content we don't control, so they log warnings but still publish.
