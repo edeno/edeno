@@ -47,9 +47,13 @@ div.profile-pic img {
 
 .hero-cta {
     margin: 0 0 2em 0;
+    display: flow-root;
+}
+
+.hero-cta > p {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 0.25rem;
+    gap: 0.5rem 0.75rem;
     align-items: center;
 }
 

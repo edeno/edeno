@@ -5,9 +5,9 @@ Computational research scientist at [UCSF](https://physiology.ucsf.edu/) — bui
 ```
 
 ```{div} hero-cta
-{bdg-ref-primary}`Projects <projects>` &nbsp;
-{bdg-ref-primary}`Publications <publications>` &nbsp;
-{bdg-ref-primary}`Contact <contact>` &nbsp;
+{bdg-ref-primary}`Projects <projects>`
+{bdg-ref-primary}`Publications <publications>`
+{bdg-ref-primary}`Contact <contact>`
 {bdg-link-secondary}`Download CV <_static/eric_denovellis_CV.pdf>`
 ```
 
