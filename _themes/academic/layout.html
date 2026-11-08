@@ -5,7 +5,9 @@
 
 {%- block header %}
 <header class="site-header">
-  <a class="site-name" href="{{ pathto(root_doc) }}">{{ project }}</a>
+  {#- On the 404 page, sphinx-notfound-page turns dirhtml's empty root URI into "#". #}
+  {%- set home = pathto(root_doc) %}
+  <a class="site-name" href="{{ '/' if home == '#' else home }}">{{ project }}</a>
   <nav class="site-nav" aria-label="Main">
     {{ toctree(maxdepth=1, titles_only=True, includehidden=True, collapse=False) }}
   </nav>

@@ -87,6 +87,7 @@ def test_footer_social_links(built_site):
 def test_404_page(built_site):
     html = read_page(built_site, "404")
     assert "search box" not in html
+    assert '<a class="site-name" href="/"' in html
     assert 'href="/_static/' in html
 
 
