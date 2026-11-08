@@ -39,7 +39,7 @@ Here is my {download}`CV <_static/eric_denovellis_CV.pdf>`.
 + [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
 + [Eden group @ Boston University](https://math.bu.edu/people/tzvi/)
 + [Stephen group @ Boston University](https://emilystephen.com/)
-+ [Abhilasha Joshi](https://www.simonsfoundation.org/people/abhilasha-joshi/)
++ [NeuroACT lab @ National Centre for Biological Sciences](https://www.neuroact.in/)
 
 ```{toctree}
 :maxdepth: 2
