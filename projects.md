@@ -42,6 +42,17 @@ Code for most of my projects can be found on my [GitHub page](https://github.com
 :::::{grid} 1 2 2 3
 :gutter: 3
 
+  ::::{grid-item-card} Non-Local Detector
+  :text-align: left
+
+  [non_local_detector](https://github.com/LorenFrankLab/non_local_detector) decodes non-local neural activity, such as hippocampal replay, from sorted or clusterless spikes using Bayesian state space models in JAX. It includes continuous/fragmented and multi-environment classifiers and runs on the GPU.
+
+  +++
+  {bdg-primary}`Python` {bdg-info}`JAX` {bdg-light}`Neuroscience`
+
+  {bdg-link-primary}`GitHub <https://github.com/LorenFrankLab/non_local_detector>` [![GitHub stars](https://img.shields.io/github/stars/LorenFrankLab/non_local_detector?style=social&label=Stars)](https://github.com/LorenFrankLab/non_local_detector)
+  ::::
+
   ::::{grid-item-card} Spectral Connectivity
   :img-top: _static/spectral_connectivity.png
   :img-alt: Spectral Connectivity visualization example
