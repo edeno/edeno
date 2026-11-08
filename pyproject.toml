@@ -15,6 +15,7 @@ dependencies = [
     "sphinxext-opengraph",
     "sphinx-sitemap",
     "requests",
+    "sphinx-notfound-page>=1.1.0",
 ]
 
 [dependency-groups]

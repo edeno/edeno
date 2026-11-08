@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 
@@ -11,6 +12,7 @@ extensions = [
     "sphinx_design",
     "sphinxext.opengraph",
     "sphinx_sitemap",
+    "notfound.extension",
 ]
 
 templates_path = ["_templates"]
@@ -155,13 +157,30 @@ def _inject_head(app, pagename, templatename, context, doctree):
     context["metatags"] = head
 
 
+def _move_404_to_root(app, exception):
+    # dirhtml writes 404/index.html, but GitHub Pages only serves /404.html.
+    if exception is None and app.builder.name == "dirhtml":
+        outdir = Path(app.outdir)
+        (outdir / "404" / "index.html").replace(outdir / "404.html")
+        (outdir / "404").rmdir()
+
+
 def setup(app):
     app.add_css_file("custom.css")
     app.connect("html-page-context", _inject_head)
+    app.connect("build-finished", _move_404_to_root)
 
 
 # Sitemap
 html_baseurl = "https://www.edenovellis.com/"
 sitemap_locales = [None]
 sitemap_url_scheme = "{link}"
-sitemap_excludes = ["search/"]
+sitemap_excludes = ["search/", "404/"]
+
+# 404 page: served by GitHub Pages for any missing URL, so asset links must be absolute.
+notfound_urls_prefix = "/"
+notfound_context = {
+    "title": "Page not found",
+    "body": "<h1>Page not found</h1>\n\n<p>Sorry, that page doesn't exist. "
+    'Try the <a href="/">home page</a> or the search box.</p>',
+}
