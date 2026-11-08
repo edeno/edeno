@@ -79,7 +79,8 @@ div.profile-pic img {
 }
 
 /* Featured project cards: taller image, more breathing room. */
-.featured-project .sd-card-img-top {
+.featured-project .sd-card-img-top,
+.featured-project video {
     height: 360px;
 }
 

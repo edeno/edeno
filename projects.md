@@ -22,10 +22,14 @@ Code for most of my projects can be found on my [GitHub page](https://github.com
   ::::
 
   ::::{grid-item-card} Replay Trajectory Classification
-  :img-top: _static/fra_11_04_0001.gif
-  :img-alt: Animation of classifying replay trajectories
   :text-align: left
   :class-card: featured-project
+
+  ```{raw} html
+  <video controls autoplay loop muted playsinline preload="metadata" aria-label="Animation of classifying replay trajectories">
+    <source src="/_static/replay-trajectory-classification.mp4" type="video/mp4">
+  </video>
+  ```
 
   [replay_trajectory_classification](https://github.com/Eden-Kramer-Lab/replay_trajectory_classification) is a Python package for decoding spatial position represented by neural activity and categorizing the type of trajectory. It can decode both clustered and unclustered spiking activity and uses GPU acceleration for fast inference. The underlying state-space methods are described in our [eLife paper](https://doi.org/10.7554/eLife.64505).
 
