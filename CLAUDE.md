@@ -44,7 +44,7 @@ uv run make live
 
 ## Theme
 
-The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `basic` theme templates (not its `basic.css`; the few rules the site needs are copied into `academic.css`): a top bar, a single ~650px column, and no sidebar or search. Design intent: simple and academic, not a software or docs site. Serif reading text, faint link underlines, small grey labels, and no cards, badges, buttons, or boxed sections.
+The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `basic` theme templates (not its `basic.css`; the few rules the site needs are copied into `academic.css`): a top bar, a single ~580px column (about 75 characters per line), and no sidebar or search. Design intent: simple and academic, not a software or docs site. Serif reading text, faint link underlines, small grey labels, and no cards, badges, buttons, or boxed sections.
 
 - `layout.html` renders the top nav from the hidden toctree in `index.md` (as `nav_pages`, set in `conf.py`), so add or reorder pages there. Footer icons come from `SOCIAL_LINKS` in `conf.py`, passed through `html_context` (inline Bootstrap Icons SVGs).
 - Email and profile URLs are written once in `conf.py` (`EMAIL`, `SOCIAL_LINKS`, `MASTODON`). The pages use them through MyST substitutions (`myst_substitutions`): `{{ home_links }}` on the home page, `{{ email }}` and `{{ profiles }}` on Contact. Adding a profile to `SOCIAL_LINKS` updates the footer, Contact and the JSON-LD `sameAs`.
