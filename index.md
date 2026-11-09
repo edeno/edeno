@@ -14,9 +14,7 @@ og:description: "Computational research scientist at UCSF — building scalable,
 Computational research scientist at [UCSF](https://physiology.ucsf.edu/) — building scalable, interpretable tools to decode, categorize, and visualize how the brain represents information.
 ```
 
-```{raw} html
-<p class="links"><a href="_static/eric_denovellis_CV.pdf">CV (PDF)</a> <a href="https://scholar.google.com/citations?user=vuENbkoAAAAJ">Google Scholar</a> <a href="https://github.com/edeno">GitHub</a> <a href="mailto:eric.denovellis@ucsf.edu">Email</a></p>
-```
+{{ home_links }}
 
 ## About me
 
