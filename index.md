@@ -23,29 +23,38 @@ Computational research scientist at [UCSF](https://physiology.ucsf.edu/) — bui
 
 ## About me
 
-I work in [Dr. Loren Frank's lab](https://franklab.ucsf.edu/), where I study how the brain represents past events and alternative possibilities, and how these representations support memory and decision-making. I develop statistical models to measure them: [marked point process switching state space models](https://doi.org/10.1109/IEEECONF44664.2019.9048688) that [decode hippocampal replay and classify its dynamics](https://doi.org/10.7554/eLife.64505), work I began during my postdoc with [Dr. Uri T. Eden](https://math.bu.edu/people/tzvi/). With collaborators, I adapted these models for [real-time closed-loop neurofeedback](https://doi.org/10.1016/j.neuron.2024.12.023), a brain-machine interface for hippocampal representations. I also build open-source software, such as [Spyglass](https://doi.org/10.7554/eLife.108089.3), that makes these methods reproducible across labs.
+I work in [Loren Frank's lab](https://franklab.ucsf.edu/), where I study how the brain represents past events and alternative possibilities, and how these representations support memory and decision-making. I develop statistical models to measure them, such as switching state space models that decode hippocampal replay and classify its dynamics, work I began as a postdoc with Uri T. Eden. With collaborators, I adapted these models for [real-time closed-loop neurofeedback](https://doi.org/10.1016/j.neuron.2024.12.023), and I build open-source software such as Spyglass to make these methods reproducible across labs.
 
-Previously, I completed my Ph.D. in computational neuroscience at [Boston University](https://www.bu.edu/neuro/academics/graduate/) with Drs. [Daniel H. Bullock](https://www.bu.edu/psych/profile/daniel-bullock/) and [Earl K. Miller](https://ekmillerlab.mit.edu/earl-miller/). There I developed computational tools and models to understand how prefrontal cortex supports the underlying neural computations necessary to switch between contexts. Specifically:
+Before that, I did my Ph.D. in computational neuroscience at Boston University with Daniel H. Bullock and Earl K. Miller, studying how prefrontal cortex [coordinates context representations](https://doi.org/10.1016/j.neuron.2012.09.029) during task switching, and building interactive tools for exploring electrophysiology data ([RasterVis](https://github.com/NeurophysVis/RasterVis), [SpectraVis](https://github.com/NeurophysVis/SpectraVis)).
 
-+ I showed how synchronous network oscillations in the prefrontal cortex provide a mechanism to [flexibly coordinate context](https://doi.org/10.1016/j.neuron.2012.09.029) representations between groups of neurons during task switching.
-+ I used generalized additive models to show that anterior cingulate neurons can represent context, but do not play a significant role in switching between contexts.
-+ Finally, I developed a set of web-enabled interactive visualization tools designed to provide a multi-dimensional integrated view of electrophysiological datasets (See [RasterVis](https://github.com/NeurophysVis/RasterVis) and [SpectraVis](https://github.com/NeurophysVis/SpectraVis)).
+## Selected papers
+
+:::{container} pub
+**Spyglass is a framework for reproducible and shareable neuroscience research**
+
+Lee, K.H., **Denovellis, E.L.** (co-first), … Frank, L.M.
+
+*eLife*, 2026. [10.7554/eLife.108089](https://doi.org/10.7554/eLife.108089)
+:::
+
+:::{container} pub
+**Hippocampal replay of experience at real-world speeds**
+
+**Denovellis, E.L.**, Gillespie, A.K., Coulter, M.E., Sosa, M., Chung, J.E., Eden, U.T., Frank, L.M.
+
+*eLife*, 2021. [10.7554/eLife.64505](https://doi.org/10.7554/eLife.64505)
+:::
+
+[All publications →](publications.md)
 
 ## Education
 
-+ Ph.D. in Computational Neuroscience, Boston University
-  + Thesis: [Task Switching in the Prefrontal Cortex](https://hdl.handle.net/2144/19067)
-  + Advisor: [Daniel H. Bullock, Ph.D.](https://www.bu.edu/psych/profile/daniel-bullock/); Co-mentor: [Earl K. Miller, Ph.D.](https://ekmillerlab.mit.edu/earl-miller/)
-  + Thesis Committee: [Helen Barbas, Ph.D.](https://www.bu.edu/sargent/profile/helen-barbas-ph-d/), [David Somers, Ph.D.](https://sites.bu.edu/fmri/), [Uri T. Eden, Ph.D.](https://math.bu.edu/people/tzvi/)
-+ B.S. in Mathematics, University of California, Santa Barbara
-+ B.A. in Philosophy, University of California, Santa Barbara
++ Ph.D., Computational Neuroscience, Boston University. Thesis: [Task Switching in the Prefrontal Cortex](https://hdl.handle.net/2144/19067)
++ B.S., Mathematics, and B.A., Philosophy, University of California, Santa Barbara
 
 ## Collaborators
 
-+ [Gillespie lab @ University of Washington](https://www.gillespie-lab.com/)
-+ [Eden group @ Boston University](https://math.bu.edu/people/tzvi/)
-+ [Stephen group @ Boston University](https://emilystephen.com/)
-+ [NeuroACT lab @ National Centre for Biological Sciences](https://www.neuroact.in/)
+[Gillespie lab](https://www.gillespie-lab.com/) (University of Washington), [Eden group](https://math.bu.edu/people/tzvi/) and [Stephen group](https://emilystephen.com/) (Boston University), [NeuroACT lab](https://www.neuroact.in/) (National Centre for Biological Sciences).
 
 ```{toctree}
 :maxdepth: 2

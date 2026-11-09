@@ -295,3 +295,11 @@ def test_nav_marks_the_current_page(built_site):
         assert current == (
             [] if page == "" else [re.search(r"<h1>([^<]+)", html).group(1)]
         )
+
+
+def test_home_lists_selected_papers(built_site):
+    html = read_page(built_site, "")
+    section = re.search(r'<section id="selected-papers">(.*?)</section>', html, re.S)
+    entries = re.findall(r'<div class="pub docutils container">', section.group(1))
+    assert entries
+    assert 'href="publications/"' in section.group(1)
