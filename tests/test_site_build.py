@@ -47,7 +47,10 @@ def copy_site(dest: Path) -> Path:
     # CI runs pytest before fetching publications from ORCID.
     publications = dest / "_static" / "publications.txt"
     if not publications.exists():
-        publications.write_text("Publications placeholder.\n")
+        publications.write_text(
+            "### 2026\n:::{container} pub\n**A placeholder paper**\n\n"
+            "**Denovellis, E.L.**\n\n*A Journal*.\n:::\n"
+        )
     (dest / "_static" / "publication-authors.json").write_text(
         json.dumps(PUBLICATION_AUTHORS)
     )
@@ -291,9 +294,9 @@ def test_page_has_a_written_description(built_site, page):
 
 def test_publication_years_sit_under_a_section(built_site):
     html = read_page(built_site, "publications")
-    sections = re.findall(r"<h2>([^<]+)<a", html)
-    assert len(sections) >= 2  # articles, conference abstracts
-    assert not any(re.fullmatch(r"\d{4}", s) for s in sections)
+    assert re.findall(r"<h2>([^<]+)<a", html) == ["Articles and preprints"]
+    years = re.findall(r"<h3>([^<]+)<a", html)
+    assert years and all(re.fullmatch(r"\d{4}", y) for y in years)
 
 
 def test_contact_leads_with_email_and_lists_every_profile(built_site):
