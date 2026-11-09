@@ -286,15 +286,48 @@ def test_contact_leads_with_email_and_lists_every_profile(built_site):
     assert ">Github<" not in page
 
 
-def test_structured_data_lists_profiles_not_email(built_site):
-    html = read_page(built_site, "")
-    data = json.loads(
-        re.search(
-            r'<script type="application/ld\+json">(.*?)</script>', html, re.DOTALL
-        ).group(1)
+def structured_data(html: str) -> list[dict]:
+    """The nodes of the page's JSON-LD graph."""
+    script = re.search(
+        r'<script type="application/ld\+json">(.*?)</script>', html, re.DOTALL
     )
-    assert data["sameAs"]
-    assert not any(url.startswith("mailto:") for url in data["sameAs"])
+    data = json.loads(script.group(1))
+    assert data["@context"] == "https://schema.org"
+    return data["@graph"]
+
+
+def nodes_of_type(html: str, schema_type: str) -> list[dict]:
+    return [n for n in structured_data(html) if n["@type"] == schema_type]
+
+
+@pytest.mark.parametrize("page", ["", *PAGES])
+def test_every_page_describes_the_person(built_site, page):
+    (person,) = nodes_of_type(read_page(built_site, page), "Person")
+    assert person["@id"].startswith(conf.html_baseurl)
+    orcid_url = dict((n, u) for n, u, _ in conf.SOCIAL_LINKS)["ORCID"]
+    assert person["identifier"]["propertyID"] == "ORCID"
+    assert orcid_url.endswith("/" + person["identifier"]["value"])
+    assert "ucsf" in person["worksFor"]["url"]
+    # Same summary as the home page's link preview.
+    home = read_page(built_site, "")
+    description = re.search(r'<meta name="description" content="([^"]*)"', home)
+    assert person["description"] == unescape(description.group(1))
+
+
+def test_home_is_a_profile_page_about_the_person(built_site):
+    html = read_page(built_site, "")
+    (profile,) = nodes_of_type(html, "ProfilePage")
+    (person,) = nodes_of_type(html, "Person")
+    assert profile["mainEntity"] == {"@id": person["@id"]}
+    assert profile["url"] == conf.html_baseurl
+    for page in PAGES:
+        assert not nodes_of_type(read_page(built_site, page), "ProfilePage")
+
+
+def test_structured_data_lists_profiles_not_email(built_site):
+    (person,) = nodes_of_type(read_page(built_site, ""), "Person")
+    assert person["sameAs"]
+    assert not any(url.startswith("mailto:") for url in person["sameAs"])
 
 
 @pytest.mark.parametrize("page", ["", *PAGES, "404"])

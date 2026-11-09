@@ -121,16 +121,31 @@ myst_substitutions = {
 # Head content (JSON-LD, analytics) is appended to the `metatags` context
 # variable, which every standard Sphinx layout renders inside <head>.
 
+PERSON_ID = html_baseurl + "#person"
+
 JSON_LD_PERSON = {
-    "@context": "https://schema.org",
     "@type": "Person",
+    "@id": PERSON_ID,
     "name": author,
+    "alternateName": "Eric Denovellis",
     "givenName": "Eric",
     "familyName": "Denovellis",
     "jobTitle": "Computational Research Scientist",
     "url": html_baseurl,
     "image": html_baseurl + PROFILE_IMAGE,
-    "affiliation": {
+    "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "ORCID",
+        "value": _PROFILE_URL["ORCID"].rsplit("/", 1)[-1],
+    },
+    "knowsAbout": [
+        "Computational neuroscience",
+        "Hippocampal replay",
+        "Neural decoding",
+        "Statistical models of neural data",
+        "Open-source neuroscience software",
+    ],
+    "worksFor": {
         "@type": "Organization",
         "name": "University of California, San Francisco",
         "url": "https://www.ucsf.edu/",
@@ -179,6 +194,24 @@ UNUSED_ASSETS = {
 }
 
 
+def _structured_data(app, pagename) -> dict:
+    root = app.config.root_doc
+    person = {
+        **JSON_LD_PERSON,
+        "description": app.env.metadata[root]["og:description"],
+    }
+    graph = [person]
+    if pagename == root:
+        graph.append(
+            {
+                "@type": "ProfilePage",
+                "url": html_baseurl,
+                "mainEntity": {"@id": PERSON_ID},
+            }
+        )
+    return {"@context": "https://schema.org", "@graph": graph}
+
+
 def _inject_head(app, pagename, templatename, context, doctree):
     # basic/layout.html already writes a viewport tag; drop docutils' duplicate.
     head = re.sub(r'\s*<meta name="viewport"[^>]*>', "", context.get("metatags") or "")
@@ -193,7 +226,7 @@ def _inject_head(app, pagename, templatename, context, doctree):
         head += f'\n<meta name="description" content="{html.escape(description)}">'
     head += (
         '\n<script type="application/ld+json">'
-        + json.dumps(JSON_LD_PERSON)
+        + json.dumps(_structured_data(app, pagename))
         + "</script>"
     )
     head += "\n" + _GTAG_SNIPPET

@@ -52,5 +52,5 @@ The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `
 - Reading text is Charter. Apple devices use their installed copy; everyone else downloads the Latin-subset WOFF2 files in `static/fonts/` (Bitstream licence in `static/fonts/LICENSE.txt`, which must ship with them).
 - Brand colour is teal (`#0f766e` light / `#2dd4bf` dark). Both meet WCAG AA text contrast on the page backgrounds (5.5:1 on `#ffffff`, 9.8:1 on `#121519`), so keep that bar if changing it.
 - Search is turned off in `conf.py` (`_disable_search`), so no `search/` page or index is built.
-- Google Analytics, JSON-LD Person schema, and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py`.
+- Google Analytics, JSON-LD structured data (a `Person` on every page, which the home page marks as a `ProfilePage`), and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py`.
 - `tests/test_site_build.py` builds the site and checks the nav, head tags, footer and 404 page. It runs with `uv run pytest`.
