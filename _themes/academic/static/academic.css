@@ -109,6 +109,20 @@ body {
   list-style: none;
 }
 
+.site-nav li {
+  margin: 0;
+}
+
+/* Phones can't fit every page on one line: two even rows instead of a straggler. */
+@media (max-width: 480px) {
+  .site-nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    column-gap: 1.25rem;
+  }
+}
+
 .site-nav a {
   color: var(--muted);
   text-decoration: none;
@@ -345,6 +359,7 @@ section:has(> .project-list) > h2 {
 
 .pub p + p strong {
   color: var(--fg);
+  white-space: nowrap;
 }
 
 /* Talks and Teaching: the date sits in a narrow left column; title, then details in grey. */
