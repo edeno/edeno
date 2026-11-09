@@ -1,3 +1,10 @@
+---
+og:description: "How to reach Eric L. Denovellis: email, online profiles, and office address at UCSF Mission Bay."
+myst:
+  html_meta:
+    description: "How to reach Eric L. Denovellis: email, online profiles, and office address at UCSF Mission Bay."
+---
+
 # Contact
 
 You can contact me online. I am open to questions or collaborations:

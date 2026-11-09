@@ -1,3 +1,10 @@
+---
+og:description: "Courses, lectures, and tutorials taught by Eric L. Denovellis in computational neuroscience, neural data analysis, and programming."
+myst:
+  html_meta:
+    description: "Courses, lectures, and tutorials taught by Eric L. Denovellis in computational neuroscience, neural data analysis, and programming."
+---
+
 # Teaching
 
 :::{container} dated

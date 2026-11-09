@@ -303,3 +303,12 @@ def test_home_lists_selected_papers(built_site):
     entries = re.findall(r'<div class="pub docutils container">', section.group(1))
     assert entries
     assert 'href="publications/"' in section.group(1)
+
+
+@pytest.mark.parametrize("page", ["", *PAGES])
+def test_page_has_a_written_description(built_site, page):
+    # Link previews use these; without front matter they fall back to the first text.
+    html = read_page(built_site, page)
+    description = re.search(r'<meta content="([^"]*)" name="description"', html)
+    og = re.search(r'<meta property="og:description" content="([^"]*)"', html)
+    assert description and og and description.group(1) == og.group(1)
