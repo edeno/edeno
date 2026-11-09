@@ -121,9 +121,15 @@ body {
   font-size: 0.95rem;
 }
 
-.site-nav a:hover,
-.site-nav a[aria-current="page"] {
+.site-nav a:hover {
   color: var(--fg);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45em;
 }
 
 /* Phones can't fit every page on one line: two even rows of equal columns instead of a straggler. */
@@ -145,13 +151,6 @@ body {
 
   .site-nav a {
     font-size: 0.92rem;
-  }
-
-  .site-nav a[aria-current="page"] {
-    color: var(--brand);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.45em;
   }
 }
 
