@@ -1,8 +1,8 @@
 {% extends "basic/layout.html" %}
 
-{#- The home page title is the site title, so skip the " — site title" suffix there. #}
+{#- The home page gets its own title instead of "name — name". #}
 {%- block htmltitle %}
-<title>{{ title|striptags|e }}{% if pagename != root_doc %}{{ titlesuffix }}{% endif %}</title>
+<title>{% if pagename == root_doc %}{{ home_title|e }}{% else %}{{ title|striptags|e }}{{ titlesuffix }}{% endif %}</title>
 {%- endblock %}
 
 {%- block relbar1 %}{% endblock %}

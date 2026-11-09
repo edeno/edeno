@@ -182,7 +182,7 @@ def test_contact_address_keeps_its_lines(built_site):
 
 
 def test_titles_not_doubled(built_site):
-    assert f"<title>{conf.project}</title>" in read_page(built_site, "")
+    assert f"<title>{conf.HOME_TITLE}</title>" in read_page(built_site, "")
     for page in PAGES:
         title = re.search(r"<title>(.*?)</title>", read_page(built_site, page)).group(1)
         assert title.count(conf.project) == 1, title

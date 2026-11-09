@@ -64,7 +64,9 @@ SOCIAL_LINKS = [
     ("Instagram", "https://www.instagram.com/edenovellis/", ICON_INSTAGRAM),
 ]
 
-html_context = {"social_links": SOCIAL_LINKS}
+# Search results show the <title>; the role and affiliation tell same-name people apart.
+HOME_TITLE = f"{project} — Computational Neuroscientist, UCSF"
+html_context = {"social_links": SOCIAL_LINKS, "home_title": HOME_TITLE}
 _PROFILE_URL = {name: url for name, url, _ in SOCIAL_LINKS}
 _PROFILES = [(name, url) for name, url, _ in SOCIAL_LINKS if name != "Email"]
 
