@@ -1,10 +1,9 @@
 """Build the site once and check the rendered HTML."""
 
+import importlib.util
 import json
-import pickle
 import re
 import shutil
-import sys
 from html import unescape
 from pathlib import Path
 from urllib.parse import unquote
@@ -13,8 +12,9 @@ import pytest
 from sphinx.cmd.build import build_main
 
 REPO = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(REPO))
-import conf  # noqa: E402
+_spec = importlib.util.spec_from_file_location("conf", REPO / "conf.py")
+conf = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(conf)
 
 # Every page Sphinx builds besides the home page, so new pages are checked too.
 PAGES = sorted(
@@ -24,17 +24,11 @@ PAGES = sorted(
 )
 
 
-# Everything Sphinx reads; copying only these keeps caches and environments out.
-SITE_FILES = ["conf.py", "docutils.conf", "robots.txt"]
-SITE_DIRS = ["_static", "_themes", "images"]
-
-
 def copy_site(dest: Path) -> Path:
-    dest.mkdir(parents=True)
-    for path in [*REPO.glob("*.md"), *(REPO / f for f in SITE_FILES)]:
-        shutil.copy2(path, dest)
-    for d in SITE_DIRS:
-        shutil.copytree(REPO / d, dest / d)
+    # Dot-directories hold git, environments and tool state, never site files.
+    shutil.copytree(
+        REPO, dest, ignore=shutil.ignore_patterns(".*", "_build", "__pycache__")
+    )
     # CI runs pytest before fetching publications from ORCID.
     publications = dest / "_static" / "publications.txt"
     if not publications.exists():
@@ -77,19 +71,30 @@ def read_page(built_site: Path, page: str) -> str:
 
 
 def nav(html: str) -> str:
-    return re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
+    return re.search(r'<nav class="site-nav".*?</nav>', html, re.DOTALL).group(0)
 
 
 def container(html: str, cls: str) -> str:
     """Inner HTML of the first MyST ``{container}`` with this class."""
-    match = re.search(rf'<div class="{cls} docutils container">(.*?)</div>', html, re.S)
+    match = re.search(
+        rf'<div class="{cls} docutils container">(.*?)</div>', html, re.DOTALL
+    )
     assert match, f"no {cls} container"
     return match.group(1)
 
 
+def toctree_entries(markdown: str) -> list[str]:
+    block = re.search(r"```\{toctree\}\n(.*?)```", markdown, re.DOTALL).group(1)
+    return [
+        line.strip()
+        for line in block.splitlines()
+        if line.strip() and not line.startswith(":")
+    ]
+
+
 def test_top_nav_follows_the_toctree(built_site):
-    with (built_site / ".doctrees" / "environment.pickle").open("rb") as f:
-        toctree = pickle.load(f).toctree_includes["index"]
+    toctree = toctree_entries((REPO / "index.md").read_text())
+    assert toctree
     home = read_page(built_site, "")
     assert re.findall(r'href="([^"]*)"', nav(home)) == [f"{doc}/" for doc in toctree]
     talks = read_page(built_site, "talks")
@@ -113,7 +118,7 @@ def test_head_injection_survives(built_site):
 
 def test_footer_social_links(built_site):
     html = read_page(built_site, "")
-    footer = re.search(r"<footer.*?</footer>", html, re.S).group(0)
+    footer = re.search(r"<footer.*?</footer>", html, re.DOTALL).group(0)
     for name, url, _ in conf.SOCIAL_LINKS:
         assert f'href="{url}"' in footer
         assert f'aria-label="{name}"' in footer
@@ -129,17 +134,17 @@ def test_404_page(built_site):
 def test_home_intro_and_plain_links(built_site):
     html = read_page(built_site, "")
     # Everything between the name and the first subsection is the intro.
-    intro = re.search(r"<h1>Eric L\. Denovellis.*?<section", html, re.S).group(0)
+    intro = re.search(r"<h1>Eric L\. Denovellis.*?<section", html, re.DOTALL).group(0)
     assert re.search(r'<img[^>]*class="portrait', intro)
     assert "profile.jpg" in intro
     assert 'class="tagline' in intro
-    links = re.search(r'<p class="links">(.*?)</p>', html, re.S).group(1)
+    links = re.search(r'<p class="links">(.*?)</p>', html, re.DOTALL).group(1)
     assert re.findall(r"<a [^>]*>[^<]+</a>", links)
 
 
 def test_projects_grouped_by_theme(built_site):
     html = read_page(built_site, "projects")
-    groups = re.findall(r"<section id=[^>]*>\s*<h2>.*?</section>", html, re.S)
+    groups = re.findall(r"<section id=[^>]*>\s*<h2>.*?</section>", html, re.DOTALL)
     assert groups
     for group in groups:
         assert 'class="project-list' in group
@@ -184,16 +189,18 @@ def test_charter_ships_with_the_site(built_site, css):
 def test_orcid_icon_cuts_out_its_letters(built_site):
     # One path draws the disc and the "iD" inside it; nonzero fill paints it solid.
     footer = read_page(built_site, "contact").split('class="site-footer"')[1]
-    orcid = re.search(r'aria-label="ORCID".*?</svg>', footer, re.S).group(0)
+    orcid = re.search(r'aria-label="ORCID".*?</svg>', footer, re.DOTALL).group(0)
     assert 'fill-rule="evenodd"' in orcid
 
 
 def test_publications_lead_with_the_title(built_site):
     html = read_page(built_site, "publications")
-    entries = re.findall(r'<div class="pub docutils container">(.*?)</div>', html, re.S)
+    entries = re.findall(
+        r'<div class="pub docutils container">(.*?)</div>', html, re.DOTALL
+    )
     assert entries
     for entry in entries:
-        paragraphs = re.findall(r"<p>(.*?)</p>", entry, re.S)
+        paragraphs = re.findall(r"<p>(.*?)</p>", entry, re.DOTALL)
         assert len(paragraphs) >= 2, entry[:200]  # title, authors, usually venue
         title = paragraphs[0]
         assert title.startswith("<strong>") and title.endswith("</strong>")
@@ -204,7 +211,7 @@ def test_dated_entries_have_a_date_and_details(built_site, page):
     block = container(read_page(built_site, page), "dated")
     dates = re.findall(r"<dt>(.*?)</dt>", block)
     assert dates and all(d.strip() for d in dates)
-    for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
+    for dd in re.findall(r"<dd>(.*?)</dd>", block, re.DOTALL):
         assert len(re.findall(r"<p>", dd)) >= 2, dd[:200]  # title, then details
 
 
@@ -218,7 +225,7 @@ def test_fun_photo_grid(built_site):
 
 def test_music_links_name_each_source(built_site):
     block = container(read_page(built_site, "fun"), "music-links")
-    items = re.findall(r"<li>(.*?)</li>", block, re.S)
+    items = re.findall(r"<li>(.*?)</li>", block, re.DOTALL)
     assert items
     for item in items:
         assert re.search(r'<a class="reference external" href="[^"]+">\w', item)
@@ -242,7 +249,9 @@ def test_nav_marks_the_current_page(built_site, page):
 
 def test_home_lists_selected_papers(built_site):
     html = read_page(built_site, "")
-    section = re.search(r'<section id="selected-papers">(.*?)</section>', html, re.S)
+    section = re.search(
+        r'<section id="selected-papers">(.*?)</section>', html, re.DOTALL
+    )
     entries = re.findall(r'<div class="pub docutils container">', section.group(1))
     assert entries
     assert 'href="publications/"' in section.group(1)
@@ -267,7 +276,7 @@ def test_publication_years_sit_under_a_section(built_site):
 
 def test_contact_leads_with_email_and_lists_every_profile(built_site):
     html = read_page(built_site, "contact")
-    page = re.search(r'<main class="page">(.*?)</main>', html, re.S).group(1)
+    page = re.search(r'<main class="page">(.*?)</main>', html, re.DOTALL).group(1)
     # Sphinx cloaks addresses with entities, %40 and <span>s; read it as a browser would.
     readable = unquote(unescape(re.sub(r"</?span>", "", page)))
     assert re.search(r'href="mailto:([^"]+)">\1</a>', readable)  # address written out
@@ -281,7 +290,7 @@ def test_structured_data_lists_profiles_not_email(built_site):
     html = read_page(built_site, "")
     data = json.loads(
         re.search(
-            r'<script type="application/ld\+json">(.*?)</script>', html, re.S
+            r'<script type="application/ld\+json">(.*?)</script>', html, re.DOTALL
         ).group(1)
     )
     assert data["sameAs"]
@@ -293,12 +302,12 @@ def test_head_has_one_viewport_and_no_unused_assets(built_site, page):
     html = read_page(built_site, page)
     assert html.count('name="viewport"') == 1
     # No search (so no highlighting scripts) and no code blocks (so no Pygments CSS).
-    for unused in conf._UNUSED_ASSETS:
+    for unused in conf.UNUSED_ASSETS:
         assert unused not in html, unused
 
 
 def test_build_ships_no_unused_sphinx_files(built_site):
     static = built_site / "_static"
     shipped = {p.name for p in static.iterdir()}
-    assert not shipped & (conf._UNUSED_ASSETS | {"publications.txt"})
+    assert not shipped & (conf.UNUSED_ASSETS | {"publications.txt"})
     assert not (built_site / "_sources").exists()

@@ -165,7 +165,7 @@ _GTAG_SNIPPET = (
 
 # Files Sphinx and the basic theme add for search, code blocks, and their own
 # stylesheet; this site uses none of them.
-_UNUSED_ASSETS = {
+UNUSED_ASSETS = {
     "basic.css",
     "doctools.js",
     "documentation_options.js",
@@ -186,7 +186,7 @@ def _inject_head(app, pagename, templatename, context, doctree):
         context[key] = [
             f
             for f in context.get(key, [])
-            if Path(str(getattr(f, "filename", f))).name not in _UNUSED_ASSETS
+            if Path(str(getattr(f, "filename", f))).name not in UNUSED_ASSETS
         ]
     description = (context.get("meta") or {}).get("og:description")
     if description:
@@ -222,7 +222,7 @@ def _remove_unused_output(app, exception):
     # leaves an empty _sources/ behind.
     if exception is None:
         static = Path(app.outdir) / "_static"
-        for name in _UNUSED_ASSETS | {"publications.txt"}:
+        for name in UNUSED_ASSETS | {"publications.txt"}:
             (static / name).unlink(missing_ok=True)
         sources = Path(app.outdir) / "_sources"
         if sources.is_dir() and not any(sources.iterdir()):
