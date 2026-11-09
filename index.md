@@ -10,6 +10,7 @@ myst:
 ```{image} _static/profile.jpg
 :alt: Photo of Eric L. Denovellis
 :class: portrait
+:loading: link
 ```
 
 ```{container} tagline

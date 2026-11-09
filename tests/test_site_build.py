@@ -279,3 +279,9 @@ def test_music_links_name_each_source(built_site):
         # A logo, if any, is decorative: the named link carries the meaning.
         for img in re.findall(r"<img [^>]*>", item):
             assert 'alt=""' in img
+
+
+def test_portrait_loads_eagerly(built_site):
+    # The portrait is the first thing on the home page; lazy loading delays it.
+    portrait = re.search(r'<img[^>]*class="portrait"[^>]*>', read_page(built_site, ""))
+    assert 'loading="lazy"' not in portrait.group(0)
