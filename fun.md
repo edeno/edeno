@@ -9,7 +9,7 @@ Here are some routes I have enjoyed:
 + [High Sierra, Cloud Canyon, Deadman's Canyon](https://caltopo.com/m/30NR)
 + [John Muir Trail](https://caltopo.com/m/SVKB)
 + [Pemi Loop](https://caltopo.com/m/H5N8)
-+ [Goat Rock's Wilderness](https://caltopo.com/m/BJT08)
++ [Goat Rocks Wilderness](https://caltopo.com/m/BJT08)
 
 Here are some photos from hikes:
 
@@ -43,7 +43,7 @@ Here are some photos from hikes:
 ```
 :::
 
-You can find more on my [instagram](https://www.instagram.com/edenovellis/).
+You can find more on my [Instagram](https://www.instagram.com/edenovellis/).
 
 ## Music I like
 
