@@ -137,12 +137,19 @@ _GTAG_SNIPPET = (
 )
 
 
-# Sphinx's defaults for search highlighting and code blocks; this site has neither.
+# Files Sphinx and the basic theme add for search, code blocks, and their own
+# stylesheet; this site uses none of them.
 _UNUSED_ASSETS = {
+    "basic.css",
     "doctools.js",
-    "sphinx_highlight.js",
     "documentation_options.js",
+    "file.png",
+    "language_data.js",
+    "minus.png",
+    "plus.png",
     "pygments.css",
+    "searchtools.js",
+    "sphinx_highlight.js",
 }
 
 
@@ -172,6 +179,18 @@ def _move_404_to_root(app, exception):
         (outdir / "404").rmdir()
 
 
+def _remove_unused_output(app, exception):
+    # publications.txt is only an include source; html_copy_source=False still
+    # leaves an empty _sources/ behind.
+    if exception is None:
+        static = Path(app.outdir) / "_static"
+        for name in _UNUSED_ASSETS | {"publications.txt"}:
+            (static / name).unlink(missing_ok=True)
+        sources = Path(app.outdir) / "_sources"
+        if sources.is_dir() and not any(sources.iterdir()):
+            sources.rmdir()
+
+
 def _disable_search(app):
     # A seven-page site doesn't need search; skips search/ and searchindex.js.
     app.builder.search = False
@@ -181,6 +200,7 @@ def setup(app):
     app.connect("builder-inited", _disable_search)
     app.connect("html-page-context", _inject_head)
     app.connect("build-finished", _move_404_to_root)
+    app.connect("build-finished", _remove_unused_output)
 
 
 # Sitemap

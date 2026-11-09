@@ -293,3 +293,10 @@ def test_head_has_one_viewport_and_no_unused_assets(built_site, page):
     # No search (so no highlighting scripts) and no code blocks (so no Pygments CSS).
     for unused in conf._UNUSED_ASSETS:
         assert unused not in html, unused
+
+
+def test_build_ships_no_unused_sphinx_files(built_site):
+    static = built_site / "_static"
+    shipped = {p.name for p in static.iterdir()}
+    assert not shipped & (conf._UNUSED_ASSETS | {"publications.txt"})
+    assert not (built_site / "_sources").exists()
