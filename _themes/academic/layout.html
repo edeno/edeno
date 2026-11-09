@@ -15,7 +15,9 @@
   {%- set home = pathto(root_doc) %}
   <a class="site-name" href="{{ '/' if home == '#' else home }}">{{ project }}</a>
   <nav class="site-nav" aria-label="Main">
-    {{ toctree(maxdepth=1, titles_only=True, includehidden=True, collapse=False) }}
+    {#- Screen readers learn the current page from aria-current, not its colour. #}
+    {{ toctree(maxdepth=1, titles_only=True, includehidden=True, collapse=False)
+       |replace('<a class="current reference internal"', '<a aria-current="page" class="current reference internal"') }}
   </nav>
 </header>
 {%- endblock %}

@@ -285,3 +285,13 @@ def test_portrait_loads_eagerly(built_site):
     # The portrait is the first thing on the home page; lazy loading delays it.
     portrait = re.search(r'<img[^>]*class="portrait"[^>]*>', read_page(built_site, ""))
     assert 'loading="lazy"' not in portrait.group(0)
+
+
+def test_nav_marks_the_current_page(built_site):
+    for page in ["", *PAGES]:
+        html = read_page(built_site, page)
+        nav = re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
+        current = re.findall(r'<a [^>]*aria-current="page"[^>]*>([^<]+)</a>', nav)
+        assert current == (
+            [] if page == "" else [re.search(r"<h1>([^<]+)", html).group(1)]
+        )
