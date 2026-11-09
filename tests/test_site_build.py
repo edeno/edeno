@@ -266,7 +266,7 @@ def test_publications_lead_with_the_title(built_site):
 
 def test_talks_have_a_date_column_newest_first(built_site):
     html = read_page(built_site, "talks")
-    block = re.search(r'<div class="talks docutils">(.*?)</dl>', html, re.S).group(1)
+    block = re.search(r'<div class="dated docutils">(.*?)</dl>', html, re.S).group(1)
     dates = re.findall(r"<dt>(.*?)</dt>", block)
     assert dates
     parsed = [datetime.strptime(d, "%b %Y") for d in dates]
@@ -274,4 +274,16 @@ def test_talks_have_a_date_column_newest_first(built_site):
     for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
         assert len(re.findall(r"<p>", dd)) == 2, dd[:200]  # title, then venue
     css = (built_site / "_static" / "academic.css").read_text()
-    assert re.search(r"\.talks dl\s*{[^}]*grid-template-columns", css)
+    assert re.search(r"\.dated dl\s*{[^}]*grid-template-columns", css)
+
+
+def test_teaching_matches_the_talks_layout(built_site):
+    html = read_page(built_site, "teaching")
+    block = re.search(r'<div class="dated docutils">(.*?)</dl>', html, re.S).group(1)
+    dates = re.findall(r"<dt>(.*?)</dt>", block)
+    assert dates
+    for date in dates:
+        assert re.fullmatch(r"\d{4}(–\d{2})?", date), date
+    for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
+        assert len(re.findall(r"<p>", dd)) == 2, dd[:200]  # role, then details
+    assert "<h2>" not in html

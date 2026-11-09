@@ -1,49 +1,43 @@
 # Teaching
 
-## National Centre for Biological Sciences, Bangalore, India
+:::{div} dated
+2026
+: Visiting Instructor, *Neural Circuits for Navigation: Anatomy, Physiology, and Computational Methods*
 
-**Visiting Instructor — Neural Circuits for Navigation: Anatomy, Physiology, and Computational Methods**
-(February - March, 2026)
+  National Centre for Biological Sciences, Bangalore. Co-designed and co-taught with [Abhilasha Joshi](https://www.neuroact.in/) for nine graduate students: eight sessions with Jupyter notebook assignments, from spectral analysis to neural decoding. [Course materials](https://github.com/edeno/ncbs-neural-circuits-navigation)
 
-+ Co-designed and co-taught with [Abhilasha Joshi](https://www.neuroact.in/) for nine graduate students. I taught eight 1.5-hour sessions with Jupyter notebook assignments, followed by student projects and presentations. Topics: open data use and visualization, spectral analysis of local field potentials, spike-stimulus analysis, neural decoding, and clusterless decoding. [Course materials](https://github.com/edeno/ncbs-neural-circuits-navigation)
+2024
+: Guest Lecturer, *NS219 Encoder-Decoder Models for Neuroscience*
 
-## University of California, San Francisco
+  UCSF. Switching state space models to characterize non-local activity in the hippocampus.
 
-**Guest Lecturer for NS219 - Encoder-Decoder Models for Neuroscience**
-(May, 2024)
+2021
+: Frank lab Python tutorial
 
-+ Lecture on switching state space models for characterizing non-local activity in the hippocampus.
+  UCSF. A tutorial series for the lab on Python basics, NumPy, SciPy, and Matplotlib. [Tutorial code](https://github.com/LorenFrankLab/franklab_python_tutorial)
 
-**Frank lab Python tutorial**
-(August, 2021)
+2015
+: Instructor, *CELEST Summer Program for Undergraduate Interns*
 
-+ I led a tutorial series for the lab that covers Python basics, numpy, scipy, and matplotlib. [Tutorial Code](https://github.com/LorenFrankLab/franklab_python_tutorial)
+  Boston University. Taught a MATLAB programming course to undergraduates underrepresented in STEM.
 
-## Boston University
+2013–15
+: Co-organizer, *CELEST Summer Undergraduate Training Program*
 
-**Instructor for CELEST Summer Program for Undergraduate Interns**
-(Summer, 2015)
+  Boston University. Organized professional development seminars and led programming tutorials and laboratory tours for undergraduates from underrepresented groups. [MATLAB tutorial](https://github.com/edeno/CELEST-Matlab-Tutorial)
 
-+ Taught a Matlab programming course to underrepresented undergraduate students in STEM.
+2014
+: Teaching Fellow, *CAS NE 340 Introduction to Computational Models of Skilled Decision and Action*
 
-**Co-organizer of CELEST Summer Undergraduate Training Program for NSF funded Science of Learning Center**
-(Summer, 2013 - 2015)
+  Boston University. Delivered lectures on task switching and MATLAB programming; assisted with computer lab sessions.
 
-+ The program provided research and training experience for under-represented groups in neuroscience. It included professional development seminars covering various issues, including on how graduate training is funded, what a successful graduate application looks like, how implicit bias can influence careers, how to organize scientific presentations, how to write effective papers, and other topics. I helped organize the professional development seminars, led programming tutorials, and led laboratory tours for two summers. [Matlab Tutorial](https://github.com/edeno/CELEST-Matlab-Tutorial)
+2011
+: Teaching Fellow, *CAS CN 570 Neural and Computational Models of Conditioning, Reinforcement, Motivation and Rhythm*
 
-**Teaching Fellow for CAS NE 340 - Introduction to Computational Models of Skilled Decision and Action.**
-(January - May, 2014)
+  Boston University. Designed a [final project assignment](https://github.com/edeno/project-assignment-visuomotor-reach-adaptation) using a neural network model for visually guided reaching that integrates motor and visual sensory feedback.
 
-+ Delivered lectures on task switching and Matlab programming; assisted with computer lab sessions.
+2005–07
+: Mathematics Tutor, *Campus Learning Assistance Services*
 
-**Teaching Fellow for CAS CN 570 - Neural and Computational Models of Conditioning, Reinforcement, Motivation and Rhythm.**
-(January - May, 2011)
-
-+ I designed a [final project assignment and neural network model](https://github.com/edeno/project-assignment-visuomotor-reach-adaptation) inspired by [Bullock et al. (1993)](https://doi.org/10.1162/jocn.1993.5.4.408) and [Grosse-Wentrup and Contreras-Vidal (2007)](https://doi.org/10.1007/s00422-007-0142-8). The project challenges the student to understand how the brain learns to perform visually-guided reaches by integrating both motor and visual sensory feedback. In order to complete the assignment, the student must show understanding of the neural network model by adding additional features to the model and by critiquing the added features.
-
-## University of California, Santa Barbara
-
-**University of California, Santa Barbara Campus Learning Assistance Services - Mathematics Tutor**
-(September, 2005 - June, 2007)
-
-+ I tutored students in college-level mathematics courses including calculus and linear algebra.
+  UC Santa Barbara. Tutored students in calculus and linear algebra.
+:::
