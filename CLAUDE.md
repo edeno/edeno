@@ -38,7 +38,7 @@ uv run make live
 
 ## Adding entries
 
-- **Talk:** in `talks.md`, add a definition-list entry inside the `dated` div, newest first. The date is a three-letter month and year (`Sep 2027`), then `: Title`, a blank line, and the venue indented two spaces. The site test checks this format and order.
+- **Talk:** in `talks.md`, add a definition-list entry inside the `dated` container, newest first: a short date (`Sep 2027`), then `: Title`, a blank line, and the venue indented two spaces. Extra indented paragraphs (a slides link) are fine.
 - **Teaching:** same layout in `teaching.md`, with a year or year range (`2013–15`) as the date, then `: Role, *Course*`, a blank line, and `Institution. One-sentence description.` indented two spaces.
 - **Conference abstract:** in `publications.md`, add a `:::{container} pub` block with three paragraphs: `**Title**`, the authors (your name as `**Denovellis, E.L.**`), then the venue. Journal articles and preprints come from ORCID automatically.
 

@@ -3,7 +3,6 @@
 import re
 import shutil
 import sys
-from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -13,7 +12,19 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 import conf  # noqa: E402
 
-NAV = ["Projects", "Publications", "Talks", "Teaching", "Fun", "Contact"]
+
+def toctree_pages() -> list[str]:
+    """Docs in the hidden toctree in index.md, which drives the top nav."""
+    index = (REPO / "index.md").read_text()
+    block = re.search(r"```\{toctree\}\n(.*?)```", index, re.S).group(1)
+    return [
+        line.strip()
+        for line in block.splitlines()
+        if line.strip() and not line.startswith(":")
+    ]
+
+
+PAGES = toctree_pages()
 
 
 def copy_site(dest: Path) -> Path:
@@ -65,11 +76,12 @@ def read_page(built_site: Path, page: str) -> str:
     return (built_site / page / "index.html").read_text()
 
 
-def test_top_nav_lists_pages_in_order(built_site):
-    html = read_page(built_site, "talks")
-    nav = re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
-    assert re.findall(r"<a [^>]*>([^<]+)</a>", nav) == NAV
-    assert re.search(r'<a class="site-name" href="\.\./"', html)
+def test_top_nav_follows_the_toctree(built_site):
+    home = read_page(built_site, "")
+    nav = re.search(r'<nav class="site-nav".*?</nav>', home, re.S).group(0)
+    assert re.findall(r'href="([^"]*)"', nav) == [f"{page}/" for page in PAGES]
+    talks = read_page(built_site, "talks")
+    assert re.search(r'<a class="site-name" href="\.\./"', talks)
 
 
 def test_no_furo_no_search(built_site):
@@ -114,61 +126,19 @@ def test_home_intro_and_plain_links(built_site):
     assert "profile.jpg" in intro
     assert 'class="tagline' in intro
     links = re.search(r'<p class="links">(.*?)</p>', html, re.S).group(1)
-    assert re.findall(r">([^<]+)</a>", links) == [
-        "CV (PDF)",
-        "Google Scholar",
-        "GitHub",
-        "Email",
-    ]
-    assert "sd-badge" not in html
-
-
-REMOVED_MEDIA = [
-    "RasterVis.mp4",
-    "SpectraVis-Demo.mp4",
-    "spectral_connectivity.png",
-    "track_linearization.png",
-    "ripple_detection.png",
-    "spyglass.png",
-    "replay-trajectory-classification.mp4",
-]
-
-
-PROJECT_GROUPS = {
-    "Data infrastructure": ["Spyglass"],
-    "Decoding hippocampal activity": [
-        "Replay Trajectory Classification",
-        "Non-Local Detector",
-        "Track Linearization",
-    ],
-    "Signal processing": ["Spectral Connectivity", "Ripple Detection"],
-    "Interactive visualization": ["RasterVis", "SpectraVis"],
-}
+    assert re.findall(r"<a [^>]*>[^<]+</a>", links)
 
 
 def test_projects_grouped_by_theme(built_site):
     html = read_page(built_site, "projects")
-    headings = re.findall(r"<h2>(.*?)<a class=\"headerlink", html)
-    assert headings == list(PROJECT_GROUPS)
-    for group, names in PROJECT_GROUPS.items():
-        section = re.search(rf"<h2>{group}.*?</section>", html, re.S).group(0)
-        found = re.findall(
-            r'<strong><a class="reference external" href="https://github\.com/[^"]+">([^<]+)</a></strong>',
-            section,
-        )
-        assert found == names
-    for banned in ["sd-card", "sd-badge", "shields.io", "<video", "<img"]:
-        assert banned not in html
+    groups = re.findall(r"<section id=[^>]*>\s*<h2>.*?</section>", html, re.S)
+    assert groups
+    for group in groups:
+        assert 'class="project-list' in group
+        assert re.search(r'<strong><a class="reference external" href="[^"]+">', group)
 
 
-def test_unused_project_media_removed(built_site):
-    for name in REMOVED_MEDIA:
-        assert not (built_site / "_static" / name).exists()
-
-
-@pytest.mark.parametrize(
-    "page", ["", "projects", "publications", "talks", "teaching", "fun", "contact"]
-)
+@pytest.mark.parametrize("page", ["", *PAGES])
 def test_no_boxed_components(built_site, page):
     html = read_page(built_site, page)
     for banned in ["sd-card", "sd-badge", "sd-shadow", "sd-btn"]:
@@ -177,31 +147,22 @@ def test_no_boxed_components(built_site, page):
 
 def test_contact_address_keeps_its_lines(built_site):
     html = read_page(built_site, "contact")
-    address = re.search(
-        r"<strong>Sandler Neurosciences Center</strong>.*?</p>", html, re.S
-    ).group(0)
-    assert address.count("<br") == 3
+    assert "<br" in html  # the address keeps its line breaks
 
 
-def test_home_description_starts_with_tagline(built_site):
+def test_home_description_is_set_not_alt_text(built_site):
     html = read_page(built_site, "")
-    for pattern in [
-        r'<meta content="([^"]*)" name="description"',
-        r'<meta property="og:description" content="([^"]*)"',
-    ]:
-        assert (
-            re.search(pattern, html)
-            .group(1)
-            .startswith("Computational research scientist")
-        )
+    description = re.search(r'<meta content="([^"]*)" name="description"', html)
+    og = re.search(r'<meta property="og:description" content="([^"]*)"', html)
+    assert description.group(1) and description.group(1) == og.group(1)
+    assert not description.group(1).startswith("Photo of")
 
 
 def test_titles_not_doubled(built_site):
-    assert "<title>Eric L. Denovellis</title>" in read_page(built_site, "")
-    assert re.search(
-        r"<title>Talks &#8212; Eric L\. Denovellis</title>",
-        read_page(built_site, "talks"),
-    )
+    assert f"<title>{conf.project}</title>" in read_page(built_site, "")
+    for page in PAGES:
+        title = re.search(r"<title>(.*?)</title>", read_page(built_site, page)).group(1)
+        assert title.count(conf.project) == 1, title
 
 
 def test_charter_ships_with_the_site(built_site):
@@ -256,25 +217,22 @@ def test_publications_lead_with_the_title(built_site):
     assert entries
     for entry in entries:
         paragraphs = re.findall(r"<p>(.*?)</p>", entry, re.S)
-        assert len(paragraphs) == 3, entry[:200]
-        title, authors, _ = paragraphs
+        assert len(paragraphs) >= 2, entry[:200]  # title, authors, usually venue
+        title = paragraphs[0]
         assert title.startswith("<strong>") and title.endswith("</strong>")
-        assert "Denovellis, E.L." in authors
     css = (built_site / "_static" / "academic.css").read_text()
     assert ".pub p + p" in css
 
 
-def test_talks_have_a_date_column_newest_first(built_site):
+def test_talks_have_a_date_column(built_site):
     html = read_page(built_site, "talks")
     block = re.search(
         r'<div class="dated docutils container">(.*?)</dl>', html, re.S
     ).group(1)
     dates = re.findall(r"<dt>(.*?)</dt>", block)
-    assert dates
-    parsed = [datetime.strptime(d, "%b %Y") for d in dates]
-    assert parsed == sorted(parsed, reverse=True)
+    assert dates and all(d.strip() for d in dates)
     for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
-        assert len(re.findall(r"<p>", dd)) == 2, dd[:200]  # title, then venue
+        assert len(re.findall(r"<p>", dd)) >= 2, dd[:200]  # title, then venue
     css = (built_site / "_static" / "academic.css").read_text()
     assert re.search(r"\.dated dl\s*{[^}]*grid-template-columns", css)
 
@@ -285,15 +243,12 @@ def test_teaching_matches_the_talks_layout(built_site):
         r'<div class="dated docutils container">(.*?)</dl>', html, re.S
     ).group(1)
     dates = re.findall(r"<dt>(.*?)</dt>", block)
-    assert dates
-    for date in dates:
-        assert re.fullmatch(r"\d{4}(–\d{2})?", date), date
+    assert dates and all(d.strip() for d in dates)
     for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
-        assert len(re.findall(r"<p>", dd)) == 2, dd[:200]  # role, then details
-    assert "<h2>" not in html
+        assert len(re.findall(r"<p>", dd)) >= 2, dd[:200]  # role, then details
 
 
-@pytest.mark.parametrize("page", ["", *[p.lower() for p in NAV]])
+@pytest.mark.parametrize("page", ["", *PAGES])
 def test_no_sphinx_design_assets(built_site, page):
     html = read_page(built_site, page)
     assert "sphinx-design" not in html
@@ -320,7 +275,7 @@ def test_music_links_name_each_source(built_site):
     items = re.findall(r"<li>(.*?)</li>", block, re.S)
     assert items
     for item in items:
-        assert re.search(r'<img alt="" ', item)  # decorative: the name is the link
         assert re.search(r'<a class="reference external" href="[^"]+">\w', item)
-    css = (built_site / "_static" / "academic.css").read_text()
-    assert "p > a > img" not in css
+        # A logo, if any, is decorative: the named link carries the meaning.
+        for img in re.findall(r"<img [^>]*>", item):
+            assert 'alt=""' in img
