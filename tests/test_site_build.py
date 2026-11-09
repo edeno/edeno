@@ -240,3 +240,10 @@ def test_coauthor_link_style_stays_on_publications(built_site):
     contact = read_page(built_site, "contact")
     assert 'href="https://orcid.org/' in contact
     assert '<section id="publications">' not in contact
+
+
+def test_orcid_icon_cuts_out_its_letters(built_site):
+    # One path draws the disc and the "iD" inside it; nonzero fill paints it solid.
+    footer = read_page(built_site, "contact").split('class="site-footer"')[1]
+    orcid = re.search(r'aria-label="ORCID".*?</svg>', footer, re.S).group(0)
+    assert 'fill-rule="evenodd"' in orcid
