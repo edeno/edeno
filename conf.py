@@ -63,6 +63,8 @@ html_favicon = "_static/favicon.ico"
 html_title = project
 html_static_path = ["_static"]
 html_extra_path = ["robots.txt"]
+# Nothing links to the raw Markdown sources, so don't publish them.
+html_copy_source = False
 # No index entries exist, so the generated index page would be empty.
 html_use_index = False
 
