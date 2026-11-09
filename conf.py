@@ -57,7 +57,6 @@ html_context = {"social_links": SOCIAL_LINKS}
 html_favicon = "_static/favicon.ico"
 html_title = project
 html_static_path = ["_static"]
-html_js_files = ["reduced-motion.js"]
 html_extra_path = ["robots.txt"]
 # No index entries exist, so the generated index page would be empty.
 html_use_index = False
