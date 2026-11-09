@@ -59,7 +59,7 @@ def test_format_reference_journal_article():
     assert entry == {
         "issued": [2021, 9, 27],
         "reference": (
-            f"[Smith, J.]({SMITH_ORCID}), {SELF_LINK}. **A title**. "
+            f"[Smith, J.]({SMITH_ORCID}), {SELF_LINK} **A title**. "
             "*eLife*, *10*(3), 1-9. [10.1/x](https://doi.org/10.1/x)"
         ),
     }
@@ -178,6 +178,23 @@ def test_format_reference_single_period_after_initials():
     )
 
 
+@pytest.mark.parametrize(
+    ("last_author", "expected_start"),
+    [
+        (
+            {"family": "Frank", "given": "Loren M.", "ORCID": SMITH_ORCID},
+            f"[Frank, L.M.]({SMITH_ORCID}) **A title**.",
+        ),
+        ({"family": "Denovellis", "given": "Eric L."}, f"{SELF_LINK} **A title**."),
+    ],
+)
+def test_format_reference_single_period_after_linked_last_author(
+    last_author, expected_start
+):
+    meta = make_meta(author=[last_author])
+    assert op.format_reference(meta, "10.1/x")["reference"].startswith(expected_start)
+
+
 def test_format_reference_collapses_whitespace_in_title():
     meta = make_meta(title="Spectral Connectivity: a python\n  package")
     assert (
@@ -215,4 +232,6 @@ def test_format_reference_matches_co_first_via_linked_doi(monkeypatch):
     monkeypatch.setitem(op.CO_FIRST_AUTHORS, "10.7554/elife.1.3", 1)
     meta = make_meta(relation=related("10.7554/eLife.1.3", "is-same-as"))
     reference = op.format_reference(meta, "10.7554/eLife.1")["reference"]
-    assert reference.startswith(f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK}.")
+    assert reference.startswith(
+        f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK} **A title**."
+    )

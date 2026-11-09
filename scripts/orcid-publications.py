@@ -1,6 +1,7 @@
 """Generate _static/publications.txt from ORCID for publications.md to include."""
 
 import logging
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -146,7 +147,9 @@ def format_reference(meta: dict, doi: str) -> dict | None:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
         return None
 
-    parts = [authors if authors.endswith(".") else f"{authors}.", f"**{title}**."]
+    # Judge the period by the visible text: "[Frank, L.M.](url)" already ends in one.
+    visible = re.sub(r"\]\([^)]*\)$", "", authors).rstrip("*")
+    parts = [authors if visible.endswith(".") else f"{authors}.", f"**{title}**."]
     if details:
         parts.append(details)
     parts.append(f"[{doi}](https://doi.org/{doi})")
