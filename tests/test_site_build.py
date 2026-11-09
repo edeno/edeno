@@ -1,9 +1,12 @@
 """Build the site once and check the rendered HTML."""
 
+import json
 import re
 import shutil
 import sys
+from html import unescape
 from pathlib import Path
+from urllib.parse import unquote
 
 import pytest
 from sphinx.cmd.build import build_main
@@ -326,3 +329,26 @@ def test_home_education_uses_the_dated_layout(built_site):
     section = re.search(r'<section id="education">(.*?)</section>', html, re.S).group(1)
     assert '<div class="dated docutils container">' in section
     assert re.findall(r"<dt>\s*\S", section)
+
+
+def test_contact_leads_with_email_and_lists_every_profile(built_site):
+    html = read_page(built_site, "contact")
+    page = re.search(r'<main class="page">(.*?)</main>', html, re.S).group(1)
+    # Sphinx cloaks addresses with entities, %40 and <span>s; read it as a browser would.
+    readable = unquote(unescape(re.sub(r"</?span>", "", page)))
+    assert re.search(r'href="mailto:([^"]+)">\1</a>', readable)  # address written out
+    for _, url, _ in conf.SOCIAL_LINKS:
+        assert f'href="{url}"' in readable, url  # same profiles as the footer
+    assert 'rel="me"' in page  # keeps Mastodon's profile verification
+    assert ">Github<" not in page
+
+
+def test_structured_data_lists_profiles_not_email(built_site):
+    html = read_page(built_site, "")
+    data = json.loads(
+        re.search(
+            r'<script type="application/ld\+json">(.*?)</script>', html, re.S
+        ).group(1)
+    )
+    assert data["sameAs"]
+    assert not any(url.startswith("mailto:") for url in data["sameAs"])

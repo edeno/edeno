@@ -35,21 +35,25 @@ ICON_INSTAGRAM = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><p
 # Bootstrap Icons has no Google Scholar icon; this one is from Simple Icons (CC0).
 ICON_GOOGLE_SCHOLAR = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" fill="currentColor"/></svg>'
 ICON_ORCID = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128zM86.3 186.2H70.9V79.2h15.4v107zm22.6-107h41.6c39.6 0 57 28.3 57 53.5 0 27.4-21.4 53.5-56.8 53.5h-41.8v-107zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.8 0-21.6-13.8-39.8-43.7-39.8h-23.7v79.6zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z" fill="currentColor" fill-rule="evenodd"/></svg>'
+ICON_EMAIL = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" fill="currentColor"/></svg>'
+ICON_BLUESKY = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948" fill="currentColor"/></svg>'
 
 SOCIAL_LINKS = [
+    ("Email", "mailto:eric.denovellis@ucsf.edu", ICON_EMAIL),
     ("GitHub", "https://github.com/edeno", ICON_GITHUB),
-    (
-        "LinkedIn",
-        "https://www.linkedin.com/in/eric-denovellis-70908238/",
-        ICON_LINKEDIN,
-    ),
-    ("Instagram", "https://www.instagram.com/edenovellis/", ICON_INSTAGRAM),
     (
         "Google Scholar",
         "https://scholar.google.com/citations?user=vuENbkoAAAAJ",
         ICON_GOOGLE_SCHOLAR,
     ),
     ("ORCID", "https://orcid.org/0000-0003-4606-087X", ICON_ORCID),
+    (
+        "LinkedIn",
+        "https://www.linkedin.com/in/eric-denovellis-70908238/",
+        ICON_LINKEDIN,
+    ),
+    ("Bluesky", "https://bsky.app/profile/eric-denovellis.bsky.social", ICON_BLUESKY),
+    ("Instagram", "https://www.instagram.com/edenovellis/", ICON_INSTAGRAM),
 ]
 
 html_context = {"social_links": SOCIAL_LINKS}
@@ -113,7 +117,7 @@ JSON_LD_PERSON = {
             "url": "https://www.ucsb.edu/",
         },
     ],
-    "sameAs": [url for _, url, _ in SOCIAL_LINKS]
+    "sameAs": [url for _, url, _ in SOCIAL_LINKS if not url.startswith("mailto:")]
     + ["https://neuromatch.social/@edeno"],
 }
 
