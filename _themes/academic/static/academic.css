@@ -168,10 +168,15 @@ a {
   text-decoration-color: color-mix(in srgb, var(--brand) 22%, transparent);
 }
 
-/* Author names (linked to their ORCID) read as text, not as a row of links. */
+/* Author names (linked to their ORCID) read as text; only some authors have one,
+   so a visible underline would scatter marks through the list. */
 .pub a[href*="//orcid.org/"] {
   color: inherit;
-  text-decoration-color: color-mix(in srgb, var(--fg) 22%, transparent);
+  text-decoration-color: transparent;
+}
+
+.pub a[href*="//orcid.org/"]:hover {
+  text-decoration-color: currentColor;
 }
 
 a:hover {
