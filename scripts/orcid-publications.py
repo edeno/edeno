@@ -243,7 +243,7 @@ def render_markdown(entries: list[dict]) -> str:
 
     lines = []
     for year in sorted(by_year, reverse=True):
-        lines.append(f"## {year}")
+        lines.append(f"### {year}")
         for ref in by_year[year]:
             lines.append(ref)
             lines.append("")

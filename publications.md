@@ -9,10 +9,12 @@ myst:
 
 \* Co-first authors
 
+## Articles and preprints
+
 ```{include} _static/publications.txt
 ```
 
-## Conference Proceedings and Posters
+## Conference abstracts
 
 :::{container} pub
 **Hippocampal neurofeedback promotes generation of spatial representations that jump directly to distant locations**

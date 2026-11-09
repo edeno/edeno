@@ -312,3 +312,10 @@ def test_page_has_a_written_description(built_site, page):
     description = re.search(r'<meta content="([^"]*)" name="description"', html)
     og = re.search(r'<meta property="og:description" content="([^"]*)"', html)
     assert description and og and description.group(1) == og.group(1)
+
+
+def test_publication_years_sit_under_a_section(built_site):
+    html = read_page(built_site, "publications")
+    sections = re.findall(r"<h2>([^<]+)<a", html)
+    assert len(sections) >= 2  # articles, conference abstracts
+    assert not any(re.fullmatch(r"\d{4}", s) for s in sections)

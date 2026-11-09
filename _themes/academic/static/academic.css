@@ -310,8 +310,9 @@ img {
   }
 }
 
-/* Projects: one line per project, grouped under small theme labels. */
-section:has(> .project-list) > h2 {
+/* Small grey labels group items within a list: Projects themes, publication years. */
+section:has(> .project-list) > h2,
+#publications h3 {
   margin: 2.5rem 0 0.75rem;
   font-family: var(--sans);
   color: var(--muted);
@@ -340,6 +341,11 @@ section:has(> .project-list) > h2 {
 
 .project-list strong a:hover {
   color: var(--brand);
+}
+
+/* The first year label sits right under its section heading. */
+#publications h2 + section > h3 {
+  margin-top: 1rem;
 }
 
 /* Publications: the title leads; authors and venue follow in smaller grey text. */

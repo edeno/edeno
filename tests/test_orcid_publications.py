@@ -182,7 +182,7 @@ def test_render_markdown_groups_by_year_newest_first():
         {"issued": [2021, 10], "reference": "october"},
     ]
     assert op.render_markdown(entries) == (
-        "## 2021\noctober\n\nseptember\n\n## 2019\nold\n"
+        "### 2021\noctober\n\nseptember\n\n### 2019\nold\n"
     )
 
 
