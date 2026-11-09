@@ -387,12 +387,30 @@ section:has(> .project-list) > h2 {
   }
 }
 
-/* Fun page: uniform photo grid, modest inline logos. */
-.sd-row img {
+/* Fun page: photos flush with the text column, three across (two on phones). */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+.photos img {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .photos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* An odd photo out spans the last row instead of sitting alone. */
+  .photos img:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
 iframe {

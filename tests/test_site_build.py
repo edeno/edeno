@@ -252,7 +252,7 @@ def test_orcid_icon_cuts_out_its_letters(built_site):
 
 def test_publications_lead_with_the_title(built_site):
     html = read_page(built_site, "publications")
-    entries = re.findall(r'<div class="pub docutils">(.*?)</div>', html, re.S)
+    entries = re.findall(r'<div class="pub docutils container">(.*?)</div>', html, re.S)
     assert entries
     for entry in entries:
         paragraphs = re.findall(r"<p>(.*?)</p>", entry, re.S)
@@ -266,7 +266,9 @@ def test_publications_lead_with_the_title(built_site):
 
 def test_talks_have_a_date_column_newest_first(built_site):
     html = read_page(built_site, "talks")
-    block = re.search(r'<div class="dated docutils">(.*?)</dl>', html, re.S).group(1)
+    block = re.search(
+        r'<div class="dated docutils container">(.*?)</dl>', html, re.S
+    ).group(1)
     dates = re.findall(r"<dt>(.*?)</dt>", block)
     assert dates
     parsed = [datetime.strptime(d, "%b %Y") for d in dates]
@@ -279,7 +281,9 @@ def test_talks_have_a_date_column_newest_first(built_site):
 
 def test_teaching_matches_the_talks_layout(built_site):
     html = read_page(built_site, "teaching")
-    block = re.search(r'<div class="dated docutils">(.*?)</dl>', html, re.S).group(1)
+    block = re.search(
+        r'<div class="dated docutils container">(.*?)</dl>', html, re.S
+    ).group(1)
     dates = re.findall(r"<dt>(.*?)</dt>", block)
     assert dates
     for date in dates:
@@ -287,3 +291,22 @@ def test_teaching_matches_the_talks_layout(built_site):
     for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
         assert len(re.findall(r"<p>", dd)) == 2, dd[:200]  # role, then details
     assert "<h2>" not in html
+
+
+@pytest.mark.parametrize("page", ["", *[p.lower() for p in NAV]])
+def test_no_sphinx_design_assets(built_site, page):
+    html = read_page(built_site, page)
+    assert "sphinx-design" not in html
+    assert "design-tabs.js" not in html
+
+
+def test_fun_photo_grid(built_site):
+    html = read_page(built_site, "fun")
+    grid = re.search(
+        r'<div class="photos docutils container">(.*?)</div>', html, re.S
+    ).group(1)
+    images = re.findall(r"<img [^>]*>", grid)
+    assert images
+    assert all(re.search(r'alt="[^"]+"', img) for img in images)
+    css = (built_site / "_static" / "academic.css").read_text()
+    assert re.search(r"\.photos\s*{[^}]*grid-template-columns:\s*repeat\(3", css)

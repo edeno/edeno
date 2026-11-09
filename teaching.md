@@ -1,6 +1,6 @@
 # Teaching
 
-:::{div} dated
+:::{container} dated
 2026
 : Visiting Instructor, *Neural Circuits for Navigation: Anatomy, Physiology, and Computational Methods*
 

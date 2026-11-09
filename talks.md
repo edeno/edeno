@@ -7,7 +7,7 @@ myst:
 
 # Talks
 
-:::{div} dated
+:::{container} dated
 May 2027
 : NeuroAI for the Hippocampus workshop (session: NeuroAI tools for hippocampal data)
 

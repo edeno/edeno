@@ -148,7 +148,7 @@ def format_reference(meta: dict, doi: str) -> dict | None:
 
     source = " ".join(filter(None, [details, f"[{doi}](https://doi.org/{doi})"]))
     # Title first, then authors, then where it appeared; the `pub` class styles each line.
-    reference = f":::{{div}} pub\n**{title}**\n\n{authors}\n\n{source}\n:::"
+    reference = f":::{{container}} pub\n**{title}**\n\n{authors}\n\n{source}\n:::"
     return {"issued": issued, "reference": reference}
 
 

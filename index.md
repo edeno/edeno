@@ -12,7 +12,7 @@ myst:
 :class: portrait
 ```
 
-```{div} tagline
+```{container} tagline
 Computational research scientist at [UCSF](https://physiology.ucsf.edu/) — building scalable, interpretable tools to decode, categorize, and visualize how the brain represents information.
 ```
 

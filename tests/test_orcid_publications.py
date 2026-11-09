@@ -57,9 +57,13 @@ def test_format_author(author, expected):
 def entry_parts(meta: dict, doi: str = "10.1/x") -> list[str]:
     """Split a rendered entry into its title, author, and source lines."""
     reference = op.format_reference(meta, doi)["reference"]
-    assert reference.startswith(":::{div} pub\n")
+    assert reference.startswith(":::{container} pub\n")
     assert reference.endswith("\n:::")
-    return reference.removeprefix(":::{div} pub\n").removesuffix("\n:::").split("\n\n")
+    return (
+        reference.removeprefix(":::{container} pub\n")
+        .removesuffix("\n:::")
+        .split("\n\n")
+    )
 
 
 def test_format_reference_journal_article():
@@ -67,7 +71,7 @@ def test_format_reference_journal_article():
     assert entry == {
         "issued": [2021, 9, 27],
         "reference": (
-            ":::{div} pub\n"
+            ":::{container} pub\n"
             "**A title**\n\n"
             f"[Smith, J.]({SMITH_ORCID}), {SELF_LINK}\n\n"
             "*eLife*, *10*(3), 1-9. [10.1/x](https://doi.org/10.1/x)\n"

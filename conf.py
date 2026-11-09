@@ -12,7 +12,6 @@ PROFILE_IMAGE = "_static/profile.jpg"
 
 extensions = [
     "myst_parser",
-    "sphinx_design",
     "sphinxext.opengraph",
     "sphinx_sitemap",
     "notfound.extension",
