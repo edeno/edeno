@@ -129,7 +129,7 @@ body {
 }
 
 .site-nav a:hover,
-.site-nav li.current > a {
+.site-nav a[aria-current="page"] {
   color: var(--fg);
 }
 

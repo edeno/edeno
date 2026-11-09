@@ -200,6 +200,15 @@ def _inject_head(app, pagename, templatename, context, doctree):
     context["metatags"] = head
 
 
+def _add_nav_pages(app, pagename, templatename, context, doctree):
+    # The top nav lists the pages in index.md's toctree, in order.
+    env = app.env
+    context["nav_pages"] = [
+        (doc, env.titles[doc].astext())
+        for doc in env.toctree_includes[app.config.root_doc]
+    ]
+
+
 def _move_404_to_root(app, exception):
     # dirhtml writes 404/index.html, but GitHub Pages only serves /404.html.
     if exception is None and app.builder.name == "dirhtml":
@@ -228,6 +237,7 @@ def _disable_search(app):
 def setup(app):
     app.connect("builder-inited", _disable_search)
     app.connect("html-page-context", _inject_head)
+    app.connect("html-page-context", _add_nav_pages)
     app.connect("build-finished", _move_404_to_root)
     app.connect("build-finished", _remove_unused_output)
 

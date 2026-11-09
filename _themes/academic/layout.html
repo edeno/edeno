@@ -15,9 +15,11 @@
   {%- set home = pathto(root_doc) %}
   <a class="site-name" href="{{ '/' if home == '#' else home }}">{{ project }}</a>
   <nav class="site-nav" aria-label="Main">
-    {#- Screen readers learn the current page from aria-current, not its colour. #}
-    {{ toctree(maxdepth=1, titles_only=True, includehidden=True, collapse=False)
-       |replace('<a class="current reference internal"', '<a aria-current="page" class="current reference internal"') }}
+    <ul>
+      {%- for doc, nav_title in nav_pages %}
+      <li><a href="{{ pathto(doc) }}"{% if doc == pagename %} aria-current="page"{% endif %}>{{ nav_title|e }}</a></li>
+      {%- endfor %}
+    </ul>
   </nav>
 </header>
 {%- endblock %}
