@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 # -- Project information -----------------------------------------------------
@@ -134,8 +135,24 @@ _GTAG_SNIPPET = (
 )
 
 
+# Sphinx's defaults for search highlighting and code blocks; this site has neither.
+_UNUSED_ASSETS = {
+    "doctools.js",
+    "sphinx_highlight.js",
+    "documentation_options.js",
+    "pygments.css",
+}
+
+
 def _inject_head(app, pagename, templatename, context, doctree):
-    head = context.get("metatags") or ""
+    # basic/layout.html already writes a viewport tag; drop docutils' duplicate.
+    head = re.sub(r'\s*<meta name="viewport"[^>]*>', "", context.get("metatags") or "")
+    for key in ("script_files", "css_files"):
+        context[key] = [
+            f
+            for f in context.get(key, [])
+            if Path(str(getattr(f, "filename", f))).name not in _UNUSED_ASSETS
+        ]
     head += (
         '\n<script type="application/ld+json">'
         + json.dumps(JSON_LD_PERSON)

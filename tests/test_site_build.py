@@ -352,3 +352,17 @@ def test_structured_data_lists_profiles_not_email(built_site):
     )
     assert data["sameAs"]
     assert not any(url.startswith("mailto:") for url in data["sameAs"])
+
+
+@pytest.mark.parametrize("page", ["", *PAGES, "404"])
+def test_head_has_one_viewport_and_no_unused_assets(built_site, page):
+    html = read_page(built_site, page)
+    assert html.count('name="viewport"') == 1
+    # No search (so no highlighting scripts) and no code blocks (so no Pygments CSS).
+    for unused in [
+        "doctools.js",
+        "sphinx_highlight.js",
+        "documentation_options.js",
+        "pygments.css",
+    ]:
+        assert unused not in html, unused
