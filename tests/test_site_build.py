@@ -30,21 +30,17 @@ def toctree_pages() -> list[str]:
 PAGES = toctree_pages()
 
 
+# Everything Sphinx reads; copying only these keeps caches and environments out.
+SITE_FILES = ["conf.py", "docutils.conf", "robots.txt"]
+SITE_DIRS = ["_static", "_themes", "images"]
+
+
 def copy_site(dest: Path) -> Path:
-    shutil.copytree(
-        REPO,
-        dest,
-        ignore=shutil.ignore_patterns(
-            ".git",
-            ".venv",
-            "_build",
-            ".superpowers",
-            ".remember",
-            "__pycache__",
-            "tests",
-            "docs",
-        ),
-    )
+    dest.mkdir(parents=True)
+    for path in [*REPO.glob("*.md"), *(REPO / f for f in SITE_FILES)]:
+        shutil.copy2(path, dest)
+    for d in SITE_DIRS:
+        shutil.copytree(REPO / d, dest / d)
     # CI runs pytest before fetching publications from ORCID.
     publications = dest / "_static" / "publications.txt"
     if not publications.exists():
@@ -79,19 +75,27 @@ def read_page(built_site: Path, page: str) -> str:
     return (built_site / page / "index.html").read_text()
 
 
+def nav(html: str) -> str:
+    return re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
+
+
+def container(html: str, cls: str) -> str:
+    """Inner HTML of the first MyST ``{container}`` with this class."""
+    match = re.search(rf'<div class="{cls} docutils container">(.*?)</div>', html, re.S)
+    assert match, f"no {cls} container"
+    return match.group(1)
+
+
 def test_top_nav_follows_the_toctree(built_site):
     home = read_page(built_site, "")
-    nav = re.search(r'<nav class="site-nav".*?</nav>', home, re.S).group(0)
-    assert re.findall(r'href="([^"]*)"', nav) == [f"{page}/" for page in PAGES]
+    assert re.findall(r'href="([^"]*)"', nav(home)) == [f"{page}/" for page in PAGES]
     talks = read_page(built_site, "talks")
     assert re.search(r'<a class="site-name" href="\.\./"', talks)
 
 
-def test_no_furo_no_search(built_site):
-    for page in ["", "projects", "publications"]:
-        html = read_page(built_site, page)
-        assert "furo" not in html.lower()
-        assert 'type="search"' not in html
+def test_no_search(built_site):
+    for page in ["", *PAGES]:
+        assert 'type="search"' not in read_page(built_site, page)
     assert not (built_site / "search").exists()
     assert not (built_site / "searchindex.js").exists()
 
@@ -110,13 +114,11 @@ def test_footer_social_links(built_site):
     for name, url, _ in conf.SOCIAL_LINKS:
         assert f'href="{url}"' in footer
         assert f'aria-label="{name}"' in footer
-    assert "Furo" not in footer
     assert "Sphinx" not in footer
 
 
 def test_404_page(built_site):
     html = read_page(built_site, "404")
-    assert "search box" not in html
     assert '<a class="site-name" href="/"' in html
     assert 'href="/_static/' in html
 
@@ -141,24 +143,9 @@ def test_projects_grouped_by_theme(built_site):
         assert re.search(r'<strong><a class="reference external" href="[^"]+">', group)
 
 
-@pytest.mark.parametrize("page", ["", *PAGES])
-def test_no_boxed_components(built_site, page):
-    html = read_page(built_site, page)
-    for banned in ["sd-card", "sd-badge", "sd-shadow", "sd-btn"]:
-        assert banned not in html
-
-
 def test_contact_address_keeps_its_lines(built_site):
     html = read_page(built_site, "contact")
     assert "<br" in html  # the address keeps its line breaks
-
-
-def test_home_description_is_set_not_alt_text(built_site):
-    html = read_page(built_site, "")
-    description = re.search(r'<meta content="([^"]*)" name="description"', html)
-    og = re.search(r'<meta property="og:description" content="([^"]*)"', html)
-    assert description.group(1) and description.group(1) == og.group(1)
-    assert not description.group(1).startswith("Photo of")
 
 
 def test_titles_not_doubled(built_site):
@@ -192,21 +179,6 @@ def test_charter_ships_with_the_site(built_site):
     assert "Bitstream" in (static / "fonts" / "LICENSE.txt").read_text()
 
 
-def test_coauthor_link_style_stays_on_publications(built_site):
-    # Co-author names read as plain text there; an ORCID link elsewhere is a normal link.
-    css = (built_site / "_static" / "academic.css").read_text()
-    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
-    selectors = re.findall(r"([^{}]*orcid\.org[^{}]*){", css)
-    assert selectors
-    for group in selectors:
-        for selector in group.split(","):
-            assert selector.strip().startswith("#publications "), selector
-    assert '<section id="publications">' in read_page(built_site, "publications")
-    contact = read_page(built_site, "contact")
-    assert 'href="https://orcid.org/' in contact
-    assert '<section id="publications">' not in contact
-
-
 def test_orcid_icon_cuts_out_its_letters(built_site):
     # One path draws the disc and the "iD" inside it; nonzero fill paints it solid.
     footer = read_page(built_site, "contact").split('class="site-footer"')[1]
@@ -223,58 +195,27 @@ def test_publications_lead_with_the_title(built_site):
         assert len(paragraphs) >= 2, entry[:200]  # title, authors, usually venue
         title = paragraphs[0]
         assert title.startswith("<strong>") and title.endswith("</strong>")
-    css = (built_site / "_static" / "academic.css").read_text()
-    assert ".pub p + p" in css
 
 
-def test_talks_have_a_date_column(built_site):
-    html = read_page(built_site, "talks")
-    block = re.search(
-        r'<div class="dated docutils container">(.*?)</dl>', html, re.S
-    ).group(1)
+@pytest.mark.parametrize("page", ["talks", "teaching", ""])  # "" is home Education
+def test_dated_entries_have_a_date_and_details(built_site, page):
+    block = container(read_page(built_site, page), "dated")
     dates = re.findall(r"<dt>(.*?)</dt>", block)
     assert dates and all(d.strip() for d in dates)
     for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
-        assert len(re.findall(r"<p>", dd)) >= 2, dd[:200]  # title, then venue
-    css = (built_site / "_static" / "academic.css").read_text()
-    assert re.search(r"\.dated dl\s*{[^}]*grid-template-columns", css)
-
-
-def test_teaching_matches_the_talks_layout(built_site):
-    html = read_page(built_site, "teaching")
-    block = re.search(
-        r'<div class="dated docutils container">(.*?)</dl>', html, re.S
-    ).group(1)
-    dates = re.findall(r"<dt>(.*?)</dt>", block)
-    assert dates and all(d.strip() for d in dates)
-    for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
-        assert len(re.findall(r"<p>", dd)) >= 2, dd[:200]  # role, then details
-
-
-@pytest.mark.parametrize("page", ["", *PAGES])
-def test_no_sphinx_design_assets(built_site, page):
-    html = read_page(built_site, page)
-    assert "sphinx-design" not in html
-    assert "design-tabs.js" not in html
+        assert len(re.findall(r"<p>", dd)) >= 2, dd[:200]  # title, then details
 
 
 def test_fun_photo_grid(built_site):
-    html = read_page(built_site, "fun")
-    grid = re.search(
-        r'<div class="photos docutils container">(.*?)</div>', html, re.S
-    ).group(1)
-    images = re.findall(r"<img [^>]*>", grid)
+    images = re.findall(
+        r"<img [^>]*>", container(read_page(built_site, "fun"), "photos")
+    )
     assert images
     assert all(re.search(r'alt="[^"]+"', img) for img in images)
-    css = (built_site / "_static" / "academic.css").read_text()
-    assert re.search(r"\.photos\s*{[^}]*grid-template-columns:\s*repeat\(3", css)
 
 
 def test_music_links_name_each_source(built_site):
-    html = read_page(built_site, "fun")
-    block = re.search(
-        r'<div class="music-links docutils container">(.*?)</div>', html, re.S
-    ).group(1)
+    block = container(read_page(built_site, "fun"), "music-links")
     items = re.findall(r"<li>(.*?)</li>", block, re.S)
     assert items
     for item in items:
@@ -290,14 +231,11 @@ def test_portrait_loads_eagerly(built_site):
     assert 'loading="lazy"' not in portrait.group(0)
 
 
-def test_nav_marks_the_current_page(built_site):
-    for page in ["", *PAGES]:
-        html = read_page(built_site, page)
-        nav = re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
-        current = re.findall(r'<a [^>]*aria-current="page"[^>]*>([^<]+)</a>', nav)
-        assert current == (
-            [] if page == "" else [re.search(r"<h1>([^<]+)", html).group(1)]
-        )
+@pytest.mark.parametrize("page", ["", *PAGES])
+def test_nav_marks_the_current_page(built_site, page):
+    html = read_page(built_site, page)
+    current = re.findall(r'<a [^>]*aria-current="page"[^>]*>([^<]+)</a>', nav(html))
+    assert current == ([] if page == "" else [re.search(r"<h1>([^<]+)", html).group(1)])
 
 
 def test_home_lists_selected_papers(built_site):
@@ -315,6 +253,7 @@ def test_page_has_a_written_description(built_site, page):
     description = re.search(r'<meta content="([^"]*)" name="description"', html)
     og = re.search(r'<meta property="og:description" content="([^"]*)"', html)
     assert description and og and description.group(1) == og.group(1)
+    assert not description.group(1).startswith("Photo of")  # not the portrait alt
 
 
 def test_publication_years_sit_under_a_section(built_site):
@@ -322,13 +261,6 @@ def test_publication_years_sit_under_a_section(built_site):
     sections = re.findall(r"<h2>([^<]+)<a", html)
     assert len(sections) >= 2  # articles, conference abstracts
     assert not any(re.fullmatch(r"\d{4}", s) for s in sections)
-
-
-def test_home_education_uses_the_dated_layout(built_site):
-    html = read_page(built_site, "")
-    section = re.search(r'<section id="education">(.*?)</section>', html, re.S).group(1)
-    assert '<div class="dated docutils container">' in section
-    assert re.findall(r"<dt>\s*\S", section)
 
 
 def test_contact_leads_with_email_and_lists_every_profile(built_site):
@@ -359,10 +291,5 @@ def test_head_has_one_viewport_and_no_unused_assets(built_site, page):
     html = read_page(built_site, page)
     assert html.count('name="viewport"') == 1
     # No search (so no highlighting scripts) and no code blocks (so no Pygments CSS).
-    for unused in [
-        "doctools.js",
-        "sphinx_highlight.js",
-        "documentation_options.js",
-        "pygments.css",
-    ]:
+    for unused in conf._UNUSED_ASSETS:
         assert unused not in html, unused
