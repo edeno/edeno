@@ -45,6 +45,8 @@ ICON_BLUESKY = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><pat
 EMAIL = "eric.denovellis@ucsf.edu"
 # On the Contact page (with rel="me" for Mastodon's verification) but not the footer.
 MASTODON = "https://neuromatch.social/@edeno"
+# Only in the structured data: tells search engines this site and the item are one person.
+WIKIDATA = "https://www.wikidata.org/wiki/Q142090754"
 
 SOCIAL_LINKS = [
     ("Email", f"mailto:{EMAIL}", ICON_EMAIL),
@@ -166,7 +168,7 @@ JSON_LD_PERSON = {
             "url": "https://www.ucsb.edu/",
         },
     ],
-    "sameAs": [url for _, url in _PROFILES] + [MASTODON],
+    "sameAs": [url for _, url in _PROFILES] + [MASTODON, WIKIDATA],
 }
 
 GA_MEASUREMENT_ID = "G-R14SV5XX1X"

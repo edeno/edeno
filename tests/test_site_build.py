@@ -352,6 +352,7 @@ def test_home_is_a_profile_page_about_the_person(built_site):
 def test_structured_data_lists_profiles_not_email(built_site):
     (person,) = nodes_of_type(read_page(built_site, ""), "Person")
     assert person["sameAs"]
+    assert conf.WIKIDATA in person["sameAs"]
     assert not any(url.startswith("mailto:") for url in person["sameAs"])
 
 
