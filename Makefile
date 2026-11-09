@@ -13,8 +13,9 @@ BUILDDIR      = _build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+# Dot-directories under the repo hold tool state; changes there don't need a rebuild.
 live:
-	$(SPHINXAUTOBUILD) --ignore .remember -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/dirhtml" $(SPHINXOPTS) $(O)
+	$(SPHINXAUTOBUILD) --re-ignore '^$(CURDIR)/(.*/)?\.' -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/dirhtml" $(SPHINXOPTS) $(O)
 
 .PHONY: help live Makefile
 

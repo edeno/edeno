@@ -20,7 +20,7 @@ extensions = [
 ]
 
 # All pages live at the repo root; `*` doesn't cross `/`, so tool
-# directories (.venv, .remember, ...) are never scanned.
+# directories (.venv and other dot-dirs) are never scanned.
 include_patterns = ["*.md"]
 exclude_patterns = ["README.md", "CLAUDE.md"]
 
