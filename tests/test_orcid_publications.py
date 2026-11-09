@@ -137,14 +137,14 @@ def summary(*dois: str) -> dict:
 
 @pytest.fixture
 def fake_fetch(monkeypatch):
-    """Serve DOI metadata from a dict; a None value simulates a failed fetch."""
-    responses: dict[str, dict | None] = {}
+    """Serve DOI metadata from a dict; an exception value is raised instead."""
+    responses: dict[str, dict | Exception] = {}
     calls: list[str] = []
 
     def fetch(session, doi):
         calls.append(doi)
-        if responses[doi] is None:
-            raise requests.ConnectionError(doi)
+        if isinstance(responses[doi], Exception):
+            raise responses[doi]
         return responses[doi]
 
     monkeypatch.setattr(op, "fetch_doi_metadata", fetch)
@@ -167,12 +167,30 @@ def test_select_version_falls_back_to_first_preprint(fake_fetch):
     assert op.select_version(None, group) == ("a", responses["a"])
 
 
-def test_select_version_skips_failed_and_repeated_dois(fake_fetch):
+def http_error(status: int) -> requests.HTTPError:
+    response = requests.Response()
+    response.status_code = status
+    return requests.HTTPError(response=response)
+
+
+def test_select_version_skips_unresolvable_and_repeated_dois(fake_fetch):
     responses, calls = fake_fetch
-    responses.update(bad=None, pub=make_meta())
+    responses.update(bad=http_error(404), pub=make_meta())
     group = {"work-summary": [summary("bad", "pub"), summary("PUB")]}
     assert op.select_version(None, group) == ("pub", responses["pub"])
     assert calls == ["bad", "pub"]
+
+
+@pytest.mark.parametrize(
+    "error", [requests.ConnectionError("down"), http_error(503)], ids=["network", "503"]
+)
+def test_select_version_raises_on_failures_that_are_not_404(fake_fetch, error):
+    # Skipping these would publish the site with the paper silently missing.
+    responses, _ = fake_fetch
+    responses.update(flaky=error, pub=make_meta())
+    group = {"work-summary": [summary("flaky", "pub")]}
+    with pytest.raises(requests.RequestException):
+        op.select_version(None, group)
 
 
 def test_render_markdown_groups_by_year_newest_first():

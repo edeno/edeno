@@ -189,6 +189,8 @@ def select_version(session: requests.Session, group: dict) -> tuple[str, dict] |
     """Return the first published (non-preprint) DOI in an ORCID work group.
 
     Falls back to the first preprint if the group has no published version.
+    DOIs that doi.org reports as missing (404) are skipped; any other request
+    failure is raised.
     """
     fallback = None
     seen: set[str] = set()
@@ -199,8 +201,12 @@ def select_version(session: requests.Session, group: dict) -> tuple[str, dict] |
             seen.add(doi.lower())
             try:
                 meta = fetch_doi_metadata(session, doi)
-            except requests.RequestException as exc:
-                logger.warning("Skipping %s: Crossref fetch failed (%s)", doi, exc)
+            except requests.HTTPError as exc:
+                # Any other failure means Crossref is unreachable, not that the
+                # DOI is bad, so it propagates rather than dropping the paper.
+                if exc.response is None or exc.response.status_code != 404:
+                    raise
+                logger.warning("Skipping %s: DOI does not resolve", doi)
                 continue
             if not is_preprint(meta):
                 return doi, meta
@@ -271,7 +277,13 @@ def main() -> None:
     works: list[tuple[str, dict]] = []
     logger.info("Fetching reference data from Crossref...")
     for group in record["activities-summary"]["works"]["group"]:
-        selected = select_version(session, group)
+        try:
+            selected = select_version(session, group)
+        except requests.RequestException as exc:
+            sys.exit(
+                f"Crossref request failed; aborting so no paper goes missing "
+                f"from {OUTPUT_PATH.name}: {exc}"
+            )
         if selected is None:
             logger.warning(
                 "Skipping work without a resolvable DOI: %s",
