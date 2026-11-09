@@ -123,30 +123,31 @@ def format_journal_details(meta: dict, journal: str) -> str:
 
 
 def format_reference(meta: dict, doi: str) -> dict | None:
+    # Only the required fields are guarded, so a bug below still raises.
     try:
         title = " ".join(meta["title"].split())
         issued = meta["issued"]["date-parts"][0]
-        n_co_first = co_first_count(doi, meta)
-        authors = ", ".join(
-            format_author(a) + ("\\*" if i < n_co_first else "")
-            for i, a in enumerate(meta["author"])
-        )
-        journal = meta.get("container-title", "")
-        # Some full titles are mis-cased ("eneuro"); the short title, when it
-        # is the same name, carries the journal's own casing ("eNeuro").
-        short = meta.get("container-title-short")
-        if journal and short and short.lower() == journal.lower():
-            journal = short
-        if is_preprint(meta):
-            servers = [i["name"] for i in meta.get("institution", []) if "name" in i]
-            if servers:
-                journal = PREPRINT_SERVER_LABELS.get(
-                    servers[0], f"{servers[0]} preprint"
-                )
-        details = format_journal_details(meta, journal)
+        author_list = meta["author"]
     except (KeyError, IndexError, TypeError) as exc:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
         return None
+
+    n_co_first = co_first_count(doi, meta)
+    authors = ", ".join(
+        format_author(a) + ("\\*" if i < n_co_first else "")
+        for i, a in enumerate(author_list)
+    )
+    journal = meta.get("container-title", "")
+    # Some full titles are mis-cased ("eneuro"); the short title, when it
+    # is the same name, carries the journal's own casing ("eNeuro").
+    short = meta.get("container-title-short")
+    if journal and short and short.lower() == journal.lower():
+        journal = short
+    if is_preprint(meta):
+        servers = [i["name"] for i in meta.get("institution", []) if "name" in i]
+        if servers:
+            journal = PREPRINT_SERVER_LABELS.get(servers[0], f"{servers[0]} preprint")
+    details = format_journal_details(meta, journal)
 
     source = " ".join(filter(None, [details, f"[{doi}](https://doi.org/{doi})"]))
     # Title first, then authors, then where it appeared; the `pub` class styles each line.
