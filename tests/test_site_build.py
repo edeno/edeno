@@ -218,5 +218,25 @@ def test_charter_ships_with_the_site(built_site):
         weight = re.search(r"font-weight:\s*(\d+)", face).group(1)
         style = re.search(r"font-style:\s*(\w+)", face).group(1)
         styles.add((weight, style))
-    assert styles == {("400", "normal"), ("400", "italic"), ("700", "normal"), ("700", "italic")}
+    assert styles == {
+        ("400", "normal"),
+        ("400", "italic"),
+        ("700", "normal"),
+        ("700", "italic"),
+    }
     assert "Bitstream" in (static / "fonts" / "LICENSE.txt").read_text()
+
+
+def test_coauthor_link_style_stays_on_publications(built_site):
+    # Co-author names read as plain text there; an ORCID link elsewhere is a normal link.
+    css = (built_site / "_static" / "academic.css").read_text()
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    selectors = re.findall(r"([^{}]*orcid\.org[^{}]*){", css)
+    assert selectors
+    for group in selectors:
+        for selector in group.split(","):
+            assert selector.strip().startswith("#publications "), selector
+    assert '<section id="publications">' in read_page(built_site, "publications")
+    contact = read_page(built_site, "contact")
+    assert 'href="https://orcid.org/' in contact
+    assert '<section id="publications">' not in contact

@@ -135,7 +135,7 @@ a {
 }
 
 /* Co-author names in publication entries read as text, not as a row of links. */
-p > a[href^="https://orcid.org/"] {
+#publications p > a[href^="https://orcid.org/"] {
   color: inherit;
   text-decoration-color: color-mix(in srgb, var(--fg) 22%, transparent);
 }
