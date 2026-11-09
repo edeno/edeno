@@ -29,7 +29,7 @@ I began developing these models as a postdoc at Boston University with Uri T. Ed
 :::{container} pub
 **Spyglass is a framework for reproducible and shareable neuroscience research**
 
-Lee, K.H., **Denovellis, E.L.** (co-first), … Frank, L.M.
+Lee, K.H.\*, **Denovellis, E.L.**\*, … Frank, L.M.
 
 *eLife*, 2026. [10.7554/eLife.108089](https://doi.org/10.7554/eLife.108089)
 :::
@@ -41,6 +41,8 @@ Lee, K.H., **Denovellis, E.L.** (co-first), … Frank, L.M.
 
 *eLife*, 2021. [10.7554/eLife.64505](https://doi.org/10.7554/eLife.64505)
 :::
+
+\* Co-first authors
 
 [All publications →](publications.md)
 
