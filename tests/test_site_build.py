@@ -1,6 +1,7 @@
 """Build the site once and check the rendered HTML."""
 
 import json
+import pickle
 import re
 import shutil
 import sys
@@ -15,19 +16,12 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 import conf  # noqa: E402
 
-
-def toctree_pages() -> list[str]:
-    """Docs in the hidden toctree in index.md, which drives the top nav."""
-    index = (REPO / "index.md").read_text()
-    block = re.search(r"```\{toctree\}\n(.*?)```", index, re.S).group(1)
-    return [
-        line.strip()
-        for line in block.splitlines()
-        if line.strip() and not line.startswith(":")
-    ]
-
-
-PAGES = toctree_pages()
+# Every page Sphinx builds besides the home page, so new pages are checked too.
+PAGES = sorted(
+    p.stem
+    for p in REPO.glob("*.md")
+    if p.name not in conf.exclude_patterns and p.stem != "index"
+)
 
 
 # Everything Sphinx reads; copying only these keeps caches and environments out.
@@ -52,21 +46,28 @@ def build_site(src: Path, out: Path) -> int:
     return build_main(["-b", "dirhtml", "-q", str(src), str(out)])
 
 
+DANGLING_REF = "a-label-that-does-not-exist"
+
+
 @pytest.fixture(scope="session")
 def built_site(tmp_path_factory) -> Path:
     src = copy_site(tmp_path_factory.mktemp("src") / "site")
+    # Deploys publish despite warnings (only PR builds are strict), and CI runs
+    # these tests before every deploy, so the build must tolerate one.
+    with (src / "talks.md").open("a") as f:
+        f.write(f"\nSee {{ref}}`{DANGLING_REF}`.\n")
     out = tmp_path_factory.mktemp("out")
     assert build_site(src, out) == 0
     return out
 
 
-def test_page_warnings_do_not_fail_the_build(tmp_path):
-    # Deploys publish despite warnings (only PR builds are strict), and CI
-    # runs these tests before every deploy, so they must not be strict either.
-    src = copy_site(tmp_path / "site")
-    with (src / "talks.md").open("a") as f:
-        f.write("\nSee {ref}`a-label-that-does-not-exist`.\n")
-    assert build_site(src, tmp_path / "out") == 0
+@pytest.fixture(scope="session")
+def css(built_site) -> str:
+    return (built_site / "_static" / "academic.css").read_text()
+
+
+def test_page_warnings_do_not_fail_the_build(built_site):
+    assert DANGLING_REF in read_page(built_site, "talks")
 
 
 def read_page(built_site: Path, page: str) -> str:
@@ -87,8 +88,10 @@ def container(html: str, cls: str) -> str:
 
 
 def test_top_nav_follows_the_toctree(built_site):
+    with (built_site / ".doctrees" / "environment.pickle").open("rb") as f:
+        toctree = pickle.load(f).toctree_includes["index"]
     home = read_page(built_site, "")
-    assert re.findall(r'href="([^"]*)"', nav(home)) == [f"{page}/" for page in PAGES]
+    assert re.findall(r'href="([^"]*)"', nav(home)) == [f"{doc}/" for doc in toctree]
     talks = read_page(built_site, "talks")
     assert re.search(r'<a class="site-name" href="\.\./"', talks)
 
@@ -155,10 +158,9 @@ def test_titles_not_doubled(built_site):
         assert title.count(conf.project) == 1, title
 
 
-def test_charter_ships_with_the_site(built_site):
+def test_charter_ships_with_the_site(built_site, css):
     # Charter is only preinstalled on Apple devices; everyone else downloads it.
     static = built_site / "_static"
-    css = (static / "academic.css").read_text()
     faces = re.findall(r"@font-face\s*{([^}]*)}", css)
     styles = set()
     for face in faces:
