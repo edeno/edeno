@@ -265,3 +265,35 @@ def test_format_reference_matches_co_first_via_linked_doi(monkeypatch):
     meta = make_meta(relation=related("10.7554/eLife.1.3", "is-same-as"))
     _, authors, _ = entry_parts(meta, "10.7554/eLife.1")
     assert authors == f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK}"
+
+
+@pytest.mark.parametrize(
+    ("author", "expected"),
+    [
+        (
+            {"family": "Smith", "given": "Jane", "ORCID": SMITH_ORCID},
+            {"name": "Jane Smith", "orcid": SMITH_ORCID},
+        ),
+        ({"family": "Plato"}, {"name": "Plato"}),
+        (
+            {"name": "Spyglass Consortium"},
+            {"name": "Spyglass Consortium", "organization": True},
+        ),
+        ({"family": "Denovellis", "given": "Eric L."}, {"self": True}),
+        (
+            {"family": "Denovellis", "given": "Ana", "ORCID": SMITH_ORCID},
+            {"name": "Ana Denovellis", "orcid": SMITH_ORCID},
+        ),
+    ],
+)
+def test_author_record(author, expected):
+    assert op.author_record(author) == expected
+
+
+def test_authors_by_doi_covers_every_version_in_order():
+    meta = make_meta(relation=related("10.1101/PRE"))
+    authors = [{"name": "Jane Smith", "orcid": SMITH_ORCID}, {"self": True}]
+    assert op.authors_by_doi("10.7554/Pub", meta) == {
+        "10.7554/pub": authors,
+        "10.1101/pre": authors,
+    }

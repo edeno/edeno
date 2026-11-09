@@ -3,6 +3,8 @@ import json
 import re
 from pathlib import Path
 
+from docutils import nodes
+
 # -- Project information -----------------------------------------------------
 
 project = "Eric L. Denovellis"
@@ -194,7 +196,52 @@ UNUSED_ASSETS = {
 }
 
 
-def _structured_data(app, pagename) -> dict:
+# Written by scripts/orcid-publications.py: lowercased DOI -> author records.
+PUBLICATION_AUTHORS = "_static/publication-authors.json"
+
+
+def _schema_author(record: dict) -> dict:
+    if record.get("self"):
+        return {"@id": PERSON_ID}
+    node = {
+        "@type": "Organization" if record.get("organization") else "Person",
+        "name": record["name"],
+    }
+    if "orcid" in record:
+        node["sameAs"] = record["orcid"]
+    return node
+
+
+def _scholarly_articles(app, doctree) -> list[dict]:
+    """The page's `pub` blocks that link a DOI, with authors from ORCID."""
+    path = Path(app.srcdir) / PUBLICATION_AUTHORS
+    authors = json.loads(path.read_text()) if path.exists() else {}
+    articles = []
+    for pub in doctree.findall(
+        lambda n: isinstance(n, nodes.container) and "pub" in n["classes"]
+    ):
+        doi_urls = [
+            ref["refuri"]
+            for ref in pub.findall(nodes.reference)
+            if ref.get("refuri", "").startswith("https://doi.org/")
+        ]
+        if not doi_urls:
+            continue
+        article = {
+            "@type": "ScholarlyArticle",
+            "name": pub[0].astext(),
+            "url": doi_urls[0],
+        }
+        # Without the full list, name no one: naming only the owner would
+        # claim sole authorship.
+        records = authors.get(doi_urls[0].removeprefix("https://doi.org/").lower())
+        if records:
+            article["author"] = [_schema_author(r) for r in records]
+        articles.append(article)
+    return articles
+
+
+def _structured_data(app, pagename, doctree) -> dict:
     root = app.config.root_doc
     person = {
         **JSON_LD_PERSON,
@@ -209,6 +256,8 @@ def _structured_data(app, pagename) -> dict:
                 "mainEntity": {"@id": PERSON_ID},
             }
         )
+    if doctree is not None:  # the 404 page has none
+        graph += _scholarly_articles(app, doctree)
     return {"@context": "https://schema.org", "@graph": graph}
 
 
@@ -226,7 +275,8 @@ def _inject_head(app, pagename, templatename, context, doctree):
         head += f'\n<meta name="description" content="{html.escape(description)}">'
     head += (
         '\n<script type="application/ld+json">'
-        + json.dumps(_structured_data(app, pagename))
+        # Titles come from ORCID; a "</" in one would end the script early.
+        + json.dumps(_structured_data(app, pagename, doctree)).replace("</", "<\\/")
         + "</script>"
     )
     head += "\n" + _GTAG_SNIPPET
@@ -251,11 +301,14 @@ def _move_404_to_root(app, exception):
 
 
 def _remove_unused_output(app, exception):
-    # publications.txt is only an include source; html_copy_source=False still
-    # leaves an empty _sources/ behind.
+    # The ORCID files are build inputs; html_copy_source=False still leaves an
+    # empty _sources/ behind.
     if exception is None:
         static = Path(app.outdir) / "_static"
-        for name in UNUSED_ASSETS | {"publications.txt"}:
+        for name in UNUSED_ASSETS | {
+            "publications.txt",
+            Path(PUBLICATION_AUTHORS).name,
+        }:
             (static / name).unlink(missing_ok=True)
         sources = Path(app.outdir) / "_sources"
         if sources.is_dir() and not any(sources.iterdir()):

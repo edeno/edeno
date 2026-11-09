@@ -5,3 +5,4 @@ _build/
 .venv/
 .ipynb_checkpoints/
 _static/publications.txt
+_static/publication-authors.json

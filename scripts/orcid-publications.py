@@ -1,5 +1,10 @@
-"""Generate _static/publications.txt from ORCID for publications.md to include."""
+"""Generate _static/publications.txt from ORCID for publications.md to include.
 
+Also writes each paper's author list to _static/publication-authors.json for
+the site's structured data.
+"""
+
+import json
 import logging
 import sys
 from collections import defaultdict
@@ -14,6 +19,7 @@ ORCID_RECORD_API = "https://pub.orcid.org/v3.0/"
 ORCID_PROFILE = f"https://orcid.org/{ORCID_ID}"
 HTTP_TIMEOUT = 15  # seconds
 OUTPUT_PATH = Path(__file__).parent.parent / "_static/publications.txt"
+AUTHORS_PATH = OUTPUT_PATH.with_name("publication-authors.json")
 
 # Preprint servers are named in Crossref's `institution` field; most are
 # labelled "<server> preprint".
@@ -81,14 +87,20 @@ def initials(given_name: str) -> str:
     return ".".join(parts)
 
 
+def is_self(author: dict) -> bool:
+    # Crossref gives ORCIDs as URLs; without one, fall back to the name.
+    orcid = author.get("ORCID")
+    if orcid:
+        return orcid.endswith(ORCID_ID)
+    return "denovellis" in author.get("family", "").lower()
+
+
 def format_author(author: dict) -> str:
     family = author.get("family", "")
     given = author.get("given", "")
-    # Crossref gives ORCIDs as URLs; without one, fall back to the name.
     orcid = author.get("ORCID")
-    is_self = orcid.endswith(ORCID_ID) if orcid else "denovellis" in family.lower()
 
-    if is_self:
+    if is_self(author):
         display = "**Denovellis, E.L.**"
     elif given:
         display = f"{family}, {initials(given)}."
@@ -98,9 +110,28 @@ def format_author(author: dict) -> str:
 
     if orcid:
         return f"[{display}]({orcid})"
-    if is_self:
+    if is_self(author):
         return f"[{display}]({ORCID_PROFILE})"
     return display
+
+
+def author_record(author: dict) -> dict:
+    """One author as the site's structured data names them."""
+    if is_self(author):
+        return {"self": True}
+    if "family" not in author:
+        # Organizational authors (consortia) carry only a `name`.
+        return {"name": author.get("name", "<unknown>"), "organization": True}
+    record = {"name": " ".join(filter(None, [author.get("given"), author["family"]]))}
+    if author.get("ORCID"):
+        record["orcid"] = author["ORCID"]
+    return record
+
+
+def authors_by_doi(doi: str, meta: dict) -> dict[str, list[dict]]:
+    """The work's authors, in order, under each of its versions' DOIs."""
+    authors = [author_record(a) for a in meta["author"]]
+    return dict.fromkeys(same_work_dois(doi, meta), authors)
 
 
 def format_journal_details(meta: dict, journal: str) -> str:
@@ -301,10 +332,12 @@ def main() -> None:
         logger.warning("Co-first DOIs not in the publication list: %s", unmatched)
 
     entries: list[dict] = []
+    authors: dict[str, list[dict]] = {}
     for doi, meta in works:
         entry = format_reference(meta, doi)
         if entry is not None:
             entries.append(entry)
+            authors |= authors_by_doi(doi, meta)
 
     if not entries:
         sys.exit(
@@ -313,6 +346,7 @@ def main() -> None:
         )
 
     OUTPUT_PATH.write_text(render_markdown(entries))
+    AUTHORS_PATH.write_text(json.dumps(authors, indent=1, sort_keys=True) + "\n")
     logger.info("Wrote %d entries to %s", len(entries), OUTPUT_PATH)
 
 

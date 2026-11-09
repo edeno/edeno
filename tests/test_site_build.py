@@ -24,6 +24,21 @@ PAGES = sorted(
 )
 
 
+# Author lists for the home page's two selected papers, in the ORCID script's
+# format; other listed papers have none, as when a DOI is missing from the file.
+PUBLICATION_AUTHORS = {
+    "10.7554/elife.108089": [
+        {"name": "Kyu Hyun Lee"},
+        {"self": True},
+        {"name": "Loren M. Frank", "orcid": "https://orcid.org/0000-0000-0000-0001"},
+    ],
+    "10.7554/elife.64505": [
+        {"self": True},
+        {"name": "A Consortium", "organization": True},
+    ],
+}
+
+
 def copy_site(dest: Path) -> Path:
     # Dot-directories hold git, environments and tool state, never site files.
     shutil.copytree(
@@ -33,6 +48,9 @@ def copy_site(dest: Path) -> Path:
     publications = dest / "_static" / "publications.txt"
     if not publications.exists():
         publications.write_text("Publications placeholder.\n")
+    (dest / "_static" / "publication-authors.json").write_text(
+        json.dumps(PUBLICATION_AUTHORS)
+    )
     return dest
 
 
@@ -344,3 +362,45 @@ def test_build_ships_no_unused_sphinx_files(built_site):
     shipped = {p.name for p in static.iterdir()}
     assert not shipped & (conf.UNUSED_ASSETS | {"publications.txt"})
     assert not (built_site / "_sources").exists()
+
+
+@pytest.mark.parametrize("page", ["", "publications"])
+def test_listed_papers_are_articles_with_their_authors(built_site, page):
+    html = read_page(built_site, page)
+    (person,) = nodes_of_type(html, "Person")
+    listed = {}
+    for entry in re.findall(
+        r'<div class="pub docutils container">(.*?)</div>', html, re.DOTALL
+    ):
+        doi = re.search(r'href="(https://doi\.org/[^"]+)"', entry)
+        if doi:
+            title = re.search(r"<p><strong>(.*?)</strong></p>", entry).group(1)
+            listed[unescape(doi.group(1))] = unescape(title)
+    articles = nodes_of_type(html, "ScholarlyArticle")
+    assert {a["url"]: a["name"] for a in articles} == listed
+    me = {"@id": person["@id"]}
+    expected = {
+        "10.7554/elife.108089": [
+            {"@type": "Person", "name": "Kyu Hyun Lee"},
+            me,
+            {
+                "@type": "Person",
+                "name": "Loren M. Frank",
+                "sameAs": "https://orcid.org/0000-0000-0000-0001",
+            },
+        ],
+        "10.7554/elife.64505": [me, {"@type": "Organization", "name": "A Consortium"}],
+    }
+    for article in articles:
+        doi = article["url"].removeprefix("https://doi.org/").lower()
+        if doi in expected:
+            assert article["author"] == expected[doi]
+        else:
+            # Never name the owner as the only author for want of the list.
+            assert "author" not in article
+    if page == "":
+        assert len(articles) == 2 and all("author" in a for a in articles)
+
+
+def test_author_lists_are_not_published(built_site):
+    assert not (built_site / "_static" / "publication-authors.json").exists()
