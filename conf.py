@@ -334,6 +334,8 @@ def setup(app):
 sitemap_locales = [None]
 sitemap_url_scheme = "{link}"
 sitemap_excludes = ["404/"]
+# <lastmod> from each page's last git commit; needs full history (fetch-depth: 0 in CI).
+sitemap_show_lastmod = True
 
 # 404 page: served by GitHub Pages for any missing URL, so asset links must be absolute.
 notfound_urls_prefix = "/"

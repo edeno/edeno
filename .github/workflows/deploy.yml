@@ -29,6 +29,9 @@ jobs:
       UV_NO_DEV: 1
     steps:
     - uses: actions/checkout@v7
+      # Full history: the sitemap's <lastmod> dates come from each page's last commit.
+      with:
+        fetch-depth: 0
 
     # Python version comes from .python-version; dependencies from uv.lock.
     - uses: astral-sh/setup-uv@v10.3.3
