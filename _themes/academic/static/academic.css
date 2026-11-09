@@ -265,38 +265,38 @@ dl > dd:last-child > :last-child {
   height: 18px;
 }
 
-/* Home intro: photo beside the name and tagline; everything after spans the column. */
-.page > section:has(> img.portrait) {
+/* Home intro: photo beside the name and tagline; everything after spans the column.
+   :where() keeps these selectors at zero specificity so the per-element rules win. */
+:where(.page > section:has(> .portrait)) {
   display: grid;
   grid-template-columns: 110px 1fr;
+  grid-template-areas:
+    "photo name"
+    "photo tagline";
   column-gap: 1.5rem;
   align-items: center;
 }
 
-.page > section:has(> img.portrait) > * {
+:where(.page > section:has(> .portrait)) > * {
   grid-column: 1 / -1;
 }
 
-.page > section > img.portrait {
-  grid-column: 1;
-  grid-row: 1 / span 2;
+:where(.page > section:has(> .portrait)) > h1 {
+  grid-area: name;
+  align-self: end;
+  margin: 0 0 0.25rem;
+}
+
+.portrait {
+  grid-area: photo;
   width: 110px;
   height: 110px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.page > section:has(> img.portrait) > h1,
-.page > section:has(> img.portrait) > .tagline {
-  grid-column: 2;
-}
-
-.page > section:has(> img.portrait) > h1 {
-  align-self: end;
-  margin: 0 0 0.25rem;
-}
-
 .tagline {
+  grid-area: tagline;
   align-self: start;
   color: var(--muted);
   line-height: 1.5;
@@ -314,15 +314,15 @@ dl > dd:last-child > :last-child {
 }
 
 @media (max-width: 480px) {
-  .page > section:has(> img.portrait) > img.portrait,
-  .page > section:has(> img.portrait) > h1,
-  .page > section:has(> img.portrait) > .tagline {
-    grid-column: 1 / -1;
-    grid-row: auto;
+  :where(.page > section:has(> .portrait)) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "name"
+      "tagline";
   }
 
-  .page > section > img.portrait {
-    order: -1;
+  .portrait {
     margin-bottom: 1rem;
   }
 }
