@@ -32,7 +32,7 @@
 
 {%- block footer %}
 <footer class="site-footer">
-  <div class="copyright">{{ copyright_block() }}</div>
+  <div class="copyright">&copy; {{ copyright }}</div>
   <div class="icons">
     {%- for name, url, icon in social_links %}
     <a href="{{ url }}" aria-label="{{ name }}" title="{{ name }}">{{ icon }}</a>

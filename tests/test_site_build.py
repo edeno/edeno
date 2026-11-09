@@ -141,6 +141,10 @@ def test_footer_social_links(built_site):
         assert f'href="{url}"' in footer
         assert f'aria-label="{name}"' in footer
     assert "Sphinx" not in footer
+    copyright_text = re.search(
+        r'<div class="copyright">(.*?)</div>', footer, re.DOTALL
+    ).group(1)
+    assert re.fullmatch(rf"© \d{{4}} {conf.author}", unescape(copyright_text).strip())
 
 
 def test_404_page(built_site):

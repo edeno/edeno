@@ -9,7 +9,7 @@ from docutils import nodes
 
 project = "Eric L. Denovellis"
 author = project
-copyright = f"%Y, {author}"
+copyright = f"%Y {author}"
 # Trailing slash required: sphinx-sitemap joins page links onto it.
 html_baseurl = "https://www.edenovellis.com/"
 PROFILE_IMAGE = "_static/profile.jpg"
