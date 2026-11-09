@@ -61,7 +61,7 @@ Lisbon, Portugal: Computational and Systems Neuroscience (COSYNE) 2024.
 
 Coulter, M.E., Gillespie, A.K., Chu, J., **Denovellis, E.L.**, Nguyen, T., Liu, D.F., Wadhwani, K., Sharma, B., Wang, K., Deng, X., Kemere, C., Eden, U.T., Frank, L.M.
 
-2023 Neuroscience Meeting Planner. Washington, D.C.: Society for Neuroscience, 2023.[Online.](https://www.abstractsonline.com/pp8/#!/10892/presentation/34994)
+2023 Neuroscience Meeting Planner. Washington, D.C.: Society for Neuroscience, 2023. [Online.](https://www.abstractsonline.com/pp8/#!/10892/presentation/34994)
 :::
 
 :::{container} pub
