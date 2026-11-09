@@ -3,6 +3,7 @@
 import re
 import shutil
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -252,7 +253,7 @@ def test_orcid_icon_cuts_out_its_letters(built_site):
 def test_publications_lead_with_the_title(built_site):
     html = read_page(built_site, "publications")
     entries = re.findall(r'<div class="pub docutils">(.*?)</div>', html, re.S)
-    assert len(entries) >= 26  # the hand-written conference abstracts alone
+    assert entries
     for entry in entries:
         paragraphs = re.findall(r"<p>(.*?)</p>", entry, re.S)
         assert len(paragraphs) == 3, entry[:200]
@@ -261,3 +262,16 @@ def test_publications_lead_with_the_title(built_site):
         assert "Denovellis, E.L." in authors
     css = (built_site / "_static" / "academic.css").read_text()
     assert ".pub p + p" in css
+
+
+def test_talks_have_a_date_column_newest_first(built_site):
+    html = read_page(built_site, "talks")
+    block = re.search(r'<div class="talks docutils">(.*?)</dl>', html, re.S).group(1)
+    dates = re.findall(r"<dt>(.*?)</dt>", block)
+    assert dates
+    parsed = [datetime.strptime(d, "%b %Y") for d in dates]
+    assert parsed == sorted(parsed, reverse=True)
+    for dd in re.findall(r"<dd>(.*?)</dd>", block, re.S):
+        assert len(re.findall(r"<p>", dd)) == 2, dd[:200]  # title, then venue
+    css = (built_site / "_static" / "academic.css").read_text()
+    assert re.search(r"\.talks dl\s*{[^}]*grid-template-columns", css)

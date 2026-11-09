@@ -36,6 +36,11 @@ uv run make live
 - Python is formatted with `uvx ruff format` (no project config; defaults).
 - Comments in Python and markdown should be sparing — only when the *why* is non-obvious.
 
+## Adding entries
+
+- **Talk:** in `talks.md`, add a definition-list entry inside the `talks` div, newest first. The date is a three-letter month and year (`Sep 2027`), then `: Title`, a blank line, and the venue indented two spaces. The site test checks this format and order.
+- **Conference abstract:** in `publications.md`, add a `:::{div} pub` block with three paragraphs: `**Title**`, the authors (your name as `**Denovellis, E.L.**`), then the venue. Journal articles and preprints come from ORCID automatically.
+
 ## Theme
 
 The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `basic` theme: a top bar, a single ~650px column, and no sidebar or search. The design intent (simple, academic, no cards/badges/buttons) is in `docs/superpowers/specs/2026-11-08-site-redesign-design.md`.
