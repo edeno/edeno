@@ -1,8 +1,5 @@
 ---
 og:description: "Hiking, backpacking, and music: what Eric L. Denovellis does outside the lab."
-myst:
-  html_meta:
-    description: "Hiking, backpacking, and music: what Eric L. Denovellis does outside the lab."
 ---
 
 # Fun

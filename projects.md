@@ -1,8 +1,5 @@
 ---
 og:description: "Open-source software by Eric L. Denovellis for neurophysiology data infrastructure, decoding hippocampal activity, signal processing, and interactive visualization."
-myst:
-  html_meta:
-    description: "Open-source software by Eric L. Denovellis for neurophysiology data infrastructure, decoding hippocampal activity, signal processing, and interactive visualization."
 ---
 
 # Projects

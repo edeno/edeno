@@ -1,8 +1,5 @@
 ---
 og:description: "Peer-reviewed articles, preprints, and conference abstracts by Eric L. Denovellis on hippocampal replay, neural decoding, and open-source neuroscience software."
-myst:
-  html_meta:
-    description: "Peer-reviewed articles, preprints, and conference abstracts by Eric L. Denovellis on hippocampal replay, neural decoding, and open-source neuroscience software."
 ---
 
 # Publications

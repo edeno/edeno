@@ -1,3 +1,4 @@
+import html
 import json
 import re
 from pathlib import Path
@@ -73,6 +74,9 @@ ogp_site_url = html_baseurl
 ogp_image = PROFILE_IMAGE
 ogp_image_alt = f"Photo of {author}"
 ogp_type = "profile"
+# Each page's front matter `og:description` also becomes its <meta name="description">
+# (added in _inject_head); opengraph's own would summarise the first paragraph.
+ogp_enable_meta_description = False
 ogp_custom_meta_tags = [
     '<meta property="profile:first_name" content="Eric">',
     '<meta property="profile:last_name" content="Denovellis">',
@@ -162,6 +166,9 @@ def _inject_head(app, pagename, templatename, context, doctree):
             for f in context.get(key, [])
             if Path(str(getattr(f, "filename", f))).name not in _UNUSED_ASSETS
         ]
+    description = (context.get("meta") or {}).get("og:description")
+    if description:
+        head += f'\n<meta name="description" content="{html.escape(description)}">'
     head += (
         '\n<script type="application/ld+json">'
         + json.dumps(JSON_LD_PERSON)

@@ -1,8 +1,5 @@
 ---
 og:description: "Invited and contributed talks by Eric L. Denovellis on statistical machine learning, neural decoding, and hippocampal replay."
-myst:
-  html_meta:
-    description: "Invited and contributed talks by Eric L. Denovellis on statistical machine learning, neural decoding, and hippocampal replay."
 ---
 
 # Talks

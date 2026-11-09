@@ -252,7 +252,7 @@ def test_home_lists_selected_papers(built_site):
 def test_page_has_a_written_description(built_site, page):
     # Link previews use these; without front matter they fall back to the first text.
     html = read_page(built_site, page)
-    description = re.search(r'<meta content="([^"]*)" name="description"', html)
+    description = re.search(r'<meta name="description" content="([^"]*)"', html)
     og = re.search(r'<meta property="og:description" content="([^"]*)"', html)
     assert description and og and description.group(1) == og.group(1)
     assert not description.group(1).startswith("Photo of")  # not the portrait alt
