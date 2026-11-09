@@ -1,7 +1,6 @@
 """Generate _static/publications.txt from ORCID for publications.md to include."""
 
 import logging
-import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -147,13 +146,10 @@ def format_reference(meta: dict, doi: str) -> dict | None:
         logger.warning("Skipping %s: malformed metadata (%s)", doi, exc)
         return None
 
-    # Judge the period by the visible text: "[Frank, L.M.](url)" already ends in one.
-    visible = re.sub(r"\]\([^)]*\)$", "", authors).rstrip("*")
-    parts = [authors if visible.endswith(".") else f"{authors}.", f"**{title}**."]
-    if details:
-        parts.append(details)
-    parts.append(f"[{doi}](https://doi.org/{doi})")
-    return {"issued": issued, "reference": " ".join(parts)}
+    source = " ".join(filter(None, [details, f"[{doi}](https://doi.org/{doi})"]))
+    # Title first, then authors, then where it appeared; the `pub` class styles each line.
+    reference = f":::{{div}} pub\n**{title}**\n\n{authors}\n\n{source}\n:::"
+    return {"issued": issued, "reference": reference}
 
 
 def extract_dois(work_summary: dict) -> list[str]:

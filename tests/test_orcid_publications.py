@@ -54,21 +54,32 @@ def test_format_author(author, expected):
     assert op.format_author(author) == expected
 
 
+def entry_parts(meta: dict, doi: str = "10.1/x") -> list[str]:
+    """Split a rendered entry into its title, author, and source lines."""
+    reference = op.format_reference(meta, doi)["reference"]
+    assert reference.startswith(":::{div} pub\n")
+    assert reference.endswith("\n:::")
+    return reference.removeprefix(":::{div} pub\n").removesuffix("\n:::").split("\n\n")
+
+
 def test_format_reference_journal_article():
     entry = op.format_reference(make_meta(issue="3", page="1-9"), "10.1/x")
     assert entry == {
         "issued": [2021, 9, 27],
         "reference": (
-            f"[Smith, J.]({SMITH_ORCID}), {SELF_LINK} **A title**. "
-            "*eLife*, *10*(3), 1-9. [10.1/x](https://doi.org/10.1/x)"
+            ":::{div} pub\n"
+            "**A title**\n\n"
+            f"[Smith, J.]({SMITH_ORCID}), {SELF_LINK}\n\n"
+            "*eLife*, *10*(3), 1-9. [10.1/x](https://doi.org/10.1/x)\n"
+            ":::"
         ),
     }
 
 
 def test_format_reference_marks_co_first_authors(monkeypatch):
     monkeypatch.setitem(op.CO_FIRST_AUTHORS, "10.1/x", 2)
-    reference = op.format_reference(make_meta(), "10.1/X")["reference"]
-    assert reference.startswith(f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK}\\*.")
+    _, authors, _ = entry_parts(make_meta(), "10.1/X")
+    assert authors == f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK}\\*"
 
 
 @pytest.mark.parametrize(
@@ -171,36 +182,26 @@ def test_render_markdown_groups_by_year_newest_first():
     )
 
 
-def test_format_reference_single_period_after_initials():
-    meta = make_meta(author=[{"family": "Frank", "given": "Loren M."}])
-    assert op.format_reference(meta, "10.1/x")["reference"].startswith(
-        "Frank, L.M. **A title**."
-    )
-
-
 @pytest.mark.parametrize(
-    ("last_author", "expected_start"),
+    ("last_author", "expected"),
     [
+        ({"family": "Frank", "given": "Loren M."}, "Frank, L.M."),
         (
             {"family": "Frank", "given": "Loren M.", "ORCID": SMITH_ORCID},
-            f"[Frank, L.M.]({SMITH_ORCID}) **A title**.",
+            f"[Frank, L.M.]({SMITH_ORCID})",
         ),
-        ({"family": "Denovellis", "given": "Eric L."}, f"{SELF_LINK} **A title**."),
+        ({"family": "Denovellis", "given": "Eric L."}, SELF_LINK),
     ],
 )
-def test_format_reference_single_period_after_linked_last_author(
-    last_author, expected_start
-):
-    meta = make_meta(author=[last_author])
-    assert op.format_reference(meta, "10.1/x")["reference"].startswith(expected_start)
+def test_format_reference_author_line_adds_no_period(last_author, expected):
+    _, authors, _ = entry_parts(make_meta(author=[last_author]))
+    assert authors == expected
 
 
 def test_format_reference_collapses_whitespace_in_title():
     meta = make_meta(title="Spectral Connectivity: a python\n  package")
-    assert (
-        "**Spectral Connectivity: a python package**."
-        in (op.format_reference(meta, "10.1/x")["reference"])
-    )
+    title, _, _ = entry_parts(meta)
+    assert title == "**Spectral Connectivity: a python package**"
 
 
 @pytest.mark.parametrize(
@@ -223,15 +224,12 @@ def test_format_journal_details_uses_article_number_without_pages(extra, expecte
 )
 def test_format_reference_takes_casing_from_matching_short_title(full, short, expected):
     meta = make_meta(**{"container-title": full, "container-title-short": short})
-    assert (
-        f"**A title**. {expected}" in op.format_reference(meta, "10.1/x")["reference"]
-    )
+    _, _, source = entry_parts(meta)
+    assert source.startswith(expected)
 
 
 def test_format_reference_matches_co_first_via_linked_doi(monkeypatch):
     monkeypatch.setitem(op.CO_FIRST_AUTHORS, "10.7554/elife.1.3", 1)
     meta = make_meta(relation=related("10.7554/eLife.1.3", "is-same-as"))
-    reference = op.format_reference(meta, "10.7554/eLife.1")["reference"]
-    assert reference.startswith(
-        f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK} **A title**."
-    )
+    _, authors, _ = entry_parts(meta, "10.7554/eLife.1")
+    assert authors == f"[Smith, J.]({SMITH_ORCID})\\*, {SELF_LINK}"

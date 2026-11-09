@@ -328,6 +328,25 @@ section:has(> .project-list) > h2 {
   color: var(--brand);
 }
 
+/* Publications: the title leads; authors and venue follow in smaller grey text. */
+.pub {
+  margin: 0 0 1.25rem;
+}
+
+.pub p {
+  margin: 0;
+}
+
+.pub p + p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.pub p + p strong {
+  color: var(--fg);
+}
+
 /* Fun page: uniform photo grid, modest inline logos. */
 .sd-row img {
   width: 100%;

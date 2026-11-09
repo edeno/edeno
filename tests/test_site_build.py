@@ -247,3 +247,17 @@ def test_orcid_icon_cuts_out_its_letters(built_site):
     footer = read_page(built_site, "contact").split('class="site-footer"')[1]
     orcid = re.search(r'aria-label="ORCID".*?</svg>', footer, re.S).group(0)
     assert 'fill-rule="evenodd"' in orcid
+
+
+def test_publications_lead_with_the_title(built_site):
+    html = read_page(built_site, "publications")
+    entries = re.findall(r'<div class="pub docutils">(.*?)</div>', html, re.S)
+    assert len(entries) >= 26  # the hand-written conference abstracts alone
+    for entry in entries:
+        paragraphs = re.findall(r"<p>(.*?)</p>", entry, re.S)
+        assert len(paragraphs) == 3, entry[:200]
+        title, authors, _ = paragraphs
+        assert title.startswith("<strong>") and title.endswith("</strong>")
+        assert "Denovellis, E.L." in authors
+    css = (built_site / "_static" / "academic.css").read_text()
+    assert ".pub p + p" in css
