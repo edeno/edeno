@@ -23,9 +23,11 @@ Computational research scientist at [UCSF](https://physiology.ucsf.edu/) — bui
 
 ## About me
 
-I work in [Loren Frank's lab](https://franklab.ucsf.edu/), where I study how the brain represents past events and alternative possibilities, and how these representations support memory and decision-making. I develop statistical models to measure them, such as switching state space models that decode hippocampal replay and classify its dynamics, work I began as a postdoc with Uri T. Eden. With collaborators, I adapted these models for [real-time closed-loop neurofeedback](https://doi.org/10.1016/j.neuron.2024.12.023), and I build open-source software such as Spyglass to make these methods reproducible across labs.
+I build statistical models and open-source software to understand how the brain represents past experiences and alternative possibilities, and how those representations guide memory and decisions.
 
-Before that, I did my Ph.D. in computational neuroscience at Boston University with Daniel H. Bullock and Earl K. Miller, studying how prefrontal cortex [coordinates context representations](https://doi.org/10.1016/j.neuron.2012.09.029) during task switching, and building interactive tools for exploring electrophysiology data ([RasterVis](https://github.com/NeurophysVis/RasterVis), [SpectraVis](https://github.com/NeurophysVis/SpectraVis)).
+As a research scientist in [Loren Frank's lab](https://franklab.ucsf.edu/) at UCSF, I developed models that decode which location the hippocampus is representing from moment to moment, including during *replay*, when it rapidly reactivates sequences of paths. With collaborators, I adapted them to run in real time, enabling [closed-loop neurofeedback](https://doi.org/10.1016/j.neuron.2024.12.023) on hippocampal spatial representations. I also co-led development of Spyglass, open-source software for reproducible, shareable neuroscience analysis.
+
+I began developing these models as a postdoc at Boston University with Uri T. Eden and Mark A. Kramer. Before that, I did my Ph.D. in computational neuroscience there with Daniel H. Bullock and Earl K. Miller, and identified [synchronous oscillatory neural ensembles in prefrontal cortex](https://doi.org/10.1016/j.neuron.2012.09.029) that support switching between task rules.
 
 ## Selected papers
 
