@@ -85,7 +85,9 @@ def initials(given_name: str) -> str:
 def format_author(author: dict) -> str:
     family = author.get("family", "")
     given = author.get("given", "")
-    is_self = "denovellis" in family.lower()
+    # Crossref gives ORCIDs as URLs; without one, fall back to the name.
+    orcid = author.get("ORCID")
+    is_self = orcid.endswith(ORCID_ID) if orcid else "denovellis" in family.lower()
 
     if is_self:
         display = "**Denovellis, E.L.**"
@@ -95,8 +97,8 @@ def format_author(author: dict) -> str:
         # Organizational authors (consortia) carry only a `name`.
         display = family or author.get("name") or "<unknown>"
 
-    if "ORCID" in author:
-        return f"[{display}]({author['ORCID']})"
+    if orcid:
+        return f"[{display}]({orcid})"
     if is_self:
         return f"[{display}]({ORCID_PROFILE})"
     return display

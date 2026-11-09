@@ -10,6 +10,7 @@ op = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(op)
 
 SMITH_ORCID = "https://orcid.org/0000-0000-0000-0001"
+SELF_ORCID = f"orcid.org/{op.ORCID_ID}"
 SELF_LINK = f"[**Denovellis, E.L.**]({op.ORCID_PROFILE})"
 
 
@@ -46,6 +47,15 @@ def test_initials(given, expected):
             f"[Smith, J.]({SMITH_ORCID})",
         ),
         ({"family": "Denovellis", "given": "Eric"}, SELF_LINK),
+        (
+            {"family": "Denovellis", "given": "E. L.", "ORCID": f"http://{SELF_ORCID}"},
+            f"[**Denovellis, E.L.**](http://{SELF_ORCID})",
+        ),
+        # Another Denovellis, identified by their own ORCID, is not bolded.
+        (
+            {"family": "Denovellis", "given": "Ana", "ORCID": SMITH_ORCID},
+            f"[Denovellis, A.]({SMITH_ORCID})",
+        ),
         ({"family": "Plato"}, "Plato"),
         ({"name": "Spyglass Consortium"}, "Spyglass Consortium"),
     ],
