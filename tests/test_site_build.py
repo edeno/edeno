@@ -319,3 +319,10 @@ def test_publication_years_sit_under_a_section(built_site):
     sections = re.findall(r"<h2>([^<]+)<a", html)
     assert len(sections) >= 2  # articles, conference abstracts
     assert not any(re.fullmatch(r"\d{4}", s) for s in sections)
+
+
+def test_home_education_uses_the_dated_layout(built_site):
+    html = read_page(built_site, "")
+    section = re.search(r'<section id="education">(.*?)</section>', html, re.S).group(1)
+    assert '<div class="dated docutils container">' in section
+    assert re.findall(r"<dt>\s*\S", section)

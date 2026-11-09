@@ -51,8 +51,17 @@ Lee, K.H., **Denovellis, E.L.** (co-first), … Frank, L.M.
 
 ## Education
 
-+ Ph.D., Computational Neuroscience, Boston University. Thesis: [Task Switching in the Prefrontal Cortex](https://hdl.handle.net/2144/19067)
-+ B.S., Mathematics, and B.A., Philosophy, University of California, Santa Barbara
+:::{container} dated
+2016
+: Ph.D., Computational Neuroscience
+
+  Boston University. Thesis: [Task Switching in the Prefrontal Cortex](https://hdl.handle.net/2144/19067)
+
+2007
+: B.S., Mathematics, and B.A., Philosophy
+
+  University of California, Santa Barbara
+:::
 
 ## Collaborators
 
