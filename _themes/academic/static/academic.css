@@ -208,6 +208,26 @@ img {
   height: auto;
 }
 
+/* The few rules from Sphinx's basic.css this site relies on; that file isn't loaded. */
+a.headerlink {
+  visibility: hidden;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink {
+  visibility: visible;
+}
+
+ul.simple p {
+  margin-bottom: 0;
+}
+
+dl > dd:last-child,
+dl > dd:last-child > :last-child {
+  margin-bottom: 0;
+}
+
 /* Footer */
 .site-footer {
   display: flex;
