@@ -201,3 +201,22 @@ def test_titles_not_doubled(built_site):
         r"<title>Talks &#8212; Eric L\. Denovellis</title>",
         read_page(built_site, "talks"),
     )
+
+
+def test_charter_ships_with_the_site(built_site):
+    # Charter is only preinstalled on Apple devices; everyone else downloads it.
+    static = built_site / "_static"
+    css = (static / "academic.css").read_text()
+    faces = re.findall(r"@font-face\s*{([^}]*)}", css)
+    styles = set()
+    for face in faces:
+        assert re.search(r'font-family:\s*"Charter"', face)
+        src = re.search(r"src:([^;]*);", face).group(1)
+        assert src.strip().startswith('local("Charter')
+        for url in re.findall(r'url\("([^"]+)"\)', src):
+            assert (static / url).is_file(), url
+        weight = re.search(r"font-weight:\s*(\d+)", face).group(1)
+        style = re.search(r"font-style:\s*(\w+)", face).group(1)
+        styles.add((weight, style))
+    assert styles == {("400", "normal"), ("400", "italic"), ("700", "normal"), ("700", "italic")}
+    assert "Bitstream" in (static / "fonts" / "LICENSE.txt").read_text()

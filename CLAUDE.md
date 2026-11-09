@@ -42,6 +42,7 @@ The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `
 
 - `layout.html` renders the top nav from the hidden toctree in `index.md`, so add or reorder pages there. Footer icons come from `SOCIAL_LINKS` in `conf.py`, passed through `html_context` (inline Bootstrap Icons SVGs).
 - All styling lives in `static/academic.css`. Colours are CSS variables on `:root`. Dark mode follows the visitor's system setting via `prefers-color-scheme`; there is no toggle.
+- Reading text is Charter. Apple devices use their installed copy; everyone else downloads the Latin-subset WOFF2 files in `static/fonts/` (Bitstream licence in `static/fonts/LICENSE.txt`, which must ship with them).
 - Brand colour is teal (`#0f766e` light / `#2dd4bf` dark). Both meet WCAG AA text contrast on the page backgrounds (5.5:1 on `#ffffff`, 9.8:1 on `#121519`), so keep that bar if changing it.
 - Search is turned off in `conf.py` (`_disable_search`), so no `search/` page or index is built.
 - Google Analytics, JSON-LD Person schema, and any other `<head>` content is injected via the `_inject_head` html-page-context hook in `conf.py`.
