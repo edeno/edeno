@@ -1,5 +1,7 @@
 # Site redesign: simple academic layout
 
+> **Historical.** This records the redesign as first planned. The site changed afterwards (grouped one-line Projects, serif text, bundled Charter, dated Talks and Teaching, no videos, no sphinx-design); `CLAUDE.md` and the git log describe the current state.
+
 ## Intent
 
 The site should look like a simple, clean, modern academic homepage. It should not look like a software product page or a documentation site. Today it reads as "technical": every project sits in a bordered card, coloured pills (Python, GPU, star counts) appear everywhere, the home page has app-style solid buttons, and Furo's documentation chrome surrounds it all (grey sidebar panel, search box, right-hand "On this page" column). Element sizing is also off. Headings are nearly as large as the name. The Spyglass logo fills a 360px image well. The three-column project grid squeezes descriptions to about four words per line.

@@ -44,7 +44,7 @@ uv run make live
 
 ## Theme
 
-The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `basic` theme: a top bar, a single ~650px column, and no sidebar or search. The design intent (simple, academic, no cards/badges/buttons) is in `docs/superpowers/specs/2026-11-08-site-redesign-design.md`.
+The site uses a small local theme, `_themes/academic/`, that inherits Sphinx's `basic` theme: a top bar, a single ~650px column, and no sidebar or search. Design intent: simple and academic, not a software or docs site. Serif reading text, faint link underlines, small grey labels, and no cards, badges, buttons, or boxed sections. `docs/superpowers/` holds the original redesign spec and plan, which are now historical.
 
 - `layout.html` renders the top nav from the hidden toctree in `index.md`, so add or reorder pages there. Footer icons come from `SOCIAL_LINKS` in `conf.py`, passed through `html_context` (inline Bootstrap Icons SVGs).
 - All styling lives in `static/academic.css`. Colours are CSS variables on `:root`. Dark mode follows the visitor's system setting via `prefers-color-scheme`; there is no toggle.

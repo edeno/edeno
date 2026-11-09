@@ -1,5 +1,7 @@
 # Simple Academic Layout Implementation Plan
 
+> **Historical.** This records the redesign as first planned. The site changed afterwards (grouped one-line Projects, serif text, bundled Charter, dated Talks and Teaching, no videos, no sphinx-design); `CLAUDE.md` and the git log describe the current state.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Replace the Furo theme with a minimal local Sphinx theme (top bar + single centered column), and rework the home and projects pages to remove cards, badges and buttons.
