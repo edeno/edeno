@@ -52,5 +52,7 @@ I add songs to this playlist when I hear something I like:
 
 My favorite places to find music are:
 
-[![KEXP — Seattle public radio station](/images/kexp.png)](https://www.kexp.org/)
-[![Gorilla vs. Bear — independent music blog](/images/gvsb_gold2019-v2.webp)](https://www.gorillavsbear.net/)
+:::{container} music-links
+- ![](/images/kexp.png) [KEXP](https://www.kexp.org/) — Seattle public radio station
+- ![](/images/gvsb_gold2019-v2.webp) [Gorilla vs. Bear](https://www.gorillavsbear.net/) — independent music blog
+:::

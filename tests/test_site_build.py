@@ -310,3 +310,17 @@ def test_fun_photo_grid(built_site):
     assert all(re.search(r'alt="[^"]+"', img) for img in images)
     css = (built_site / "_static" / "academic.css").read_text()
     assert re.search(r"\.photos\s*{[^}]*grid-template-columns:\s*repeat\(3", css)
+
+
+def test_music_links_name_each_source(built_site):
+    html = read_page(built_site, "fun")
+    block = re.search(
+        r'<div class="music-links docutils container">(.*?)</div>', html, re.S
+    ).group(1)
+    items = re.findall(r"<li>(.*?)</li>", block, re.S)
+    assert items
+    for item in items:
+        assert re.search(r'<img alt="" ', item)  # decorative: the name is the link
+        assert re.search(r'<a class="reference external" href="[^"]+">\w', item)
+    css = (built_site / "_static" / "academic.css").read_text()
+    assert "p > a > img" not in css
