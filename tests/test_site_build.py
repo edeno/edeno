@@ -24,7 +24,7 @@ PAGES = sorted(
 )
 
 
-# Author lists for the home page's two selected papers, in the ORCID script's
+# Author lists for two of the home page's selected papers, in the ORCID script's
 # format; other listed papers have none, as when a DOI is missing from the file.
 PUBLICATION_AUTHORS = {
     "10.7554/elife.108089": [
@@ -399,7 +399,12 @@ def test_listed_papers_are_articles_with_their_authors(built_site, page):
             # Never name the owner as the only author for want of the list.
             assert "author" not in article
     if page == "":
-        assert len(articles) == 2 and all("author" in a for a in articles)
+        with_authors = {
+            a["url"].removeprefix("https://doi.org/").lower()
+            for a in articles
+            if "author" in a
+        }
+        assert with_authors == set(PUBLICATION_AUTHORS)
 
 
 def test_author_lists_are_not_published(built_site):

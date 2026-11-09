@@ -42,6 +42,14 @@ Lee, K.H.\*, **Denovellis, E.L.**\*, … Frank, L.M.
 *eLife*, 2021. [10.7554/eLife.64505](https://doi.org/10.7554/eLife.64505)
 :::
 
+:::{container} pub
+**Synchronous oscillatory neural ensembles for rules in the prefrontal cortex**
+
+Buschman, T.J.\*, **Denovellis, E.L.**\*, Diogo, C.\*, Bullock, D., Miller, E.K.
+
+*Neuron*, 2012. [10.1016/j.neuron.2012.09.029](https://doi.org/10.1016/j.neuron.2012.09.029)
+:::
+
 \* Co-first authors
 
 [All publications →](publications.md)
