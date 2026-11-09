@@ -2,4 +2,3 @@
 inherit = "basic"
 stylesheets = ["basic.css", "academic.css"]
 sidebars = []
-pygments_style = { default = "default" }

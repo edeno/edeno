@@ -96,7 +96,6 @@ body {
 .site-name {
   color: var(--fg);
   font-weight: 600;
-  font-size: 1.05rem;
   text-decoration: none;
 }
 
@@ -148,8 +147,8 @@ a {
   text-decoration-color: color-mix(in srgb, var(--brand) 22%, transparent);
 }
 
-/* Co-author names in publication entries read as text, not as a row of links. */
-#publications p > a[href^="https://orcid.org/"] {
+/* Author names in publication entries read as text, not as a row of links. */
+.pub p:nth-of-type(2) a {
   color: inherit;
   text-decoration-color: color-mix(in srgb, var(--fg) 22%, transparent);
 }
@@ -201,7 +200,6 @@ li {
 }
 
 img,
-video,
 iframe {
   max-width: 100%;
 }
@@ -281,7 +279,6 @@ img {
 .tagline {
   align-self: start;
   color: var(--muted);
-  font-size: 1.05rem;
   line-height: 1.5;
 }
 
@@ -322,7 +319,8 @@ section:has(> .project-list) > h2,
   text-transform: uppercase;
 }
 
-.project-list ul {
+.project-list ul,
+.music-links ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -353,11 +351,14 @@ section:has(> .project-list) > h2,
   margin: 0 0 1.25rem;
 }
 
-.pub p {
+/* Publications and dated lists share one entry shape: a lead line, then grey details. */
+.pub p,
+.dated dd p {
   margin: 0;
 }
 
-.pub p + p {
+.pub p + p,
+.dated dd p + p {
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.5;
@@ -380,22 +381,11 @@ section:has(> .project-list) > h2,
   padding-top: 0.15rem;
   font-family: var(--sans);
   font-size: 0.85rem;
-  font-weight: 400;
   color: var(--muted);
 }
 
 .dated dd {
   margin: 0 0 1.1rem;
-}
-
-.dated dd p {
-  margin: 0;
-}
-
-.dated dd p + p {
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
 }
 
 @media (max-width: 480px) {
@@ -440,12 +430,6 @@ iframe {
 }
 
 /* Music sources: a small logo beside each named link, description in grey. */
-.music-links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .music-links li {
   color: var(--muted);
 }
