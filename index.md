@@ -22,7 +22,7 @@ I build statistical models and open-source software to understand how the brain 
 
 As a research scientist in [Loren Frank's lab](https://franklab.ucsf.edu/) at UCSF, I developed models that decode which location the hippocampus is representing from moment to moment, including during *replay*, when it rapidly reactivates sequences of paths. With collaborators, I adapted them to run in real time, enabling [closed-loop neurofeedback](https://doi.org/10.1016/j.neuron.2024.12.023) on hippocampal spatial representations. I also co-led development of Spyglass, open-source software for reproducible, shareable neuroscience analysis.
 
-I began developing these models as a postdoc at Boston University with Uri T. Eden and Mark A. Kramer. Before that, I did my Ph.D. in computational neuroscience there with Daniel H. Bullock and Earl K. Miller, and identified [synchronous oscillatory neural ensembles in prefrontal cortex](https://doi.org/10.1016/j.neuron.2012.09.029) that support switching between task rules.
+I began developing these models as a postdoc at Boston University with Uri T. Eden and Mark A. Kramer. Before that, I did my Ph.D. in computational neuroscience there with Daniel H. Bullock and Earl K. Miller, where we [showed](https://doi.org/10.1016/j.neuron.2012.09.029) that synchronized rhythms can pull rule-specific groups of neurons out of overlapping prefrontal circuits, supporting flexible switching between rules.
 
 ## Selected papers
 
