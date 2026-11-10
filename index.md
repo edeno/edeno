@@ -27,6 +27,14 @@ I began developing these models as a postdoc at Boston University with Uri T. Ed
 ## Selected papers
 
 :::{container} pub
+**Local goodness-of-fit measures for neural decoding**
+
+Zeng, S., Comrie, A.E., Frank, L.M., Eden, U.T., **Denovellis, E.L.**
+
+*bioRxiv*, 2026 (submitted).
+:::
+
+:::{container} pub
 **Spyglass is a framework for reproducible and shareable neuroscience research**
 
 Lee, K.H.\*, **Denovellis, E.L.**\*, … Frank, L.M.
