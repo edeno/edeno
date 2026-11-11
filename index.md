@@ -31,7 +31,7 @@ I began developing these models as a postdoc at Boston University with Uri T. Ed
 
 Zeng, S., Comrie, A.E., Frank, L.M., Eden, U.T., **Denovellis, E.L.**
 
-*bioRxiv*, 2026 (submitted).
+*bioRxiv*, 2026. [10.64898/2026.11.10.765696](https://doi.org/10.64898/2026.11.10.765696)
 :::
 
 :::{container} pub
